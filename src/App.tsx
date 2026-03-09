@@ -16,7 +16,9 @@ import {
   Briefcase,
   Image as ImageIcon,
   UserCheck,
-  Globe
+  Globe,
+  Mail,
+  MessageCircle
 } from 'lucide-react';
 
 export default function App() {
@@ -379,6 +381,25 @@ export default function App() {
         </div>
       </section>
 
+      {/* Founders Section */}
+      <section id="founders" className="py-24 bg-slate-50 border-t border-slate-200">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="text-center max-w-3xl mx-auto mb-16">
+            <h2 className="text-3xl md:text-4xl font-bold text-slate-900 mb-4">最接地气的跨界创始团队</h2>
+            <p className="text-lg text-slate-600">
+              五个背景迥异的创始人，为了同一个目标走到一起：让所有人都能零门槛用上 AI。
+            </p>
+          </div>
+          <div className="grid grid-cols-2 md:grid-cols-5 gap-6">
+            <FounderCard role="农民" desc="首席体验官，确保产品“连我都会用”" icon="🌾" />
+            <FounderCard role="养虾大户" desc="天使投资人，“龙虾机”名字的灵感来源" icon="🦞" />
+            <FounderCard role="币安程序员" desc="首席技术官，主导 OpenClaw 与 Token 架构" icon="💻" />
+            <FounderCard role="村长" desc="统筹全局，深谙下沉市场与百姓真实需求" icon="👨‍🌾" />
+            <FounderCard role="华强北厂长" desc="硬件负责人，把控极致性价比与供应链" icon="🏭" />
+          </div>
+        </div>
+      </section>
+
       {/* CTA Section */}
       <section className="py-24 bg-red-600 relative overflow-hidden">
         <div className="absolute inset-0 bg-[url('https://www.transparenttextures.com/patterns/cubes.png')] opacity-10 mix-blend-overlay" />
@@ -423,12 +444,20 @@ export default function App() {
               </ul>
             </div>
             <div>
-              <h4 className="text-white font-semibold mb-4">支持</h4>
-              <ul className="space-y-2 text-sm">
-                <li><a href="#" className="hover:text-white transition-colors">使用指南</a></li>
-                <li><a href="#" className="hover:text-white transition-colors">常见问题</a></li>
-                <li><a href="#" className="hover:text-white transition-colors">API 文档</a></li>
-                <li><a href="#" className="hover:text-white transition-colors">联系客服</a></li>
+              <h4 className="text-white font-semibold mb-4">联系我们</h4>
+              <ul className="space-y-3 text-sm">
+                <li className="flex items-center gap-2">
+                  <MessageCircle className="w-4 h-4 text-slate-400" />
+                  <span className="text-slate-300">微信: 552961</span>
+                </li>
+                <li className="flex items-center gap-2">
+                  <MessageCircle className="w-4 h-4 text-slate-400" />
+                  <span className="text-slate-300">QQ: 552961</span>
+                </li>
+                <li className="flex items-center gap-2">
+                  <Mail className="w-4 h-4 text-slate-400" />
+                  <span className="text-slate-300">邮箱: 552961@qq.com</span>
+                </li>
               </ul>
             </div>
             <div>
@@ -500,6 +529,18 @@ function SkillCard({ icon, title, features, value }: { icon: React.ReactNode, ti
       <div className="bg-slate-50 rounded-lg p-4 border border-slate-100">
         <p className="text-sm font-medium text-slate-700 italic">{value}</p>
       </div>
+    </div>
+  );
+}
+
+function FounderCard({ role, desc, icon }: { role: string, desc: string, icon: string }) {
+  return (
+    <div className="bg-white rounded-2xl p-6 border border-slate-200 shadow-sm hover:shadow-md transition-all text-center flex flex-col items-center">
+      <div className="w-16 h-16 bg-slate-50 rounded-full flex items-center justify-center text-3xl mb-4 border border-slate-100 shadow-inner">
+        {icon}
+      </div>
+      <h3 className="text-lg font-bold text-slate-900 mb-2">{role}</h3>
+      <p className="text-sm text-slate-500 leading-relaxed">{desc}</p>
     </div>
   );
 }
