@@ -39,7 +39,7 @@ function Nav(props) {
           {tabs.map(function (t) {
             return <button key={t.id} onClick={function () { go(t.id); }} style={{ background: pg === t.id ? "rgba(229,57,53,0.15)" : "none", border: "none", cursor: "pointer", padding: "6px 10px", borderRadius: 6, color: pg === t.id ? C.wh : C.gr, fontWeight: pg === t.id ? 700 : 400, fontSize: 12 }}>{t.label}</button>;
           })}
-          <button onClick={function () { go("order"); }} style={{ background: C.red, color: C.wh, border: "none", borderRadius: 6, padding: "6px 16px", fontWeight: 700, fontSize: 12, cursor: "pointer", marginLeft: 6, boxShadow: "0 2px 10px rgba(229,57,53,0.4)" }}>{"立即预定"}</button>
+          <button className="hover-btn" onClick={function () { go("order"); }} style={{ background: C.red, color: C.wh, border: "none", borderRadius: 6, padding: "6px 16px", fontWeight: 700, fontSize: 12, cursor: "pointer", marginLeft: 6, boxShadow: "0 2px 10px rgba(229,57,53,0.4)" }}>{"立即预定"}</button>
         </div>
       </div>
     </nav>
@@ -48,7 +48,7 @@ function Nav(props) {
 
 function Sec(props) { return <section style={{ background: props.bg || C.wh }}><div style={{ maxWidth: 1100, margin: "0 auto", padding: "72px 20px" }}>{props.children}</div></section>; }
 function ST(props) { return <div style={{ textAlign: "center", marginBottom: 44 }}><h2 style={{ fontSize: 32, fontWeight: 900, margin: "0 0 10px" }}>{props.t}</h2>{props.s ? <p style={{ color: C.txtL, fontSize: 15, margin: 0 }}>{props.s}</p> : null}</div>; }
-function OBtn(props) { return <div style={{ textAlign: "center", marginTop: 40 }}><button onClick={function () { props.go("order"); }} style={{ background: C.red, color: C.wh, border: "none", borderRadius: 10, padding: "14px 36px", fontSize: 16, fontWeight: 800, cursor: "pointer", boxShadow: "0 4px 20px rgba(229,57,53,0.4)" }}>{"立即预定"}</button></div>; }
+function OBtn(props) { return <div style={{ textAlign: "center", marginTop: 40 }}><button className="hover-btn" onClick={function () { props.go("order"); }} style={{ background: C.red, color: C.wh, border: "none", borderRadius: 10, padding: "14px 36px", fontSize: 16, fontWeight: 800, cursor: "pointer", boxShadow: "0 4px 20px rgba(229,57,53,0.4)" }}>{"立即预定"}</button></div>; }
 
 function Home(props) {
   return (
@@ -63,9 +63,23 @@ function Home(props) {
             <h1 style={{ color: C.wh, fontSize: 46, fontWeight: 900, lineHeight: 1.2, margin: "0 0 6px" }}>{"把 AI 助理请回你的桌面"}</h1>
             <h1 style={{ color: C.red, fontSize: 46, fontWeight: 900, lineHeight: 1.2, margin: "0 0 22px" }}>{"别让它住在你的电脑里"}</h1>
             <p style={{ color: "rgba(255,255,255,0.6)", fontSize: 16, lineHeight: 1.8, margin: "0 0 32px", maxWidth: 500 }}>{"AI 需要你电脑的完整 Root 权限——你的银行密码、聊天记录、工作文件全部暴露。给它一台独立的机器，别拿你的电脑冒险。插电即用，3 分钟上手。"}</p>
-            <div style={{ display: "flex", gap: 14, flexWrap: "wrap" }}>
-              <button onClick={function () { props.go("order"); }} style={{ background: C.red, color: C.wh, border: "none", borderRadius: 10, padding: "14px 32px", fontSize: 16, fontWeight: 800, cursor: "pointer", boxShadow: "0 4px 20px rgba(229,57,53,0.5)" }}>{"立即预定 · 限量 10,000 台"}</button>
-              <button onClick={function () { props.go("product"); }} style={{ background: "transparent", color: C.wh, border: "1px solid rgba(255,255,255,0.3)", borderRadius: 10, padding: "14px 28px", fontSize: 15, cursor: "pointer" }}>{"了解更多"}</button>
+            <div style={{ display: "flex", gap: 14, flexWrap: "wrap", marginBottom: 36 }}>
+              <button className="hover-btn" onClick={function () { props.go("order"); }} style={{ background: C.red, color: C.wh, border: "none", borderRadius: 10, padding: "14px 32px", fontSize: 16, fontWeight: 800, cursor: "pointer", boxShadow: "0 4px 20px rgba(229,57,53,0.5)" }}>{"立即预定 · 限量 10,000 台"}</button>
+              <button className="hover-btn" onClick={function () { props.go("product"); }} style={{ background: "transparent", color: C.wh, border: "1px solid rgba(255,255,255,0.3)", borderRadius: 10, padding: "14px 28px", fontSize: 15, cursor: "pointer" }}>{"了解更多"}</button>
+            </div>
+            
+            <div style={{ background: "rgba(255,255,255,0.06)", border: "1px solid rgba(255,255,255,0.1)", borderRadius: 14, padding: "16px 20px", display: "inline-flex", gap: 24, flexWrap: "wrap", backdropFilter: "blur(10px)" }}>
+              {[
+                { v: "16GB", l: "高频内存" },
+                { v: "256GB", l: "安全存储" },
+                { v: "5W", l: "超低功耗" },
+                { v: "OpenClaw", l: "预装系统" }
+              ].map((spec, i) => (
+                <div key={i} style={{ display: "flex", flexDirection: "column" }}>
+                  <span style={{ color: C.wh, fontSize: 17, fontWeight: 900 }}>{spec.v}</span>
+                  <span style={{ color: "rgba(255,255,255,0.5)", fontSize: 12 }}>{spec.l}</span>
+                </div>
+              ))}
             </div>
           </div>
           <div style={{ flex: "1 1 280px", display: "flex", justifyContent: "center" }}>
@@ -122,11 +136,19 @@ function Home(props) {
         <OBtn go={props.go} />
       </Sec>
 
+      <Sec bg={C.wh}>
+        <ST t="深圳生产流水线实拍图（产能图）" s="为感谢大家热情预约，车间正满负荷生产，首批设备即将从这里打包发往全国！" />
+        <div className="img-grid" style={{ alignItems: "center" }}>
+          <img src="/box/5050e13500344491bce2018ece160efd.png" alt="产能图1" style={{ width: "100%", height: "auto", borderRadius: "16px", boxShadow: "0 8px 30px rgba(0,0,0,0.1)", objectFit: "cover" }} />
+          <img src="/box/68baeb0b3f00e118a4a061246585731d.jpg" alt="产能图2" style={{ width: "100%", height: "auto", borderRadius: "16px", boxShadow: "0 8px 30px rgba(0,0,0,0.1)", objectFit: "cover" }} />
+        </div>
+      </Sec>
+
       <section style={{ background: "linear-gradient(135deg, #B71C1C, #E53935, #FF6D00)", padding: "70px 20px", textAlign: "center" }}>
         <h2 style={{ color: C.wh, fontSize: 34, fontWeight: 900, margin: "0 0 6px" }}>{"别拿你的电脑冒险"}</h2>
         <h2 style={{ color: C.wh, fontSize: 34, fontWeight: 900, margin: "0 0 16px" }}>{"给 AI 一台它自己的机器"}</h2>
         <p style={{ color: "rgba(255,255,255,0.75)", fontSize: 15, margin: "0 0 28px" }}>{"全球首款开机即用的 AI 安全工作站 · ¥298 限量首发"}</p>
-        <button onClick={function () { props.go("order"); }} style={{ background: C.wh, color: C.dkRed, border: "none", borderRadius: 10, padding: "14px 36px", fontSize: 17, fontWeight: 800, cursor: "pointer" }}>{"立即预定"}</button>
+        <button className="hover-btn" onClick={function () { props.go("order"); }} style={{ background: C.wh, color: C.dkRed, border: "none", borderRadius: 10, padding: "14px 36px", fontSize: 17, fontWeight: 800, cursor: "pointer", boxShadow: "0 10px 30px rgba(0,0,0,0.2)" }}>{"立即预定"}</button>
       </section>
     </div>
   );
@@ -411,7 +433,15 @@ export default function App() {
   return (
     <div style={{ margin: 0, padding: 0 }}>
       <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@400;500;600;700;800;900&display=swap" rel="stylesheet" />
-      <style>{"* { font-family: 'Noto Sans SC', -apple-system, sans-serif; box-sizing: border-box; } body { margin: 0; }"}</style>
+      <style>{`
+        * { font-family: 'Noto Sans SC', -apple-system, sans-serif; box-sizing: border-box; }
+        body { margin: 0; }
+        .hover-btn { transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275); }
+        .hover-btn:hover { transform: translateY(-2px) scale(1.03); filter: brightness(1.1); }
+        .hover-btn:active { transform: translateY(1px) scale(0.98); }
+        .img-grid { display: grid; gap: 24px; grid-template-columns: 1fr; width: 100%; max-width: 1000px; margin: 0 auto; }
+        @media (min-width: 768px) { .img-grid { grid-template-columns: 1fr 1fr; } }
+      `}</style>
       <Nav pg={pg} go={go} scrolled={scrolled} />
       {pg === "home" ? <Home go={go} /> : null}
       {pg === "product" ? <Product go={go} /> : null}
