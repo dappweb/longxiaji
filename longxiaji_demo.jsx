@@ -279,21 +279,9 @@ function Contact(props) {
       </Sec>
       <Sec bg="#FAFAFA">
         <div style={{ display: "grid", gridTemplateColumns: "repeat(3, 1fr)", gap: 24, maxWidth: 800, margin: "0 auto" }}>
-          <div style={{ textAlign: "center", display: "flex", flexDirection: "column", alignItems: "center" }}>
-              <img src="/qrcode_wecom.png" alt="客服微信" style={{ width: 140, height: "auto", borderRadius: 8, margin: "0 auto 10px", boxShadow: "0 4px 12px rgba(0,0,0,0.1)" }} />
-            <h3 style={{ fontSize: 16, fontWeight: 700, margin: "10px 0 6px" }}>客服微信</h3>
-            <p style={{ fontSize: 13, color: C.txtL, margin: 0 }}>扫码添加</p>
-          </div>
-          <div style={{ textAlign: "center" }}>
-            <span style={{ fontSize: 32 }}>👥</span>
-            <h3 style={{ fontSize: 16, fontWeight: 700, margin: "10px 0 6px" }}>龙虾族微信群</h3>
-            <p style={{ fontSize: 13, color: C.txtL }}>扫码加入</p>
-          </div>
-          <div style={{ textAlign: "center" }}>
-            <span style={{ fontSize: 32 }}>📧</span>
-            <h3 style={{ fontSize: 16, fontWeight: 700, margin: "10px 0 6px" }}>商务合作</h3>
-            <p style={{ fontSize: 13, color: C.txtL }}>biz@longxiaji.com</p>
-          </div>
+          {[{ ic: "💬", t: "客服微信", d: "扫码添加" },{ ic: "👥", t: "龙虾族微信群", d: "扫码加入" },{ ic: "📧", t: "商务合作", d: "biz@longxiaji.com" }].map(function (c, i) {
+            return <div key={i} style={{ textAlign: "center" }}><span style={{ fontSize: 32 }}>{c.ic}</span><h3 style={{ fontSize: 16, fontWeight: 700, margin: "10px 0 6px" }}>{c.t}</h3><p style={{ fontSize: 13, color: C.txtL }}>{c.d}</p></div>;
+          })}
         </div>
         <OBtn go={props.go} />
       </Sec>
@@ -403,10 +391,7 @@ function Ft(props) {
         </div>
         <div style={{ flex: "1 1 160px" }}>
           <p style={{ color: C.gr, fontSize: 11, margin: "0 0 10px", fontWeight: 600 }}>{"联系我们"}</p>
-          <div style={{ marginBottom: 12 }}>
-            <p style={{ color: "rgba(255,255,255,0.35)", fontSize: 12, margin: "0 0 8px" }}>{"客服微信："}</p>
-            <img src="/qrcode_wecom.png" alt="客服微信" style={{ width: 80, height: "auto", borderRadius: 6, opacity: 0.9 }} />
-          </div>
+          <p style={{ color: "rgba(255,255,255,0.35)", fontSize: 12, margin: "0 0 5px" }}>{"客服微信：扫码添加"}</p>
           <p style={{ color: "rgba(255,255,255,0.35)", fontSize: 12, margin: "0 0 5px" }}>{"龙虾族微信群：扫码加入"}</p>
           <p style={{ color: "rgba(255,255,255,0.35)", fontSize: 12, margin: 0 }}>{"biz@longxiaji.com"}</p>
         </div>
