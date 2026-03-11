@@ -31,8 +31,8 @@ export default function App() {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex justify-between items-center h-16">
             <div className="flex items-center gap-2">
-              <div className="w-8 h-8 bg-red-600 rounded-lg flex items-center justify-center text-white font-bold text-xl">
-                🦞
+              <div className="w-10 h-10 rounded-lg overflow-hidden flex items-center justify-center">
+                <img src="/box/68baeb0b3f00e118a4a061246585731d.jpg" alt="Logo" className="w-full h-full object-cover" />
               </div>
               <span className="font-bold text-xl tracking-tight text-slate-900">龙虾机 <span className="text-red-600">LongXiaJi</span></span>
             </div>
@@ -489,7 +489,7 @@ export default function App() {
             <div className="bg-slate-50 p-4 rounded-2xl border border-slate-100 mb-6 flex justify-center items-center">
               {/* Substitute with an actual QR code or the image path if you have one */}
               <div className="w-48 h-48 bg-white border border-slate-200 rounded-xl overflow-hidden p-2">
-                <img src="/box/68baeb0b3f00e118a4a061246585731d.jpg" alt="WeChat QR" className="w-full h-full object-cover rounded-lg" />
+                <img src="/qrcode_wecom.png" alt="WeChat QR" className="w-full h-full object-cover rounded-lg" />
               </div>
             </div>
             
