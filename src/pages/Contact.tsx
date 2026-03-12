@@ -1,5 +1,6 @@
 import React from 'react';
 import { useNavigate } from 'react-router-dom';
+import { MapPin } from 'lucide-react';
 
 export default function Contact() {
   const navigate = useNavigate();
@@ -65,13 +66,50 @@ export default function Contact() {
           </div>
         </div>
       </section>
-      
+
+      {/* Global Offices Section */}
+      <section className="py-24 bg-white border-t border-slate-200">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="text-center max-w-3xl mx-auto mb-16">
+            <h2 className="text-3xl md:text-4xl font-bold text-slate-900 mb-4">联系我们 · 全球分布</h2>
+            <p className="text-lg text-slate-600">
+              业务覆盖全球，随时就近为您提供最专业的 AI 硬件支持与咨询服务
+            </p>
+          </div>
+          
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+            <OfficeCard name="深圳总部" address="深圳市南山区梦海大道5033号卓越前海壹号B座3102" />
+            <OfficeCard name="西安研发中心" address="西安市雁塔区西电科技园C1902-04" />
+            <OfficeCard name="中东阿联酋事业部" address="阿联酋迪拜国际城INDIGO大厦1010" />
+            <OfficeCard name="印度市场事业部" address="新德里DLF Cyber City,Phase III, Gurugram, Haryana 122002" />
+            <OfficeCard name="东南亚新加坡事业部" address="中央商务区（CBD）Raffles Place, Singapore 042629" />
+            <OfficeCard name="美国洛杉矶事业部" address="威尔希尔大中心：900 Wilshire Blvd, Los Angeles, CA 90010" />
+            <OfficeCard name="加拿大事业部" address="多伦多 - TD Canada Trust Tower：66 Wellington St W, Toronto, ON M5K 1B9" />
+            <OfficeCard name="非洲事业部" address="南非约翰内斯堡 桑顿金融区：1 Sandton Dr, Sandton, Johannesburg 3127" />
+          </div>
+        </div>
+      </section>
+
       <div className="text-center py-12 pb-24 bg-slate-50">
         <button onClick={() => navigate('/preorder')} className="bg-red-600 text-white px-8 py-4 rounded-full text-lg font-medium hover:bg-red-700 transition-all shadow-lg">
           立即预定
         </button>
       </div>
     </>
+  );
+}
+
+function OfficeCard({ name, address }: { name: string, address: string }) {
+  return (
+    <div className="bg-slate-50 rounded-2xl p-6 border border-slate-100 hover:shadow-md transition-all group flex flex-col h-full">
+      <div className="flex items-center gap-3 mb-4">
+        <div className="w-10 h-10 bg-white rounded-full flex items-center justify-center text-red-600 shadow-sm border border-slate-200 group-hover:scale-110 transition-transform shrink-0">
+          <MapPin className="w-5 h-5" />
+        </div>
+        <h3 className="font-bold text-slate-900 leading-tight">{name}</h3>
+      </div>
+      <p className="text-sm text-slate-600 leading-relaxed flex-1">{address}</p>
+    </div>
   );
 }
 

@@ -133,7 +133,7 @@ export default function Layout() {
                 <li><Link to="/skills" className="hover:text-red-400 transition-colors">技能市场</Link></li>
                 <li><Link to="/cases" className="hover:text-red-400 transition-colors">用户案例</Link></li>
                 <li><Link to="/news" className="hover:text-red-400 transition-colors">新闻资讯</Link></li>
-                <li><Link to="/contact" className="hover:text-red-400 transition-colors">创始团队</Link></li>
+                <Link to="/contact" className="hover:text-red-400 transition-colors">团队与联系</Link></li>
               </ul>
             </div>
             
