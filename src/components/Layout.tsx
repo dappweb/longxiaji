@@ -41,15 +41,23 @@ export default function Layout() {
               </div>
             </Link>
             <div className="hidden md:flex items-center gap-8 text-sm font-medium text-slate-600">
-              <Link to="/" className="hover:text-red-600 transition-colors">首页</Link>
-              <Link to="/product" className="hover:text-red-600 transition-colors">产品介绍</Link>
-              <Link to="/support" className="hover:text-red-600 transition-colors">售后支持</Link>
-              <Link to="/skills" className="hover:text-red-600 transition-colors">技能市场</Link>
-              <Link to="/cases" className="hover:text-red-600 transition-colors">用户案例</Link>
-              <Link to="/news" className="hover:text-red-600 transition-colors">新闻资讯</Link>
-              <Link to="/contact" className="hover:text-red-600 transition-colors">联系我们</Link>
+              <Link to="/" className="hover:text-red-600 transition-colors">{t('nav.home', '首页')}</Link>
+              <Link to="/product" className="hover:text-red-600 transition-colors">{t('nav.product', '产品介绍')}</Link>
+              <Link to="/support" className="hover:text-red-600 transition-colors">{t('nav.support', '售后支持')}</Link>
+              <Link to="/skills" className="hover:text-red-600 transition-colors">{t('nav.skills', '技能市场')}</Link>
+              <Link to="/cases" className="hover:text-red-600 transition-colors">{t('nav.cases', '用户案例')}</Link>
+              <Link to="/news" className="hover:text-red-600 transition-colors">{t('nav.news', '新闻资讯')}</Link>
+              <Link to="/contact" className="hover:text-red-600 transition-colors">{t('nav.contact', '联系我们')}</Link>
             </div>
             <div className="flex items-center gap-4">
+              <button 
+                onClick={toggleLanguage}
+                className="hidden sm:flex items-center justify-center p-2 text-slate-500 hover:text-slate-900 bg-slate-100 hover:bg-slate-200 rounded-full transition-colors"
+                title={i18n.language === 'en' ? 'Switch to Chinese' : 'Switch to English'}
+              >
+                <Globe className="w-4 h-4" />
+                <span className="text-xs font-semibold ml-1">{i18n.language === 'en' ? 'EN' : '中'}</span>
+              </button>
               <button 
                 onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
                 className="md:hidden p-2 text-slate-600 hover:text-slate-900 focus:outline-none"
@@ -57,7 +65,7 @@ export default function Layout() {
                 {mobileMenuOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
               </button>
               <button onClick={() => navigate('/preorder')} className="hidden sm:block bg-red-600 text-white px-5 py-2 rounded-full text-sm font-medium hover:bg-red-700 transition-colors shadow-sm shadow-red-600/20">
-                立即预定
+                {t('nav.preorder', '立即预定')}
               </button>
             </div>
           </div>
@@ -73,18 +81,29 @@ export default function Layout() {
               className="md:hidden overflow-hidden bg-white border-b border-slate-200"
             >
               <div className="px-4 py-4 flex flex-col gap-4 text-sm font-medium text-slate-600">
-                <Link to="/" className="hover:text-red-600 p-2 rounded-lg hover:bg-slate-50">首页</Link>
-                <Link to="/product" className="hover:text-red-600 p-2 rounded-lg hover:bg-slate-50">产品介绍</Link>
-                <Link to="/support" className="hover:text-red-600 p-2 rounded-lg hover:bg-slate-50">售后支持</Link>
-                <Link to="/skills" className="hover:text-red-600 p-2 rounded-lg hover:bg-slate-50">技能市场</Link>
-                <Link to="/cases" className="hover:text-red-600 p-2 rounded-lg hover:bg-slate-50">用户案例</Link>
-                <Link to="/news" className="hover:text-red-600 p-2 rounded-lg hover:bg-slate-50">新闻资讯</Link>
-                <Link to="/contact" className="hover:text-red-600 p-2 rounded-lg hover:bg-slate-50">联系我们</Link>
-                <button 
-                  onClick={() => { navigate('/preorder'); setMobileMenuOpen(false); }} 
+                <div className="flex justify-between items-center mb-2 px-2">
+                  <span className="text-slate-400 font-normal">切换语言</span>
+                  <button 
+                    onClick={toggleLanguage}
+                    className="flex items-center justify-center p-2 text-slate-500 hover:text-slate-900 bg-slate-100 hover:bg-slate-200 rounded-lg transition-colors border border-slate-200"
+                  >
+                    <Globe className="w-4 h-4 mr-2" />
+                    <span className="text-xs font-bold">{i18n.language === 'en' ? 'English' : '简体中文'}</span>
+                  </button>
+                </div>
+                <div className="h-px bg-slate-100 mb-2"></div>
+                <Link to="/" className="hover:text-red-600 p-2 rounded-lg hover:bg-slate-50">{t('nav.home', '首页')}</Link>
+                <Link to="/product" className="hover:text-red-600 p-2 rounded-lg hover:bg-slate-50">{t('nav.product', '产品介绍')}</Link>
+                <Link to="/support" className="hover:text-red-600 p-2 rounded-lg hover:bg-slate-50">{t('nav.support', '售后支持')}</Link>
+                <Link to="/skills" className="hover:text-red-600 p-2 rounded-lg hover:bg-slate-50">{t('nav.skills', '技能市场')}</Link>
+                <Link to="/cases" className="hover:text-red-600 p-2 rounded-lg hover:bg-slate-50">{t('nav.cases', '用户案例')}</Link>
+                <Link to="/news" className="hover:text-red-600 p-2 rounded-lg hover:bg-slate-50">{t('nav.news', '新闻资讯')}</Link>
+                <Link to="/contact" className="hover:text-red-600 p-2 rounded-lg hover:bg-slate-50">{t('nav.contact', '联系我们')}</Link>
+                <button
+                  onClick={() => { navigate('/preorder'); setMobileMenuOpen(false); }}
                   className="w-full bg-red-600 text-white px-5 py-3 rounded-xl text-center text-sm font-bold shadow-sm mt-2"
                 >
-                  立即预定
+                  {t('nav.preorder', '立即预定')}
                 </button>
               </div>
             </motion.div>
@@ -126,19 +145,19 @@ export default function Layout() {
             </div>
             
             <div>
-              <h4 className="text-white font-semibold mb-6">网站导航</h4>
+              <h4 className="text-white font-semibold mb-6">{t('nav.sitemap', '网站导航')}</h4>
               <ul className="grid grid-cols-2 gap-y-3 gap-x-4 text-sm">
-                <li><Link to="/product" className="hover:text-red-400 transition-colors">产品介绍</Link></li>
-                <li><Link to="/support" className="hover:text-red-400 transition-colors">售后支持</Link></li>
-                <li><Link to="/skills" className="hover:text-red-400 transition-colors">技能市场</Link></li>
-                <li><Link to="/cases" className="hover:text-red-400 transition-colors">用户案例</Link></li>
-                <li><Link to="/news" className="hover:text-red-400 transition-colors">新闻资讯</Link></li>
-                <Link to="/contact" className="hover:text-red-400 transition-colors">团队与联系</Link></li>
+                <li><Link to="/product" className="hover:text-red-400 transition-colors">{t('nav.product', '产品介绍')}</Link></li>
+                <li><Link to="/support" className="hover:text-red-400 transition-colors">{t('nav.support', '售后支持')}</Link></li>
+                <li><Link to="/skills" className="hover:text-red-400 transition-colors">{t('nav.skills', '技能市场')}</Link></li>
+                <li><Link to="/cases" className="hover:text-red-400 transition-colors">{t('nav.cases', '用户案例')}</Link></li>
+                <li><Link to="/news" className="hover:text-red-400 transition-colors">{t('nav.news', '新闻资讯')}</Link></li>
+                <li><Link to="/contact" className="hover:text-red-400 transition-colors">{t('nav.contact', '团队与联系')}</Link></li>
               </ul>
             </div>
-            
+
             <div>
-              <h4 className="text-white font-semibold mb-6">联系我们</h4>
+              <h4 className="text-white font-semibold mb-6">{t('footer.contact', '联系我们')}</h4>
               <ul className="space-y-4 text-sm">
                 <li className="flex items-center gap-3 group">
                   <div className="w-8 h-8 rounded-full bg-slate-800 flex items-center justify-center group-hover:bg-blue-900 group-hover:text-blue-400 transition-colors">
