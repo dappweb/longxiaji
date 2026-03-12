@@ -1,45 +1,47 @@
+import { useTranslation } from 'react-i18next';
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { MessageSquare, Image as ImageIcon, Briefcase, Zap, CheckCircle2, ChevronRight, Clock, Search } from 'lucide-react';
 
 export default function Skills() {
+  const { t } = useTranslation();
   const navigate = useNavigate();
-  const [activeTab, setActiveTab] = useState('全部');
+  const [activeTab, setActiveTab] = useState(t('skills.cat.all', '全部'));
   
-  const tabs = ['全部', '效率办公', '生活娱乐', '创作设计'];
+  const tabs = [t('skills.cat.all', '全部'), t('skills.cat.office', '效率办公'), t('skills.cat.life', '生活娱乐'), t('skills.cat.design', '创作设计')];
 
   const allSkills = [
     {
-      category: '效率办公',
+      category: t('skills.cat.office', '效率办公'),
       icon: <MessageSquare className="w-6 h-6 text-blue-500" />,
-      title: "智能对话",
-      features: ['多模型一键切换 (GPT, Claude, 通义千问等)', '精准翻译与长文摘要', '高质量文案写作'],
-      value: "“比 ChatGPT 还方便，反应更迅速”"
+      title: t('skills.items.1.title', '智能对话'),
+      features: [t('skills.items.1.f1', '多模型一键切换 (GPT, Claude, 通义千问等)'), t('skills.items.1.f2', '精准翻译与长文摘要'), t('skills.items.1.f3', '高质量文案写作')],
+      value: t('skills.items.1.val', '“比 ChatGPT 还方便，反应更迅速”')
     },
     {
-      category: '效率办公',
+      category: t('skills.cat.office', '效率办公'),
       icon: <Briefcase className="w-6 h-6 text-emerald-500" />,
-      title: "办公助手",
-      features: ['Excel 复杂公式生成', 'PPT 大纲一键生成', '中英文邮件自动起草'],
-      value: "“在微信里说一句就能用”"
+      title: t('skills.items.2.title', '办公助手'),
+      features: [t('skills.items.2.f1', 'Excel 复杂公式生成'), t('skills.items.2.f2', 'PPT 大纲一键生成'), t('skills.items.2.f3', '中英文邮件自动起草')],
+      value: t('skills.items.2.val', '“在微信里说一句就能用”')
     },
     {
-      category: '生活娱乐',
+      category: t('skills.cat.life', '生活娱乐'),
       icon: <Clock className="w-6 h-6 text-amber-500" />,
-      title: "生活工具",
-      features: ['智能日程管理与提醒', '个性化天气预报', '每日新闻摘要推送'],
-      value: "“每天早上收到专属 AI 早报”"
+      title: t('skills.items.3.title', '生活工具'),
+      features: [t('skills.items.3.f1', '智能日程管理与提醒'), t('skills.items.3.f2', '个性化天气预报'), t('skills.items.3.f3', '每日新闻摘要推送')],
+      value: t('skills.items.3.val', '“每天早上收到专属 AI 早报”')
     },
     {
-      category: '创作设计',
+      category: t('skills.cat.design', '创作设计'),
       icon: <ImageIcon className="w-6 h-6 text-purple-500" />,
-      title: "图片/视频处理",
-      features: ['精准图片识别与分析', '一句话文字转图', '基础视频脚本处理'],
-      value: "“拍照片就能翻译，一句话出图”"
+      title: t('skills.items.4.title', '图片/视频处理'),
+      features: [t('skills.items.4.f1', '精准图片识别与分析'), t('skills.items.4.f2', '一句话文字转图'), t('skills.items.4.f3', '基础视频脚本处理')],
+      value: t('skills.items.4.val', '“拍照片就能翻译，一句话出图”')
     }
   ];
 
-  const filteredSkills = activeTab === '全部' 
+  const filteredSkills = activeTab === t('skills.cat.all', '全部') 
     ? allSkills 
     : allSkills.filter(skill => skill.category === activeTab);
 
@@ -48,9 +50,9 @@ export default function Skills() {
       <section id="skills" className="py-24 bg-slate-50 min-h-[80vh]">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center max-w-3xl mx-auto mb-12">
-            <h2 className="text-3xl md:text-4xl font-bold text-slate-900 mb-4">预装 Skills，开箱即用</h2>
+            <h2 className="text-3xl md:text-4xl font-bold text-slate-900 mb-4">{t("skills.title", "预装 Skills，开箱即用")}</h2>
             <p className="text-lg text-slate-600">
-              硬件是入口，Skills 是灵魂。满足从日常闲聊到深度办公的全方位需求。
+              {t('skills.subtitle')}
             </p>
           </div>
 
@@ -88,21 +90,21 @@ export default function Skills() {
             ) : (
             <div className="text-center py-20 bg-white rounded-3xl border border-slate-100 shadow-sm">
               <Zap className="w-12 h-12 text-slate-300 mx-auto mb-4" />
-              <h3 className="text-xl font-bold text-slate-900 mb-2">暂无该分类技能</h3>
-              <p className="text-slate-500 mb-6">未能找到合适的技能？添加客服为您定制</p>
+              <h3 className="text-xl font-bold text-slate-900 mb-2">{t("skills.empty", "暂无该分类技能")}</h3>
+              <p className="text-slate-500 mb-6">{t("skills.empty_sub", "未能找到合适的技能？添加客服为您定制")}</p>
               <button 
                 onClick={() => navigate('/contact')}
                 className="text-red-600 font-medium hover:text-red-700 inline-flex items-center gap-2"
               >
-                联系专属客服 <ChevronRight className="w-4 h-4" />
+                {t('skills.contact')} <ChevronRight className="w-4 h-4" />
               </button>
             </div>
           )}
 
           <div className="mt-12 text-center">
-            <p className="text-slate-600 mb-4">未来更将开放 Skills 市场，支持量化交易、电商运营等高级技能服务，免费解锁，持续升级。</p>
+            <p className="text-slate-600 mb-4">{t("skills.future", "未来更将开放 Skills 市场，支持量化交易、电商运营等高级技能服务，免费解锁，持续升级。")}</p>
             <button disabled className="text-slate-400 font-medium flex items-center justify-center gap-1 mx-auto cursor-not-allowed">
-              探索更多 Skills <ChevronRight className="w-4 h-4" />
+              {t('skills.explore')} <ChevronRight className="w-4 h-4" />
             </button>
           </div>
         </div>
@@ -110,7 +112,7 @@ export default function Skills() {
       
       <div className="text-center py-12 pb-24 bg-slate-50">
         <button onClick={() => navigate('/preorder')} className="bg-red-600 text-white px-8 py-4 rounded-full text-lg font-medium hover:bg-red-700 transition-all shadow-lg">
-          立即预定
+          {t('product.preorder')}
         </button>
       </div>
     </>

@@ -1,4 +1,8 @@
-import i18n from 'i18next';
+import os
+import re
+import traceback
+
+i18n_content = """import i18n from 'i18next';
 import { initReactI18next } from 'react-i18next';
 import LanguageDetector from 'i18next-browser-languagedetector';
 
@@ -101,9 +105,9 @@ const resources = {
         team: 'Founding Team'
       },
       hero: {
-        badge: 'The World\'s First Out-of-the-Box AI Safety Workstation',
+        badge: 'The World\\'s First Out-of-the-Box AI Safety Workstation',
         title1: 'Bring the AI Assistant to Your Desk',
-        title2: 'Don\'t Let It Reside Inside Your PC',
+        title2: 'Don\\'t Let It Reside Inside Your PC',
         desc: 'AI needs full Root access to your PC—exposing passwords, chats, and work files. Give it a dedicated machine and stop risking your privacy. Plug and play, set up in 3 minutes.',
         preorder: 'Preorder Now',
         video: 'Watch Demo',
@@ -118,13 +122,13 @@ const resources = {
         wechat: 'WeChat Support',
         contact: 'Business Inquiry',
         scan: 'Scan QR code to add support',
-        desc1: 'The world\'s first out-of-the-box AI hardware terminal.',
+        desc1: 'The world\\'s first out-of-the-box AI hardware terminal.',
         desc2: 'Dedicated to breaking technical barriers, allowing everyone to naturally enjoy advanced AI services.',
         sz: 'Designed in Shenzhen · Global Service'
       },
       preorder: {
         title: 'Longxiaji · Preorder Now',
-        subtitle: 'The world\'s first out-of-the-box AI safety workstation',
+        subtitle: 'The world\\'s first out-of-the-box AI safety workstation',
         edition: 'AI Security Workstation · Standard Edition',
         specs: '16GB RAM · 256GB Storage · Pre-installed OpenClaw · Out of the box',
         tag1: 'Independent Hardware',
@@ -149,20 +153,20 @@ const resources = {
       },
       home: {
         sec1: { 
-          title: 'You Don\'t Need to Understand PCs, It Understands You', 
+          title: 'You Don\\'t Need to Understand PCs, It Understands You', 
           sub: 'Solving the "Can I use AI?" problem. Eliminating all configuration, payment, and registration barriers.',
           f1: { title: 'Zero Threshold', desc: 'Others need coding, env setup—Longxiaji plugs in and works like a microwave.' },
-          f2: { title: 'Data Stays Home', desc: 'Trust the cloud with chats and passwords? Longxiaji isolates locally. Pull the plug and it\'s off.' },
+          f2: { title: 'Data Stays Home', desc: 'Trust the cloud with chats and passwords? Longxiaji isolates locally. Pull the plug and it\\'s off.' },
           f3: { title: '24/7 Online', desc: 'Helps your emails by day. Runs quant trading strategies by night.' },
           f4: { title: 'Seamless WeChat/DingTalk', desc: 'No new Apps. Scan to bind, and your AI assistant lives in your chats. Speak to it anytime.' },
           f5: { title: 'Transparent Fees', desc: 'One-time hardware fee. API costs are fully transparent. Cheaper than an intern, and never quits.' },
           f6: { title: 'Tech Gift for Elders', desc: 'High-tech that parents can use. Use WeChat to ask for weather or recipes. Huge word-of-mouth.' }
         },
         sec2: {
-          title: 'Who\'s Using Longxiaji?',
+          title: 'Who\\'s Using Longxiaji?',
           sub: 'From personal assistants to digital employees, satisfying AI needs everywhere.',
           c1: { title: 'Individuals / Fresh Grads', q: '"A 24hr private AI assistant. Ask directly in WeChat, double the efficiency."', scene: 'Typical: Q&A, Email drafting' },
-          c2: { title: 'SMEs / Studios', q: '"Cheaper than an intern\'s transit fee. Never takes leave, never complains, completely secure data."', scene: 'Typical: Auto CS, Copywriting' },
+          c2: { title: 'SMEs / Studios', q: '"Cheaper than an intern\\'s transit fee. Never takes leave, never complains, completely secure data."', scene: 'Typical: Auto CS, Copywriting' },
           c3: { title: 'Parents / Elders', q: '"Not just your tool, but an AI gift for parents. They ask about weather via voice—smarter than smart speakers."', scene: 'Typical: Life encyclopedia, Health recipes' }
         },
         sec3: { t1: 'While others learn how to use AI', t2: 'Your Longxiaji is already working for you', sub: 'Limited early birds. Experience zero-barrier desktop AI.', btn1: 'Preorder Early Bird', btn2: 'Contact Enterprise' }
@@ -194,9 +198,9 @@ const resources = {
           1: { tag: 'E-Commerce', title: 'From Sourcing to CS, Killing Timezones', desc: 'It monitors trends 24/7. Even better, it connects to my CS email and perfectly answers North American customers down to midnight in native business English.' },
           2: { tag: 'Overseas Dining', title: 'Multilingual Menus & Social Media', desc: 'Opening a Chinese restaurant in LA. It translates thoughts into pure English/Spanish menus instantly, and writes Instagram posts for local trends. No cloud data needed.' },
           3: { tag: 'Hardware Feedback', title: 'Lacking specific ports, needs better extension', desc: 'Claims out-of-the-box, but I use a vintage monitor and need adapters. Acts well as a server. Network sometimes delays queries. Giving 4 stars.' },
-          4: { tag: 'Media Ops', title: 'A YouTuber\'s Inspiration Library', desc: 'Fear of creative drain. Longxiaji summarizes rival structures and directly analyzes my gigabytes of local footage independently without uploading. 3x efficiency.' },
+          4: { tag: 'Media Ops', title: 'A YouTuber\\'s Inspiration Library', desc: 'Fear of creative drain. Longxiaji summarizes rival structures and directly analyzes my gigabytes of local footage independently without uploading. 3x efficiency.' },
           5: { tag: 'Students', title: 'Thesis Inspiration & Daily Tutoring', desc: 'Doing masters in UK. Simply scan to bind, and I can voice-chat for references while reading in the library without messing with VPNs.' },
-          6: { tag: 'Remote Dev', title: 'Independent Secure Coding Environment', desc: 'As a digital nomad, coding on Airbnb WiFi feels unsafe. This isolated hardware helps debug and run scripts without consuming my laptop\'s resources.' }
+          6: { tag: 'Remote Dev', title: 'Independent Secure Coding Environment', desc: 'As a digital nomad, coding on Airbnb WiFi feels unsafe. This isolated hardware helps debug and run scripts without consuming my laptop\\'s resources.' }
         }
       },
       skills: {
@@ -204,7 +208,7 @@ const resources = {
         subtitle: 'Hardware is the portal, Skills are the soul. Fulfilling all aspects from chitchat to deep office work.',
         cat: { all: 'All', office: 'Office', life: 'Lifestyle', design: 'Design' },
         empty: 'No Skills in this category yet',
-        empty_sub: 'Can\'t find a suitable skill? Add customer service for custom ones.',
+        empty_sub: 'Can\\'t find a suitable skill? Add customer service for custom ones.',
         contact: 'Contact CS',
         future: 'Future updates will open the Skills Market for quant-trading, e-commerce, and advanced services. Free updates forever.',
         explore: 'Explore More Skills',
@@ -217,13 +221,13 @@ const resources = {
       },
       news: {
         title: 'Latest News',
-        sub: 'Learn about Longxiaji\'s latest updates, products, and industry news',
+        sub: 'Learn about Longxiaji\\'s latest updates, products, and industry news',
         read: 'Read Full',
         cat: { prod: 'Product Release', sys: 'System Update', ind: 'Industry' },
         items: {
-          1: { title: 'Longxiaji Standard Edition Released: Bring AI to Desk', abstract: 'The world\'s first out-of-the-box AI safety workstation opens for global preorders.' },
-          2: { title: 'OpenClaw System Update: Seamless WeChat/DingTalk Support', abstract: 'Revolutionary interaction upgrade. Users can now call Longxiaji\'s compute inside daily IM tools.' },
-          3: { title: 'Privacy First: Why We Need an Independent AI Workstation?', abstract: 'Deep dive into Longxiaji\'s anti-leak architecture and enterprise data security solutions.' }
+          1: { title: 'Longxiaji Standard Edition Released: Bring AI to Desk', abstract: 'The world\\'s first out-of-the-box AI safety workstation opens for global preorders.' },
+          2: { title: 'OpenClaw System Update: Seamless WeChat/DingTalk Support', abstract: 'Revolutionary interaction upgrade. Users can now call Longxiaji\\'s compute inside daily IM tools.' },
+          3: { title: 'Privacy First: Why We Need an Independent AI Workstation?', abstract: 'Deep dive into Longxiaji\\'s anti-leak architecture and enterprise data security solutions.' }
         }
       },
       contact: {
@@ -234,7 +238,7 @@ const resources = {
         media: { title: 'Media & PR', sub: 'Interviews, partnerships & branding' },
         global: 'Global Offices',
         btn: { email: 'Send Email' },
-        offices: { sz: 'Shenzhen (HQ)', bj: 'Beijing', sh: 'Shanghai', cd: 'Chengdu', hz: 'Hangzhou', wh: 'Wuhan', xa: 'Xi\'an', gz: 'Guangzhou' }
+        offices: { sz: 'Shenzhen (HQ)', bj: 'Beijing', sh: 'Shanghai', cd: 'Chengdu', hz: 'Hangzhou', wh: 'Wuhan', xa: 'Xi\\'an', gz: 'Guangzhou' }
       },
       support: {
         title: 'After-Sales Support',
@@ -267,155 +271,7 @@ i18n
   });
 
 export default i18n;
+"""
 
-// Append missing English translations
-const pendingTranslations = {
-  "nav": {
-    "logo": "Longxiaji",
-    "lang": "Switch Language",
-    "sitemap": "Site Map"
-  },
-  "contact": {
-    "title": "Contact Us · Global Distribution",
-    "sub": "Global network, ready to provide professional AI hardware support & consulting",
-    "founders": {
-      "title": "The Most Down-to-Earth Cross-Border Founding Team",
-      "sub": "Six people from the lobster industry came together for one goal: make AI accessible to everyone with zero threshold."
-    }
-  },
-  "support": {
-    "title": "Help & After-Sales Support",
-    "sub1": "We don’t just make reliable machines, we provide reassuring after-sales.",
-    "sub2": "Buy with confidence, use with comfort, contact us anytime you have questions.",
-    "feat1": {
-      "title": "Free Shipping",
-      "desc": "COO personally monitors logistics, SF Express / JD free shipping, ensuring intact delivery."
-    },
-    "feat2": {
-      "title": "7-Day No Reason Return",
-      "desc": "Within 7 days of receipt, as long as packaging is intact & resalable, we cover shipping, full refund."
-    },
-    "feat3": {
-      "title": "1-Year Replacement Only",
-      "desc": "Non-human damage during warranty? No repair hassles, we send a brand new one."
-    },
-    "faq": {
-      "title": "Frequently Asked Questions (FAQ)"
-    },
-    "help": {
-      "title": "Can’t Find Your Answer? Talk to a Human",
-      "desc": "Our team are full-time humans, not bots. Any issues, reach out anytime."
-    }
-  },
-  "news": {
-    "coming_soon": "Detailed content is under construction, stay tuned!",
-    "items": {
-      "1": {
-        "type": "Product News",
-        "title": "Longxiaji Stuns Dubai AI Expo: Private Deployment in the Spotlight",
-        "summary": "At the Dubai International AI Expo, Longxiaji's 'out-of-the-box, local data' concept grabbed everyone's attention, signing multiple international letters of intent."
-      },
-      "2": {
-        "type": "Industry Fast News",
-        "title": "Privacy is SMEs' Biggest AI Hurdle; Local Models Prove Inevitable",
-        "summary": "Recent reports show 70% of SMEs fear data leakage when using cloud AI. Demand for private hardware like Longxiaji is skyrocketing."
-      },
-      "3": {
-        "type": "Official Guide",
-        "title": "Longxiaji Skills Market Surpasses 1000 Presets: Covers All Industries",
-        "summary": "The free built-in Skills Market just hit its 1000th agent preset. Now even complete novices can deploy vertical experts via one click."
-      }
-    }
-  },
-  "cases": {
-    "start": "Start Your Exclusive AI Assistant"
-  },
-  "team": {
-    "role": {
-      "4550575672377453511": "Chef",
-      "2378909925348224061": "Shrimp Farmer",
-      "1530984284887779511": "Huaqiangbei Manager",
-      "4632996498518691208": "Foodie",
-      "5869161594454019340": "Programmer",
-      "4310680668521722572": "Courier"
-    },
-    "title": {
-      "1976178603107875118": "CEO · Product & Strategy",
-      "1648467525086682513": "Angel Investor",
-      "3039685758511568376": "Hardware & Supply Chain",
-      "7591439887173719618": "Chief Experience Officer (UX)",
-      "1632399377708228028": "CTO · Tech Arch",
-      "1935043898737891844": "COO · Ops & Delivery"
-    },
-    "quote": {
-      "8657062610553757863": "When the timing is right, every ingredient speaks.",
-      "1119697206308917872": "Patience raised in ponds applies everywhere.",
-      "6158412454155482297": "In Huaqiangbei, 'impossible' just means bad sourcing.",
-      "2078131862578899259": "Tongues don't lie about taste. Fingers don't lie about UX.",
-      "9214925180429021226": "From shrimp ponds to codebases, both need patience.",
-      "5431610284356572038": "Whatever is delivered, it must arrive perfect."
-    },
-    "desc": {
-      "8252663906765583088": "An industry veteran turned AI pioneer, combining deep traditional experience with pragmatic tech focus. They bring down-to-earth wisdom into Longxiaji's high-tech landscape, ensuring the product stays humble and user-friendly.",
-      "7636435216432888677": "An industry veteran turned AI pioneer, combining deep traditional experience with pragmatic tech focus. They bring down-to-earth wisdom into Longxiaji's high-tech landscape, ensuring the product stays humble and user-friendly.",
-      "7562977260203830536": "An industry veteran turned AI pioneer, combining deep traditional experience with pragmatic tech focus. They bring down-to-earth wisdom into Longxiaji's high-tech landscape, ensuring the product stays humble and user-friendly.",
-      "6103013520154266131": "An industry veteran turned AI pioneer, combining deep traditional experience with pragmatic tech focus. They bring down-to-earth wisdom into Longxiaji's high-tech landscape, ensuring the product stays humble and user-friendly.",
-      "1057247029375163174": "An industry veteran turned AI pioneer, combining deep traditional experience with pragmatic tech focus. They bring down-to-earth wisdom into Longxiaji's high-tech landscape, ensuring the product stays humble and user-friendly.",
-      "1190726497123018457": "An industry veteran turned AI pioneer, combining deep traditional experience with pragmatic tech focus. They bring down-to-earth wisdom into Longxiaji's high-tech landscape, ensuring the product stays humble and user-friendly."
-    }
-  },
-  "office": {
-    "name": {
-      "2523401526919458337": "Shenzhen HQ",
-      "7698154074469406943": "Xi'an R&D Center",
-      "2509749225518567691": "UAE Division",
-      "5140565462495736648": "India Division",
-      "557397973237979798": "Singapore Division",
-      "7694836850338761832": "LA Division",
-      "8385568277984006709": "Canada Division",
-      "2591317981907865232": "Africa Division"
-    },
-    "addr": {
-      "7760167259522151188": "B-3102 Excellence Qianhai, Nanshan, Shenzhen",
-      "2363062531417071049": "C1902-04 Xidian Tech Park, Yanta, Xi'an",
-      "4170696109539749863": "Indio Bldg 1010, International City, Dubai, UAE",
-      "8583634342593658142": "DLF Cyber City, Phase III, Gurugram, India",
-      "1718480648803023843": "CBD Raffles Place, Singapore 042629",
-      "2901702035466146145": "900 Wilshire Blvd, LA, CA 90010 (USA)",
-      "7044439645341185296": "TD Canada Trust Tower, 66 Wellington St W, Toronto",
-      "4114913451373149114": "1 Sandton Dr, Sandton, Johannesburg 3127"
-    }
-  },
-  "faq": {
-    "q": {
-      "31048810085275149": "I know zero tech, can I use it?",
-      "9175638213719985730": "If I order today, when will it ship?",
-      "7361949965461290056": "What if the machine won't boot?",
-      "7722257073788805609": "Can I buy replacement accessories if lost?"
-    },
-    "a": {
-      "4859618645131341628": "Absolutely! Guided by our foodie, it's designed for absolute beginners. Scan the QR code for a video tutorial.",
-      "496324727614361583": "由于预定量较大，我们采取按订单顺序分批发货。第一批次预计在下个月中旬陆续发货。我们的COO（前水产冷链骨干）正在全程把控进度，确保机器尽快从华强北出库。",
-      "1991604189351501565": "Don't panic! 1-year 'replace-only' policy for any quality issues. Just send it back and we'll ship a new one identical day.",
-      "4323628495793051690": "Yes! All accessories sold at cost in our official store. No markup."
-    }
-  }
-};
-
-import { merge } from 'lodash'; 
-// A fast deep object assign alternative
-function deepMerge(target, source) {
-  for (const key of Object.keys(source)) {
-    if (source[key] instanceof Object && key in target) {
-      Object.assign(source[key], deepMerge(target[key], source[key]))
-    }
-  }
-  Object.assign(target || {}, source)
-  return target
-}
-
-if (i18n.options.resources && i18n.options.resources.en) {
-  deepMerge(i18n.options.resources.en.translation, pendingTranslations);
-} else {
-  i18n.addResourceBundle('en', 'translation', pendingTranslations, true, true);
-}
+with open("src/i18n.ts", "w", encoding="utf-8") as f:
+    f.write(i18n_content)

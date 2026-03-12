@@ -1,8 +1,10 @@
+import { useTranslation } from 'react-i18next';
 import React from 'react';
 import { useNavigate } from 'react-router-dom';
 import { ExternalLink, CalendarDays, ArrowRight } from 'lucide-react';
 
 export default function News() {
+  const { t } = useTranslation();
   const navigate = useNavigate();
   
   const newsItems = [
@@ -51,8 +53,8 @@ export default function News() {
       </script>
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="text-center max-w-3xl mx-auto mb-16">
-          <h1 className="text-4xl md:text-5xl font-bold text-slate-900 mb-6">新闻资讯</h1>
-          <p className="text-lg text-slate-600">获取龙虾机最新产品动态、行业新闻发布及官方公告。</p>
+          <h1 className="text-4xl md:text-5xl font-bold text-slate-900 mb-6">{t('news.title')}</h1>
+          <p className="text-lg text-slate-600">{t('news.sub')}</p>
         </div>
 
         <div className="grid gap-8 max-w-4xl mx-auto">
@@ -61,7 +63,7 @@ export default function News() {
               <div className="flex-1">
                 <div className="flex items-center gap-3 mb-4">
                   <span className="bg-blue-100 text-blue-700 px-3 py-1 rounded-full text-sm font-medium">
-                    {news.type}
+                    {t(`news.items.${news.id}.type` as any, news.type)}
                   </span>
                   <div className="flex items-center text-slate-400 text-sm">
                     <CalendarDays className="w-4 h-4 mr-1" />
@@ -69,16 +71,16 @@ export default function News() {
                   </div>
                 </div>
                 <h2 className="text-2xl font-bold text-slate-900 mb-4 hover:text-blue-600 cursor-pointer transition-colors">
-                  {news.title}
+                  {t(`news.items.${news.id}.title` as any, news.title)}
                 </h2>
                 <p className="text-slate-600 leading-relaxed mb-6">
-                  {news.summary}
+                  {t(`news.items.${news.id}.summary` as any, news.summary)}
                 </p>
                 <button 
-                  onClick={() => alert('详情内容正在建设中，敬请期待！')}
+                  onClick={() => alert(t('news.coming_soon', '详情内容正在建设中，敬请期待！'))}
                   className="text-blue-600 font-medium inline-flex items-center group cursor-pointer"
                 >
-                  阅读全文 <ArrowRight className="w-4 h-4 ml-1 group-hover:translate-x-1 transition-transform" />
+                  {t('news.read')} <ArrowRight className="w-4 h-4 ml-1 group-hover:translate-x-1 transition-transform" />
                 </button>
               </div>
             </article>
@@ -87,7 +89,7 @@ export default function News() {
 
         <div className="mt-20 text-center">
             <button onClick={() => navigate('/preorder')} className="bg-red-600 text-white px-10 py-5 rounded-full text-xl font-bold hover:bg-red-700 transition-all shadow-[0_0_30px_rgba(220,38,38,0.3)]">
-              立即抢先预定
+              {t('product.preorder')}
             </button>
         </div>
       </div>

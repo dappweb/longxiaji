@@ -1,8 +1,10 @@
+import { useTranslation } from 'react-i18next';
 import React from 'react';
 import { useNavigate } from 'react-router-dom';
 import { Star } from 'lucide-react';
 
 export default function Cases() {
+  const { t } = useTranslation();
   const navigate = useNavigate();
 
   const scenarios = [
@@ -62,8 +64,8 @@ export default function Cases() {
         <div className="absolute inset-0 bg-gradient-to-br from-blue-900/40 via-slate-900 to-slate-900" />
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
           <div className="text-center max-w-3xl mx-auto mb-16">
-            <h2 className="text-3xl md:text-4xl font-bold mb-4">他们和你一样，也是从“不懂”开始的</h2>
-            <p className="text-lg text-slate-400">各行各业的普通人，正在使用龙虾机改变工作与生活。四个典型应用场景真实反馈。</p>
+            <h2 className="text-3xl md:text-4xl font-bold mb-4">{t("cases.title1", "他们和你一样，也是从“不懂”开始的")}</h2>
+            <p className="text-lg text-slate-400">{t("cases.sub1", "各行各业的普通人，正在使用龙虾机改变工作与生活。四个典型应用场景真实反馈。")}</p>
           </div>
 
           <div className="flex overflow-x-auto snap-x snap-mandatory md:grid md:grid-cols-2 gap-6 md:gap-8 pb-8 md:pb-12 -mx-4 px-4 md:mx-0 md:px-0" style={{ scrollbarWidth: 'none' }}>
@@ -74,7 +76,7 @@ export default function Cases() {
           
           <div className="text-center pb-12 mt-4 md:mt-0">
             <button onClick={() => navigate('/preorder')} className="bg-red-600 text-white px-10 py-5 rounded-full text-xl font-bold hover:bg-red-700 transition-all shadow-[0_0_30px_rgba(220,38,38,0.3)]">
-              开启你的AI专属助手
+              {t('cases.start', '开启你的AI专属助手')}
             </button>
           </div>
         </div>
@@ -84,29 +86,30 @@ export default function Cases() {
 }
 
 function CaseCard({ item }: { item: any }) {
+  const { t } = useTranslation();
   const [expanded, setExpanded] = React.useState(false);
   
   return (
     <div className="min-w-[85vw] sm:min-w-[400px] md:min-w-0 snap-center bg-slate-800/80 backdrop-blur border border-slate-700/50 rounded-3xl p-8 hover:bg-slate-800 transition-colors shadow-2xl flex flex-col">
       <div className="flex justify-between items-center mb-6">
         <span className={`px-4 py-1.5 rounded-full text-sm font-bold bg-${item.tagColor}-500/20 text-${item.tagColor}-400 border border-${item.tagColor}-500/30`}>
-          {item.tag}
+          {t(`cases.items.${item.id}.tag`, item.tag)}
         </span>
         <div className="flex gap-1 text-yellow-400">
           {[...Array(item.rating)].map((_, i) => <Star key={i} className="w-5 h-5 fill-current" />)}
           {[...Array(5 - item.rating)].map((_, i) => <Star key={i} className="w-5 h-5 text-slate-600" />)}
         </div>
       </div>
-      <h3 className="text-2xl font-bold text-white mb-4">"{item.title}"</h3>
+      <h3 className="text-2xl font-bold text-white mb-4">"{t(`cases.items.${item.id}.title`, item.title)}"</h3>
       <div className="flex-1">
         <p className={`text-slate-400 leading-relaxed text-lg transition-all ${!expanded ? 'line-clamp-3' : ''}`}>
-          {item.description}
+          {t(`cases.items.${item.id}.desc`, item.description)}
         </p>
         <button 
           onClick={() => setExpanded(!expanded)} 
           className="mt-2 text-slate-300 hover:text-white text-sm font-medium transition-colors md:hidden"
         >
-          {expanded ? '收起' : '阅读全文'}
+          {expanded ? t("cases.collapse", "收起") : t("cases.readmore", "阅读全文")}
         </button>
       </div>
     </div>

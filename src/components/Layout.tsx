@@ -36,7 +36,7 @@ export default function Layout() {
                 <img src="/logo.png" alt="Logo" className="w-full h-full object-contain" />
               </div>
               <div className="flex flex-col">
-                <span className="font-bold text-xl tracking-tight text-slate-900 leading-none">龙虾机</span>
+                <span className="font-bold text-xl tracking-tight text-slate-900 leading-none">{t('nav.logo', '龙虾机')}</span>
                 <span className="text-[10px] text-slate-500 font-mono mt-1 leading-none">longxiaji.com</span>
               </div>
             </Link>
@@ -82,7 +82,7 @@ export default function Layout() {
             >
               <div className="px-4 py-4 flex flex-col gap-4 text-sm font-medium text-slate-600">
                 <div className="flex justify-between items-center mb-2 px-2">
-                  <span className="text-slate-400 font-normal">切换语言</span>
+                  <span className="text-slate-400 font-normal">{t('nav.lang', '切换语言')}</span>
                   <button 
                     onClick={toggleLanguage}
                     className="flex items-center justify-center p-2 text-slate-500 hover:text-slate-900 bg-slate-100 hover:bg-slate-200 rounded-lg transition-colors border border-slate-200"
@@ -134,13 +134,12 @@ export default function Layout() {
                   <img src="/logo.png" alt="Logo" className="w-full h-full object-contain" />
                 </div>
                 <div>
-                  <span className="font-bold text-white text-xl block">龙虾机</span>
+                  <span className="font-bold text-white text-xl block">{t('nav.logo', '龙虾机')}</span>
                   <span className="text-xs text-slate-500 font-mono">longxiaji.com</span>
                 </div>
               </div>
               <p className="text-sm border-l-2 border-red-600 pl-3 leading-relaxed max-w-sm">
-                全球首款开机即用的 AI 硬件终端。<br />
-                致力于打破技术壁垒，让每一个普通人都能以最自然的方式，享受到先进的人工智能服务。
+                {t("footer.desc1", "全球首款开机即用的 AI 硬件终端。")}<br />{t("footer.desc2", "致力于打破技术壁垒，让每一个普通人都能以最自然的方式，享受到先进的人工智能服务。")}
               </p>
             </div>
             
@@ -164,8 +163,8 @@ export default function Layout() {
                     <Mail className="w-4 h-4" />
                   </div>
                   <div>
-                    <p className="text-slate-300 font-medium">商务合作</p>
-                    <p className="text-xs text-slate-500">552961@qq.com</p>
+                    <p className="text-slate-300 font-medium">{t('footer.contact', '商务合作')}</p>
+                    <p className="text-xs text-slate-500">support@longxiaji.com</p>
                   </div>
                 </li>
               </ul>
@@ -174,11 +173,11 @@ export default function Layout() {
           
           <div className="pt-8 border-t border-slate-800/80 text-sm flex flex-col md:flex-row justify-between items-center gap-6">
             <div className="flex flex-col md:flex-row items-center gap-2 md:gap-6 text-slate-500">
-              <p>© {new Date().getFullYear()} 龙虾机 LongXiaJi. 保留所有权利.</p>
+              <p>© {new Date().getFullYear()} {t("footer.rights_text", "龙虾机 LongXiaJi. 保留所有权利.")}</p>
               <div className="hidden md:block w-px h-4 bg-slate-700"></div>
               <div className="flex gap-4">
-                <a href="#" className="hover:text-slate-300 transition-colors">隐私政策</a>
-                <a href="#" className="hover:text-slate-300 transition-colors">服务条款</a>
+                <a href="#" className="hover:text-slate-300 transition-colors">{t("footer.privacy", "隐私政策")}</a>
+                <a href="#" className="hover:text-slate-300 transition-colors">{t("footer.terms", "服务条款")}</a>
 
               </div>
             </div>
@@ -188,8 +187,7 @@ export default function Layout() {
                 <span className="relative inline-flex rounded-full h-2 w-2 bg-green-500"></span>
               </span>
               <span className="flex items-center gap-1.5 font-medium text-slate-300">
-                <Globe className="w-3.5 h-3.5" /> 深圳智造 · 全球服务
-              </span>
+                <Globe className="w-3.5 h-3.5" /> {t("footer.sz", "深圳智造 · 全球服务")} </span>
             </div>
           </div>
         </div>
@@ -212,18 +210,18 @@ export default function Layout() {
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
               </svg>
             </button>
-            <div className="w-16 h-16 bg-red-100 text-red-600 rounded-full flex items-center justify-center mx-auto mb-4 text-3xl">
-              <Mail className="w-8 h-8" />
+            <div className="w-16 h-16 bg-red-100 text-red-600 rounded-full flex items-center justify-center mx-auto mb-4 overflow-hidden p-2">
+              <img src="/logo.png" className="w-full h-full object-contain" alt="Logo" />
             </div>
-            <h3 className="text-2xl font-bold text-slate-900 mb-2">接收预定通知</h3>
-            <p className="text-slate-600 mb-6">获取首批预定资格与首发专属优惠</p>
+            <h3 className="text-2xl font-bold text-slate-900 mb-2">{t('modal.title', '接收预定通知')}</h3>
+            <p className="text-slate-600 mb-6">{t('modal.subtitle', '获取首批预定资格与首发专属优惠')}</p>
             
             <div className="bg-slate-50 p-6 rounded-2xl border border-slate-100 mb-6 text-center">
-               <p className="text-sm text-slate-500 mb-2">发送邮件至</p>
-               <p className="text-xl font-bold text-slate-800 select-all">552961@qq.com</p>
+               <img src="/qrcode_wecom.png" alt="WeCom QR Code" className="w-48 h-48 mx-auto mix-blend-multiply" />
+               <p className="text-sm text-slate-500 mt-4">{t('modal.desc1', '获取专人顾问支持')}</p>
             </div>
             <p className="mt-4 text-xs text-slate-400">
-              请在邮件中注明“龙虾机预定”
+              {t('modal.desc2', '长按或扫码添加企业微信，注明“龙虾机预定”')}
             </p>
           </motion.div>
         </div>

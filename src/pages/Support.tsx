@@ -1,16 +1,18 @@
+import { useTranslation } from 'react-i18next';
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 
 export default function Support() {
+  const { t } = useTranslation();
   const navigate = useNavigate();
   return (
     <div className="bg-slate-50 min-h-screen pb-24">
       {/* 头部区 */}
       <section className="bg-red-600 text-white py-20 px-4 text-center">
-        <h1 className="text-4xl md:text-5xl font-bold mb-4">帮助与售后支持</h1>
+        <h1 className="text-4xl md:text-5xl font-bold mb-4">{t('support.title', '帮助与售后支持')}</h1>
         <p className="text-xl max-w-2xl mx-auto text-red-100">
-          我们不仅做靠谱的机器，更做让您放心的售后。<br />
-          买得放心，用得舒心，有问题随时找我们。
+          {t('support.sub1', '我们不仅做靠谱的机器，更做让您放心的售后。')}<br />
+          {t('support.sub2', '买得放心，用得舒心，有问题随时找我们。')}
         </p>
       </section>
 
@@ -19,41 +21,41 @@ export default function Support() {
         <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
           <GuaranteeCard 
             icon="🚚" 
-            title="包邮送达" 
-            desc="COO亲盯物流，顺丰/京东包邮，确保机器完好无损地送到您手上。"
+            title="{t('support.feat1.title', '包邮送达')}" 
+            desc="{t('support.feat1.desc', 'COO亲盯物流，顺丰/京东包邮，确保机器完好无损地送到您手上。')}"
           />
           <GuaranteeCard 
             icon="🔄" 
-            title="7天无理由退货" 
-            desc="收货7天内，只要机器包装完整、不影响二次销售，运费我们出，全额退款。"
+            title="{t('support.feat2.title', '7天无理由退货')}" 
+            desc="{t('support.feat2.desc', '无理由退货描述')}"
           />
           <GuaranteeCard 
             icon="🛠️" 
-            title="一年内只换不修" 
-            desc="质保期内非人为损坏，我们不搞维修折腾，直接给您换台新的。"
+            title="{t('support.feat3.title', '一年内只换不修')}" 
+            desc="{t('support.feat3.desc', '只换不修描述')}"
           />
         </div>
       </section>
 
       {/* 常见问题 (FAQ) 区 */}
       <section className="max-w-4xl mx-auto px-4 mt-24">
-        <h2 className="text-3xl font-bold text-center mb-10 text-slate-900">常见问题 (FAQ)</h2>
+        <h2 className="text-3xl font-bold text-center mb-10 text-slate-900">{t('support.faq.title', '常见问题 (FAQ)')}</h2>
         <div className="space-y-4">
           <FaqItem 
-            question="我一点都不懂技术，能学会用吗？" 
-            answer="绝对没问题！我们的产品由团队里最不懂技术的“吃货”打磨用户体验，就是为了让普通人也能零门槛上手。说明书是大白话，包装盒里甚至有保姆级的视频教程二维码，扫一扫立刻看懂。"
+            question={t('faq.q.31048810085275149', '我一点都不懂技术，能学会用吗？')} 
+            answer={t('faq.a.4859618645131341628', '绝对没问题！我们的产品由团队里最不懂技术的“吃货”打磨用户体验，就是为了让普通人也能零门槛上手。说明书是大白话，包装盒里甚至有保姆级的视频教程二维码，扫一扫立刻看懂。')}
           />
           <FaqItem 
-            question="今天下单，几时能发货？" 
-            answer="由于预定量较大，我们采取按订单顺序分批发货。第一批次预计在下个月中旬陆续发货。我们的COO（前水产冷链骨干）正在全程把控进度，确保机器尽快从华强北出库。"
+            question={t('faq.q.9175638213719985730', '今天下单，几时能发货？')} 
+            answer={t('faq.a.496324727614361583', '由于预定量较大，我们采取按订单顺序分批发货。第一批次预计在下个月中旬陆续发货。我们的COO（前水产冷链骨干）正在全程把控进度，确保机器尽快从华强北出库。')}
           />
           <FaqItem 
-            question="如果机器突然开不了机怎么办？" 
-            answer="别慌！我们对硬件品控有绝对的信心（华强北老炮亲自把关）。如果是质量问题，凭借您的单号，一年内享有“只换不修”服务。您可以直接联系我们的客服退回旧机，我们收到后当天换新寄出。"
+            question={t('faq.q.7361949965461290056', '如果机器突然开不了机怎么办？')} 
+            answer={t('faq.a.1991604189351501565', '别慌！我们对硬件品控有绝对的信心（华强北老炮亲自把关）。如果是质量问题，凭借您的单号，一年内享有“只换不修”服务。您可以直接联系我们的客服退回旧机，我们收到后当天换新寄出。')}
           />
           <FaqItem 
-            question="配件如果弄丢了，能单独买吗？" 
-            answer="完全可以。所有的配件（如电源线、夹具等）都将在我们的官方商店以成本价上架，几块钱搞定，绝不赚配件钱。"
+            question={t('faq.q.7722257073788805609', '配件如果弄丢了，能单独买吗？')} 
+            answer={t('faq.a.4323628495793051690', '完全可以。所有的配件（如电源线、夹具等）都将在我们的官方商店以成本价上架，几块钱搞定，绝不赚配件钱。')}
           />
         </div>
       </section>
@@ -61,16 +63,16 @@ export default function Support() {
       {/* 联系人工客服 */}
       <section className="max-w-4xl mx-auto px-4 mt-24 text-center pb-12">
         <div className="bg-white rounded-2xl p-10 shadow-sm border border-slate-200">
-          <h2 className="text-2xl font-bold text-slate-900 mb-6">没找到答案？直接找人工</h2>
+          <h2 className="text-2xl font-bold text-slate-900 mb-6">{t('support.help.title', '没找到答案？直接找人工')}</h2>
           <p className="text-slate-600 mb-8">
-            我们的客服团队都是全职员工，不是机器人。遇到任何问题，欢迎随时联系。
+            {t('support.help.desc', '客服描述')}
           </p>
           <div className="flex flex-col md:flex-row justify-center items-center gap-12">
             <div className="flex flex-col items-center">
               <div className="w-16 h-16 bg-slate-100 rounded-full flex items-center justify-center text-2xl mb-4">📧</div>
-              <h3 className="font-bold text-lg mb-1">邮件客服</h3>
-              <p className="text-sm text-slate-500 font-medium select-all">552961@qq.com</p>
-              <p className="text-xs text-slate-400 mt-1">工作日 9:00 - 21:00</p>
+                <h3 className="font-bold text-lg mb-1">{t('support.mail_cs', '邮件客服')}</h3>
+                <p className="text-sm text-slate-500 font-medium select-all">support@longxiaji.com</p>
+                <p className="text-xs text-slate-400 mt-1">{t('support.mail_time', '工作日 9:00 - 21:00')}</p>
             </div>
           </div>
         </div>
@@ -78,7 +80,7 @@ export default function Support() {
 
       <div className="text-center py-12">
         <button onClick={() => navigate('/preorder')} className="bg-red-600 text-white px-10 py-4 rounded-full text-lg font-medium hover:bg-red-700 transition-all shadow-lg">
-          立即预定
+          {t('product.preorder', '立即预定')}
         </button>
       </div>
     </div>
