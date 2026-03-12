@@ -71,17 +71,21 @@ export default function Skills() {
                 </button>
               ))}
             </div>
-
-                <SkillCard
-                  key={idx}
-                  icon={skill.icon}
-                  title={skill.title}
-                  features={skill.features}
-                  value={skill.value}
-                />
-              ))}
-            </div>
-          ) : (
+          </div>
+            
+          {filteredSkills.length > 0 ? (
+              <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+                {filteredSkills.map((skill, idx) => (
+                  <SkillCard
+                    key={idx}
+                    icon={skill.icon}
+                    title={skill.title}
+                    features={skill.features}
+                    value={skill.value}
+                  />
+                ))}
+              </div>
+            ) : (
             <div className="text-center py-20 bg-white rounded-3xl border border-slate-100 shadow-sm">
               <Zap className="w-12 h-12 text-slate-300 mx-auto mb-4" />
               <h3 className="text-xl font-bold text-slate-900 mb-2">暂无该分类技能</h3>
