@@ -67,9 +67,9 @@ export default function Support() {
           </p>
           <div className="flex flex-col md:flex-row justify-center items-center gap-12">
             <div className="flex flex-col items-center">
-              <img src="/qrcode_wecom.png" alt="微信客服二维码" className="w-24 h-24 mb-4 object-contain shadow-sm border border-slate-100 rounded-sm" />
-              <h3 className="font-bold text-lg mb-1">企业微信客服</h3>
-              <p className="text-sm text-slate-500">扫码添加企业微信支持</p>
+              <div className="w-16 h-16 bg-slate-100 rounded-full flex items-center justify-center text-2xl mb-4">📧</div>
+              <h3 className="font-bold text-lg mb-1">邮件客服</h3>
+              <p className="text-sm text-slate-500 font-medium select-all">552961@qq.com</p>
               <p className="text-xs text-slate-400 mt-1">工作日 9:00 - 21:00</p>
             </div>
           </div>

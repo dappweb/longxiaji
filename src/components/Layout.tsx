@@ -140,15 +140,6 @@ export default function Layout() {
             <div>
               <h4 className="text-white font-semibold mb-6">联系我们</h4>
               <ul className="space-y-4 text-sm">
-                <li className="flex items-center gap-3 group cursor-pointer" onClick={handleQR}>
-                  <div className="w-8 h-8 rounded-full bg-slate-800 flex items-center justify-center group-hover:bg-green-900 group-hover:text-green-400 transition-colors">
-                    <MessageCircle className="w-4 h-4" />
-                  </div>
-                  <div>
-                    <p className="text-slate-300 font-medium">客服微信</p>
-                    <p className="text-xs text-slate-500">w17702521191</p>
-                  </div>
-                </li>
                 <li className="flex items-center gap-3 group">
                   <div className="w-8 h-8 rounded-full bg-slate-800 flex items-center justify-center group-hover:bg-blue-900 group-hover:text-blue-400 transition-colors">
                     <Mail className="w-4 h-4" />
@@ -194,7 +185,7 @@ export default function Layout() {
             onClick={e => e.stopPropagation()}
           >
             <div className="absolute top-0 left-0 right-0 h-2 bg-gradient-to-r from-red-500 to-orange-500"></div>
-            <button 
+            <button
               onClick={() => setShowQR(false)}
               className="absolute top-4 right-4 text-slate-400 hover:text-slate-600 transition-colors"
             >
@@ -203,20 +194,17 @@ export default function Layout() {
               </svg>
             </button>
             <div className="w-16 h-16 bg-red-100 text-red-600 rounded-full flex items-center justify-center mx-auto mb-4 text-3xl">
-              <MessageCircle className="w-8 h-8" />
+              <Mail className="w-8 h-8" />
             </div>
-            <h3 className="text-2xl font-bold text-slate-900 mb-2">添加客服微信</h3>
-            <p className="text-slate-600 mb-6">获取首批预定资格与专属优惠</p>
-            <div className="bg-slate-50 p-4 rounded-2xl border border-slate-100 mb-6 flex justify-center items-center">
-              <div className="w-48 h-48 bg-white border border-slate-200 rounded-xl overflow-hidden p-2">
-                <img src="/qrcode_wecom.png" alt="WeChat QR" className="w-full h-full object-cover rounded-lg" />
-              </div>
-            </div>
-            <div className="text-sm font-medium text-slate-700 bg-slate-100 py-2 px-4 rounded-lg inline-flex items-center gap-2">
-              微信号: <span className="text-red-600 select-all">w17702521191</span>
+            <h3 className="text-2xl font-bold text-slate-900 mb-2">接收预定通知</h3>
+            <p className="text-slate-600 mb-6">获取首批预定资格与首发专属优惠</p>
+            
+            <div className="bg-slate-50 p-6 rounded-2xl border border-slate-100 mb-6 text-center">
+               <p className="text-sm text-slate-500 mb-2">发送邮件至</p>
+               <p className="text-xl font-bold text-slate-800 select-all">552961@qq.com</p>
             </div>
             <p className="mt-4 text-xs text-slate-400">
-              扫码添加客服，注明“龙虾机预定”
+              请在邮件中注明“龙虾机预定”
             </p>
           </motion.div>
         </div>
