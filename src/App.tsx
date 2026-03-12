@@ -299,17 +299,13 @@ export default function App() {
               <div className="aspect-square bg-slate-100 rounded-3xl border border-slate-200 p-8 relative flex items-center justify-center overflow-hidden">
                 <div className="absolute inset-0 bg-[linear-gradient(to_right,#80808012_1px,transparent_1px),linear-gradient(to_bottom,#80808012_1px,transparent_1px)] bg-[size:24px_24px]" />
                 
-                {/* Device Mockup */}
-                <div className="relative z-10 w-64 h-64 bg-zinc-900 rounded-3xl shadow-2xl border-t border-zinc-700 flex flex-col items-center justify-center transform rotate-12 hover:rotate-0 transition-transform duration-500">
-                  <div className="w-16 h-16 bg-red-600 rounded-2xl flex items-center justify-center text-3xl mb-4 shadow-lg shadow-red-600/40">
-                    🦞
-                  </div>
-                  <div className="text-zinc-400 font-mono text-xs tracking-widest uppercase">LongXiaJi</div>
-                  <div className="absolute bottom-4 right-4 w-2 h-2 rounded-full bg-green-500 shadow-[0_0_10px_rgba(34,197,94,0.8)]" />
+                {/* Device Mockup Replacing abstract with real image */}
+                <div className="relative z-10 w-full h-full flex flex-col items-center justify-center transition-transform duration-500 hover:scale-105">
+                  <img src="/box/5050e13500344491bce2018ece160efd.png" alt="龙虾机实拍" className="w-full h-auto object-cover rounded-2xl shadow-2xl" />
                 </div>
                 
                 {/* Size reference */}
-                <div className="absolute bottom-8 left-8 right-8 flex justify-between items-end text-slate-400 text-sm font-medium">
+                <div className="absolute bottom-8 left-8 right-8 flex justify-between items-end text-slate-400 text-sm font-medium z-20">
                   <span>≤ Mac mini 尺寸</span>
                   <span>低功耗 / 无风扇</span>
                 </div>
