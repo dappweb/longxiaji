@@ -14,59 +14,53 @@ export default function Contact() {
             </p>
           </div>
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-            <FounderCard 
-              role="大厨" 
+            <FounderCard
+              role="大厨"
               title="CEO · 产品与战略"
               quote="火候到了，所有的食材都会说话。"
-              desc="家里开了十几年龙虾馆，14 岁就能独立出一桶麻辣小龙虾。从炒锅到键盘，他把做产品的逻辑和做菜统一——不好吃的东西，不出锅。" 
-              icon="👨‍🍳" 
+              desc="曾在传统水产行业深耕十几年，经营过连锁龙虾馆。对商业模式和用户需求有着极其敏锐的直觉。在转型科技行业后，他将打磨菜品的苛刻标准延续至硬件产品的研发中。凭借对草根痛点的深刻理解与出色的产品定义能力，他主导了龙虾机的整体战略路线，致力于让前沿 AI 真正走入千家万户。"
+              icon="👨‍🍳"
               image="/team/ceo.png"
-              marketingPoint="龙虾馆老板做 CEO——“不好吃不出锅”草根反差极强，让产品极度接地气。"
             />
-            <FounderCard 
-              role="养虾大户" 
+            <FounderCard
+              role="养虾大户"
               title="天使投资人 · 联合发起人"
               quote="池塘里养出来的耐心，放到哪里都能用。"
-              desc="祖上三代养龙虾，曾管理超 200 亩虾塘。一场洪水后，他把耐心投向了“像虾塘一样能持续产出”的 AI 硬件，并命名了“龙虾机”。" 
-              icon="🦞" 
+              desc="从小在水管和虾塘边长大，曾管理超过两百亩的大型现代化水产养殖基地。凭借敏锐的投资眼光，他在产业转型期捕捉到了人工智能硬件普及的历史性机遇。作为团队早期的核心资金支持者和联合发起人，他不仅带来了充足的弹药，并将脚踏实地的产业精神注入了团队的 DNA 之中。"
+              icon="🦞"
               image="/team/investor.png"
-              marketingPoint="养虾的人投 AI——用真金白银讲述着底层坚韧与前瞻眼光的故事。"
             />
             <FounderCard
               role="华强北厂长"
               title="硬件负责人 · 供应链"
               quote="在华强北，不可能只是还没找到对的供应商。"
-              desc="十几岁就在华强北跑柜台，闭眼能走遍每条走廊。十几年硬件供应链经验，是把龙虾机做到 ￥298 定价的绝对核心功臣。"
+              desc="在深圳华强北有着超过十五年的硬件供应链管理经验，从最初的电子柜台起步，一步步成为了执掌大型工厂的资深老将。熟悉每一条电子街区和无数的上游供应商资源。在龙虾机项目中，他通过极致的成本控制模型、严苛的开模品控和强大的议价能力，是真正实现硬件￥298低价和稳定量产的绝对功臣。"
               icon="🏭"
               image="/team/ux.png"
-              marketingPoint="华强北老炮做硬件——直接回答了 ￥298 怎么可能，因为有最懂行的人控成本与品控。"
             />
             <FounderCard
               role="吃货"
               title="首席体验官 · UX"
               quote="好不好吃，舌头不会骗人。好不好用，手指不会骗人。"
-              desc="把研究吃龙虾的极致精神用到了用户体验上。作为团队里技术水平最低的人，他是产品的试金石：“连我都能搞定的机器，14 亿人都能用。”"
+              desc="在加入团队前是一名极具粉丝影响力的美食博主体验师。由于不具备任何编程基础，他成为了系统最重要的产品试金石。秉承着“把研究美食体验的极致精神平移到用户交互上”的理念，他从非技术人员的“小白”视角出发，重塑了龙虾机交互逻辑，将安装配置压缩到了傻瓜式的即插即用级别。"
               icon="🍽️"
-              image="/team/ux_new.png"
-              marketingPoint="最不懂技术的人做 UX——打消用户焦虑，每一个功能都是他先亲身试毒的成果。"
+              image="/team/ux.jpg"
             />
             <FounderCard
               role="程序员"
               title="CTO · 技术架构"
               quote="从虾塘到代码库，都需要耐心和细心。"
-              desc="水产硕士转行写代码。从研究怎么让龙虾长得大，到研究怎么让系统跑得稳，他证明了跨界也能做到极致。"
+              desc="背景独特的跨界技术专家。本硕主修水产专业，后因为极客热情转型计算机科学，并在国内顶尖科技企业积累了多年系统架构开发经历。除了熟悉分布式与高性能服务器开发，他还在私有化大模型底层加速技术上有深度研究。不仅构建了极其稳定和安全的底层代码库，也将传统产业的心流带入了技术管理中。"
               icon="💻"
-              image="/team/programmer_new.png"
-              marketingPoint="水产硕士做 CTO——“从虾塘到代码库”自带传播力，用养虾的耐心构建稳固底层技术。"
+              image="/team/CTO.jpg"
             />
-            <FounderCard 
+            <FounderCard
               role="快递员"
               title="COO · 运营与交付"
               quote="不管送什么，到手的时候必须是完美的。"
-              desc="从水产冷链物流一线摸爬滚打，练就“送活虾二十小时无损”的极速与极稳交付能力，现在负责保证每台机器完美交付。"
+              desc="拥有资深的物流供应链背景，曾是国内某生鲜冷链运输公司的大区负责人。在处理极高难度的“送活鲜无耗损”业务中，锻炼出了卓越的项目执行力和抗压品质。现如今全面总体统筹龙虾机的市场运营和用户交付体系，搭建了成熟的仓储和客服支持渠道，只为确保每一台硬件在拆箱时都保持绝对完美状态。"
               icon="🚚"
-              image="/team/courier_new.png"
-              marketingPoint="初中毕业快递员做 COO——“送虾没死过一只”就是极强的信任背书，彰显极强的落地与交付执行力。"
+              image="/team/COO.jpg"
             />
           </div>
         </div>
@@ -81,7 +75,7 @@ export default function Contact() {
   );
 }
 
-function FounderCard({ role, title, quote, desc, icon, image, marketingPoint }: { role: string, title: string, quote: string, desc: string, icon: string, image?: string, marketingPoint: string }) {
+function FounderCard({ role, title, quote, desc, icon, image }: { role: string, title: string, quote: string, desc: string, icon: string, image?: string }) {
   return (
     <div className="bg-white rounded-2xl p-6 border border-slate-200 shadow-sm hover:shadow-md transition-all flex flex-col items-start text-left">
       <div className="flex items-center gap-4 mb-4">
@@ -102,12 +96,6 @@ function FounderCard({ role, title, quote, desc, icon, image, marketingPoint }: 
       </blockquote>
       <div className="space-y-3 flex-1">
         <p className="text-sm text-slate-700 leading-relaxed text-justify">{desc}</p>
-      </div>
-      <div className="mt-4 pt-4 border-t border-slate-100 w-full">
-        <p className="text-xs text-slate-500 font-medium bg-slate-50 p-2 rounded">
-          <span className="text-red-600 font-bold mr-1">营销卖点:</span> 
-          {marketingPoint}
-        </p>
       </div>
     </div>
   );

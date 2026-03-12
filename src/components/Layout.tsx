@@ -2,11 +2,17 @@ import React, { useState, useEffect } from 'react';
 import { Link, Outlet, useNavigate, useLocation } from 'react-router-dom';
 import { MessageCircle, Mail, Globe, Menu, X } from 'lucide-react';
 import { motion, AnimatePresence } from 'motion/react';
+import { useTranslation } from 'react-i18next';
 
 export default function Layout() {
+  const { t, i18n } = useTranslation();
   const [showQR, setShowQR] = useState(false);
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const navigate = useNavigate();
+
+  const toggleLanguage = () => {
+    i18n.changeLanguage(i18n.language === 'en' ? 'zh' : 'en');
+  };
   const location = useLocation();
 
   // Close mobile menu on route change
