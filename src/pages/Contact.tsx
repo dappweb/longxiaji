@@ -32,40 +32,40 @@ export default function Contact() {
               image="/team/investor.png"
               marketingPoint="养虾的人投 AI——用真金白银讲述着底层坚韧与前瞻眼光的故事。"
             />
-            <FounderCard 
-              role="华强北厂长" 
+            <FounderCard
+              role="华强北厂长"
               title="硬件负责人 · 供应链"
               quote="在华强北，不可能只是还没找到对的供应商。"
-              desc="十几岁就在华强北跑柜台，闭眼能走遍每条走廊。十几年硬件供应链经验，是把龙虾机做到 ￥298 定价的绝对核心功臣。" 
-              icon="🏭" 
-              image={undefined}
+              desc="十几岁就在华强北跑柜台，闭眼能走遍每条走廊。十几年硬件供应链经验，是把龙虾机做到 ￥298 定价的绝对核心功臣。"
+              icon="🏭"
+              image="/team/ux.png"
               marketingPoint="华强北老炮做硬件——直接回答了 ￥298 怎么可能，因为有最懂行的人控成本与品控。"
             />
-            <FounderCard 
-              role="吃货" 
+            <FounderCard
+              role="吃货"
               title="首席体验官 · UX"
               quote="好不好吃，舌头不会骗人。好不好用，手指不会骗人。"
-              desc="把研究吃龙虾的极致精神用到了用户体验上。作为团队里技术水平最低的人，他是产品的试金石：“连我都能搞定的机器，14 亿人都能用。”" 
-              icon="🍽️" 
-              image="/team/ux.png"
+              desc="把研究吃龙虾的极致精神用到了用户体验上。作为团队里技术水平最低的人，他是产品的试金石：“连我都能搞定的机器，14 亿人都能用。”"
+              icon="🍽️"
+              image="/team/ux_new.png"
               marketingPoint="最不懂技术的人做 UX——打消用户焦虑，每一个功能都是他先亲身试毒的成果。"
             />
-            <FounderCard 
-              role="程序员" 
+            <FounderCard
+              role="程序员"
               title="CTO · 技术架构"
               quote="从虾塘到代码库，都需要耐心和细心。"
-              desc="水产硕士转行写代码。从研究怎么让龙虾长得大，到研究怎么让系统跑得稳，他证明了跨界也能做到极致。" 
-              icon="💻" 
-              image="/team/programmer.png"
+              desc="水产硕士转行写代码。从研究怎么让龙虾长得大，到研究怎么让系统跑得稳，他证明了跨界也能做到极致。"
+              icon="💻"
+              image="/team/programmer_new.png"
               marketingPoint="水产硕士做 CTO——“从虾塘到代码库”自带传播力，用养虾的耐心构建稳固底层技术。"
             />
             <FounderCard 
-              role="快递员" 
+              role="快递员"
               title="COO · 运营与交付"
               quote="不管送什么，到手的时候必须是完美的。"
-              desc="从水产冷链物流一线摸爬滚打，练就“送活虾二十小时无损”的极速与极稳交付能力，现在负责保证每台机器完美交付。" 
-              icon="🚚" 
-              image="/team/courier.jpg"
+              desc="从水产冷链物流一线摸爬滚打，练就“送活虾二十小时无损”的极速与极稳交付能力，现在负责保证每台机器完美交付。"
+              icon="🚚"
+              image="/team/courier_new.png"
               marketingPoint="初中毕业快递员做 COO——“送虾没死过一只”就是极强的信任背书，彰显极强的落地与交付执行力。"
             />
           </div>

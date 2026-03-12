@@ -74,7 +74,10 @@ export default function News() {
                 <p className="text-slate-600 leading-relaxed mb-6">
                   {news.summary}
                 </p>
-                <button className="text-blue-600 font-medium inline-flex items-center group">
+                <button 
+                  onClick={() => alert('详情内容正在建设中，敬请期待！')}
+                  className="text-blue-600 font-medium inline-flex items-center group cursor-pointer"
+                >
                   阅读全文 <ArrowRight className="w-4 h-4 ml-1 group-hover:translate-x-1 transition-transform" />
                 </button>
               </div>

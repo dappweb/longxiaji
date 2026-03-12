@@ -14,7 +14,7 @@ export default function Skills() {
       icon: <MessageSquare className="w-6 h-6 text-blue-500" />,
       title: "智能对话",
       features: ['多模型一键切换 (GPT, Claude, 通义千问等)', '精准翻译与长文摘要', '高质量文案写作'],
-      value: "“比 ChatGPT 还方便，不用翻墙”"
+      value: "“比 ChatGPT 还方便，反应更迅速”"
     },
     {
       category: '效率办公',
@@ -71,19 +71,7 @@ export default function Skills() {
                 </button>
               ))}
             </div>
-            <div className="relative w-full sm:w-64">
-              <input 
-                type="text" 
-                placeholder="搜索技能名称..." 
-                className="w-full bg-white border border-slate-200 rounded-full py-2 pl-10 pr-4 text-sm focus:outline-none focus:ring-2 focus:ring-red-500/20 focus:border-red-500"
-              />
-              <Search className="w-4 h-4 text-slate-400 absolute left-4 top-1/2 -translate-y-1/2" />
-            </div>
-          </div>
 
-          {filteredSkills.length > 0 ? (
-            <div className="grid md:grid-cols-2 gap-6">
-              {filteredSkills.map((skill, idx) => (
                 <SkillCard
                   key={idx}
                   icon={skill.icon}
@@ -109,7 +97,7 @@ export default function Skills() {
 
           <div className="mt-12 text-center">
             <p className="text-slate-600 mb-4">未来更将开放 Skills 市场，支持量化交易、电商运营等高级技能服务，免费解锁，持续升级。</p>
-            <button className="text-red-600 font-medium hover:text-red-700 flex items-center justify-center gap-1 mx-auto">
+            <button disabled className="text-slate-400 font-medium flex items-center justify-center gap-1 mx-auto cursor-not-allowed">
               探索更多 Skills <ChevronRight className="w-4 h-4" />
             </button>
           </div>

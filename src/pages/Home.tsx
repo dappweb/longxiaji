@@ -86,7 +86,7 @@ export default function Home() {
           <div className="text-center max-w-3xl mx-auto mb-16">
             <h2 className="text-3xl md:text-4xl font-bold text-slate-900 mb-4">不需要你懂电脑，它懂你</h2>
             <p className="text-lg text-slate-600">
-              解决“用不用得上 AI”的问题。把翻墙、配置、支付、注册四道门槛全部消除。
+              解决“用不用得上 AI”的问题。把配置、支付、注册等门槛全部消除。
             </p>
           </div>
 
@@ -114,7 +114,7 @@ export default function Home() {
             <FeatureCard 
               icon={<Shield className="w-6 h-6 text-indigo-500" />}
               title="费用透明可控"
-              description="一次买断硬件，API 费用透明可控。每天不到一块钱，比请一个实习生还便宜，且不会请假离职。"
+              description="一次买断硬件，API 费用透明可控。比请一个实习生还划算，且不会请假离职。"
             />
             <FeatureCard 
               icon={<Gift className="w-6 h-6 text-rose-500" />}
@@ -139,7 +139,7 @@ export default function Home() {
               <UserCheck className="w-8 h-8 text-red-500 mb-6" />
               <h3 className="text-xl font-bold mb-3">个人用户 / 职场新人</h3>
               <p className="text-slate-400 mb-6">
-                “每天不到一块钱，拥有一个 24 小时在线的私人 AI 助理。不用折腾翻墙账号，微信里直接问，效率翻倍。”
+                “拥有一个 24 小时在线的私人 AI 助理。微信里直接问，效率翻倍。”
               </p>
               <div className="text-sm font-medium text-slate-300 bg-slate-700/50 inline-block px-3 py-1 rounded-full">
                 典型场景：日常问答、邮件起草

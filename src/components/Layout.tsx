@@ -163,7 +163,7 @@ export default function Layout() {
               <div className="flex gap-4">
                 <a href="#" className="hover:text-slate-300 transition-colors">隐私政策</a>
                 <a href="#" className="hover:text-slate-300 transition-colors">服务条款</a>
-                <a href="#" className="hover:text-slate-300 transition-colors">粤ICP备********号</a>
+
               </div>
             </div>
             <div className="flex items-center gap-2 px-4 py-2 bg-slate-900 rounded-full border border-slate-800">

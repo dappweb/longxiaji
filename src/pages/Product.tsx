@@ -112,7 +112,7 @@ export default function Product() {
                 {/* Size reference */}
                 <div className="absolute bottom-8 left-8 right-8 flex justify-between items-end text-slate-400 text-sm font-medium z-20">
                   <span>≤ Mac mini 尺寸</span>
-                  <span>低功耗 / 无风扇</span>
+                    <span>低功耗</span>
                 </div>
               </div>
             </div>

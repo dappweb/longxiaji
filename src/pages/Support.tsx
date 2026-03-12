@@ -67,21 +67,10 @@ export default function Support() {
           </p>
           <div className="flex flex-col md:flex-row justify-center items-center gap-12">
             <div className="flex flex-col items-center">
-              <div className="w-16 h-16 bg-green-50 text-green-600 rounded-full flex items-center justify-center text-3xl mb-4">
-                💬
-              </div>
-              <h3 className="font-bold text-lg mb-1">微信客服</h3>
-              <p className="text-sm text-slate-500">搜索微信号：<span className="font-bold">LongXiaJi_Support</span></p>
+              <img src="/qrcode_wecom.png" alt="微信客服二维码" className="w-24 h-24 mb-4 object-contain shadow-sm border border-slate-100 rounded-sm" />
+              <h3 className="font-bold text-lg mb-1">企业微信客服</h3>
+              <p className="text-sm text-slate-500">扫码添加企业微信支持</p>
               <p className="text-xs text-slate-400 mt-1">工作日 9:00 - 21:00</p>
-            </div>
-            <div className="hidden md:block w-px h-24 bg-slate-200"></div>
-            <div className="flex flex-col items-center">
-              <div className="w-16 h-16 bg-blue-50 text-blue-600 rounded-full flex items-center justify-center text-3xl mb-4">
-                📞
-              </div>
-              <h3 className="font-bold text-lg mb-1">客服热线</h3>
-              <p className="text-sm text-slate-500">拨打：<span className="font-bold">400-888-8888</span></p>
-              <p className="text-xs text-slate-400 mt-1">工作日 9:00 - 18:00</p>
             </div>
           </div>
         </div>
