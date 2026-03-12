@@ -181,10 +181,16 @@ export default function Home() {
             首批限量发售，抢先体验零门槛的桌面 AI 助理。
           </p>
           <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
-            <button className="w-full sm:w-auto bg-white text-red-600 px-8 py-4 rounded-full text-lg font-bold hover:bg-slate-50 transition-all shadow-xl">
+            <button 
+              onClick={() => navigate('/preorder')}
+              className="w-full sm:w-auto bg-white text-red-600 px-8 py-4 rounded-full text-lg font-bold hover:bg-slate-50 transition-all shadow-xl"
+            >
               立即预定抢首发
             </button>
-            <button className="w-full sm:w-auto bg-red-700 text-white border border-red-500 px-8 py-4 rounded-full text-lg font-medium hover:bg-red-800 transition-all">
+            <button 
+              onClick={() => navigate('/contact')}
+              className="w-full sm:w-auto bg-red-700 text-white border border-red-500 px-8 py-4 rounded-full text-lg font-medium hover:bg-red-800 transition-all"
+            >
               联系企业采购
             </button>
           </div>
