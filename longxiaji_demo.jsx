@@ -30,10 +30,15 @@ function Nav(props) {
   ];
   return (
     <nav style={{ position: "fixed", top: 0, left: 0, right: 0, zIndex: 999, background: sc ? "rgba(13,13,26,0.97)" : "rgba(13,13,26,0.85)", backdropFilter: "blur(12px)", borderBottom: "1px solid rgba(255,255,255,0.06)" }}>
-      <div style={{ maxWidth: 1200, margin: "0 auto", padding: "0 20px", display: "flex", alignItems: "center", justifyContent: "space-between", height: 56 }}>
-        <div style={{ display: "flex", alignItems: "center", gap: 8, cursor: "pointer" }} onClick={function () { go("home"); }}>
-          <img src={LOGO} alt="" style={{ width: 28, height: "auto" }} />
-          <span style={{ color: C.wh, fontWeight: 800, fontSize: 17 }}>{"龙虾机"}</span>
+      <div style={{ maxWidth: 1200, margin: "0 auto", padding: "0 20px", display: "flex", alignItems: "center", justifyContent: "space-between", height: 64 }}>
+        <div style={{ display: "flex", alignItems: "center", gap: 10, cursor: "pointer" }} onClick={function () { go("home"); }}>
+          <div style={{ background: "rgba(255,255,255,0.1)", padding: 4, borderRadius: 8 }}>
+            <img src={LOGO} alt="" style={{ width: 28, height: "auto", display: "block" }} />
+          </div>
+          <div style={{ display: "flex", flexDirection: "column" }}>
+             <span style={{ color: C.wh, fontWeight: 800, fontSize: 18, lineHeight: 1 }}>{"龙虾机"}</span>
+             <span style={{ color: "rgba(255,255,255,0.4)", fontSize: 10, fontFamily: "monospace", marginTop: 4, lineHeight: 1 }}>longxiaji.com</span>
+          </div>
         </div>
         <div style={{ display: "flex", alignItems: "center", gap: 1 }}>
           {tabs.map(function (t) {
@@ -200,7 +205,7 @@ function Support(props) {
       <section style={{ background: C.bg, paddingTop: 90 }}><div style={{ maxWidth: 800, margin: "0 auto", padding: "50px 20px", textAlign: "center" }}><h2 style={{ color: C.wh, fontSize: 34, fontWeight: 900 }}>{"售后支持"}</h2></div></section>
       <Sec bg={C.wh}>
         <div style={{ display: "grid", gridTemplateColumns: "repeat(3, 1fr)", gap: 20 }}>
-          {[{ ic: "🔄", t: "7 天无理由退货", d: "不喜欢就退，零风险" },{ ic: "⚡", t: "3 分钟上手承诺", d: "做不到全额退款" },{ ic: "💬", t: "真人客服", d: "微信群+专属客服随时响应" }].map(function (item, i) {
+          {[{ ic: "�", t: "包邮送达", d: "品质物流 完好无损" },{ ic: "🔄", t: "7 天无理由", d: "收货7天内 随时退换" },{ ic: "🛠️", t: "一年内换新", d: "只换不修 当天寄出" }].map(function (item, i) {
             return <div key={i} style={{ background: "#FAFAFA", borderRadius: 14, padding: 28, textAlign: "center", border: "1px solid #F0F0F0" }}><span style={{ fontSize: 32 }}>{item.ic}</span><h3 style={{ fontSize: 17, fontWeight: 800, margin: "14px 0 6px" }}>{item.t}</h3><p style={{ fontSize: 13, color: C.txtL, margin: 0 }}>{item.d}</p></div>;
           })}
         </div>
@@ -288,14 +293,14 @@ function Contact(props) {
         <ST t="创始团队" s="六个从龙虾产业链走出来的人" />
         <div style={{ display: "grid", gridTemplateColumns: "repeat(3, 1fr)", gap: 18 }}>
           {[
-            { r: "龙虾大厨", s: "CEO", tl: "我炒过的虾比你见过的人都多", c: "#FFEBEE" },
-            { r: "养殖专业户", s: "供应链", tl: "池塘里养出来的耐心放到哪都能用", c: "#FFF3E0" },
-            { r: "龙虾贸易商", s: "BD", tl: "卖什么不重要会卖才重要", c: "#E3F2FD" },
-            { r: "龙虾吃货", s: "UX", tl: "好不好吃舌头不会骗人", c: "#F3E5F5" },
-            { r: "龙虾快递员", s: "COO", tl: "不管送什么到手必须完美", c: "#E8F5E9" },
-            { r: "龙虾研究员", s: "CTO", tl: "从虾塘到代码库都需要耐心", c: "#FFFDE7" }
+            { r: "大厨", s: "CEO · 产品与战略", tl: "火候到了，所有的食材都会说话。", c: "#FFEBEE", img: "/team/ceo.png" },
+            { r: "养虾大户", s: "天使投资人 · 联合发起人", tl: "池塘里养出来的耐心，放到哪里都能用。", c: "#FFF3E0", img: "/team/investor.png" },
+            { r: "华强北厂长", s: "硬件负责人 · 供应链", tl: "在华强北，不可能只是还没找到对的供应商。", c: "#E3F2FD", img: "" },
+            { r: "吃货", s: "首席体验官 · UX", tl: "好不好吃，舌头不会骗人。好不好用，手指不会骗人。", c: "#F3E5F5", img: "/team/ux.png" },
+            { r: "程序员", s: "CTO · 技术架构", tl: "从虾塘到代码库，都需要耐心和细心。", c: "#FFFDE7", img: "/team/programmer.png" },
+            { r: "快递员", s: "COO · 运营与交付", tl: "不管送什么，到手的时候必须是完美的。", c: "#E8F5E9", img: "/team/courier.jpg" }
           ].map(function (t, i) {
-            return <div key={i} style={{ background: t.c, borderRadius: 16, padding: 22, textAlign: "center", border: "1px solid #F0F0F0" }}><Logo size={44} showText={false} /><h3 style={{ fontSize: 17, fontWeight: 800, margin: "8px 0 2px" }}>{t.r}</h3><p style={{ color: C.gr, fontSize: 12, margin: "0 0 8px" }}>{t.s}</p><p style={{ color: C.txt, fontSize: 13, margin: 0, fontStyle: "italic" }}>{t.tl}</p></div>;
+            return <div key={i} style={{ background: t.c, borderRadius: 16, padding: 22, textAlign: "center", border: "1px solid #F0F0F0", display: "flex", flexDirection: "column", alignItems: "center" }}>{t.img ? <img src={t.img} alt={t.r} style={{ width: 64, height: 64, borderRadius: "50%", objectFit: "cover", marginBottom: 12, border: "2px solid rgba(0,0,0,0.05)" }} /> : <Logo size={44} showText={false} />}<h3 style={{ fontSize: 17, fontWeight: 800, margin: "8px 0 2px" }}>{t.r}</h3><p style={{ color: C.gr, fontSize: 12, margin: "0 0 8px" }}>{t.s}</p><p style={{ color: C.txt, fontSize: 13, margin: 0, fontStyle: "italic" }}>{t.tl}</p></div>;
           })}
         </div>
       </Sec>
@@ -395,31 +400,53 @@ function Order() {
 
 function Ft(props) {
   return (
-    <footer style={{ background: C.bg, padding: "40px 20px 24px" }}>
-      <div style={{ maxWidth: 1100, margin: "0 auto", display: "flex", gap: 40, flexWrap: "wrap" }}>
-        <div style={{ flex: "1 1 180px" }}>
-          <div style={{ display: "flex", alignItems: "center", gap: 8, marginBottom: 6 }}>
-            <img src={LOGO} alt="" style={{ width: 24, height: "auto" }} />
-            <span style={{ color: C.wh, fontWeight: 800, fontSize: 15 }}>{"龙虾机"}</span>
+    <footer style={{ background: C.bg, padding: "50px 20px 20px" }}>
+      <div style={{ maxWidth: 1100, margin: "0 auto", display: "flex", gap: "40px", flexWrap: "wrap", justifyContent: "space-between" }}>
+        <div style={{ flex: "1 1 240px", maxWidth: "320px" }}>
+          <div style={{ display: "flex", alignItems: "center", gap: 8, marginBottom: 12 }}>
+            <div style={{ background: "rgba(255,255,255,0.1)", padding: 4, borderRadius: 8 }}>
+              <img src={LOGO} alt="" style={{ width: 28, height: "auto" }} />
+            </div>
+            <div>
+              <span style={{ color: C.wh, fontWeight: 800, fontSize: 18, display: "block", lineHeight: 1 }}>{"龙虾机"}</span>
+              <span style={{ color: "rgba(255,255,255,0.4)", fontSize: 10, fontFamily: "monospace" }}>longxiaji.com</span>
+            </div>
           </div>
-          <p style={{ color: C.gr, fontSize: 11, margin: "0 0 4px" }}>{"全球首款开机即用的 AI 安全工作站"}</p>
-          <p style={{ color: C.gr, fontSize: 11, margin: 0 }}>{"longxiaji.com"}</p>
+          <p style={{ color: "rgba(255,255,255,0.6)", fontSize: 12, margin: "0 0 10px", lineHeight: 1.5, borderLeft: "2px solid #E53935", paddingLeft: 8 }}>
+            全球首款开机即用的 AI 硬件终端。<br />
+            打破技术壁垒，让所有人零门槛享用先进 AI 服务。
+          </p>
         </div>
-        <div style={{ flex: "1 1 130px" }}>
-          <p style={{ color: C.gr, fontSize: 11, margin: "0 0 10px", fontWeight: 600 }}>{"快速链接"}</p>
-          {[{ l: "产品介绍", p: "product" },{ l: "售后支持", p: "support" },{ l: "技能市场", p: "skills" },{ l: "用户案例", p: "cases" },{ l: "新闻资讯", p: "news" },{ l: "联系我们", p: "contact" }].map(function (n) {
-            return <p key={n.p} onClick={function () { props.go(n.p); }} style={{ color: "rgba(255,255,255,0.35)", fontSize: 12, margin: "0 0 5px", cursor: "pointer" }}>{n.l}</p>;
+        <div style={{ flex: "1 1 120px" }}>
+          <p style={{ color: C.wh, fontSize: 13, margin: "0 0 16px", fontWeight: 700 }}>{"网站导航"}</p>
+          {[{ l: "产品介绍", p: "product" },{ l: "售后支持", p: "support" },{ l: "技能市场", p: "skills" },{ l: "用户案例", p: "cases" },{ l: "新闻资讯", p: "news" },{ l: "创始团队", p: "contact" }].map(function (n) {
+            return <p key={n.p} onClick={function () { props.go(n.p); }} style={{ color: "rgba(255,255,255,0.45)", fontSize: 12, margin: "0 0 10px", cursor: "pointer", transition: "color 0.2s" }} onMouseOver={e=>e.target.style.color='#EF5350'} onMouseOut={e=>e.target.style.color='rgba(255,255,255,0.45)'}>{n.l}</p>;
           })}
         </div>
-        <div style={{ flex: "1 1 160px" }}>
-          <p style={{ color: C.gr, fontSize: 11, margin: "0 0 10px", fontWeight: 600 }}>{"联系我们"}</p>
-          <p style={{ color: "rgba(255,255,255,0.35)", fontSize: 12, margin: "0 0 5px" }}>{"客服微信：扫码添加"}</p>
-          <p style={{ color: "rgba(255,255,255,0.35)", fontSize: 12, margin: "0 0 5px" }}>{"龙虾族微信群：扫码加入"}</p>
-          <p style={{ color: "rgba(255,255,255,0.35)", fontSize: 12, margin: 0 }}>{"biz@longxiaji.com"}</p>
+        <div style={{ flex: "1 1 180px" }}>
+          <p style={{ color: C.wh, fontSize: 13, margin: "0 0 16px", fontWeight: 700 }}>{"联系我们"}</p>
+          <div style={{ display: "flex", alignItems: "center", gap: 10, marginBottom: 12, cursor: "pointer" }} onClick={() => alert('请扫码添加客服微信')}>
+            <div style={{ width: 32, height: 32, borderRadius: "50%", background: "#1E293B", display: "flex", alignItems: "center", justifyContent: "center", color: "#A8B2C1", fontSize: 14 }}>💬</div>
+            <div>
+              <p style={{ color: "rgba(255,255,255,0.8)", fontSize: 12, margin: 0, fontWeight: 500 }}>客服微信</p>
+              <p style={{ color: "rgba(255,255,255,0.4)", fontSize: 11, margin: 0 }}>w17702521191</p>
+            </div>
+          </div>
+          <div style={{ display: "flex", alignItems: "center", gap: 10 }}>
+            <div style={{ width: 32, height: 32, borderRadius: "50%", background: "#1E293B", display: "flex", alignItems: "center", justifyContent: "center", color: "#A8B2C1", fontSize: 14 }}>✉️</div>
+            <div>
+              <p style={{ color: "rgba(255,255,255,0.8)", fontSize: 12, margin: 0, fontWeight: 500 }}>商务合作</p>
+              <p style={{ color: "rgba(255,255,255,0.4)", fontSize: 11, margin: 0 }}>552961@qq.com</p>
+            </div>
+          </div>
         </div>
       </div>
-      <div style={{ maxWidth: 1100, margin: "24px auto 0", paddingTop: 14, borderTop: "1px solid rgba(255,255,255,0.05)", textAlign: "center" }}>
-        <p style={{ color: "rgba(255,255,255,0.18)", fontSize: 11, margin: 0 }}>{"© 2026 龙虾机 LongXiaJi · 深圳智造 · 全球首发"}</p>
+      <div style={{ maxWidth: 1100, margin: "30px auto 0", paddingTop: 20, borderTop: "1px solid rgba(255,255,255,0.08)", display: "flex", justifyContent: "space-between", alignItems: "center", flexWrap: "wrap", gap: 10 }}>
+        <p style={{ color: "rgba(255,255,255,0.3)", fontSize: 11, margin: 0 }}>{"© " + new Date().getFullYear() + " 龙虾机 LongXiaJi. 保留所有权利. | 粤ICP备********号"}</p>
+        <div style={{ display: "flex", alignItems: "center", gap: 6, background: "rgba(255,255,255,0.05)", padding: "4px 12px", borderRadius: 20 }}>
+           <span style={{ width: 6, height: 6, borderRadius: "50%", background: "#4ADE80", display: "inline-block" }}></span>
+           <span style={{ color: "rgba(255,255,255,0.5)", fontSize: 11, fontWeight: 500 }}>深圳智造 · 全球服务</span>
+        </div>
       </div>
     </footer>
   );
