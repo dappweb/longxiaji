@@ -5,4 +5,4 @@ pages_build_output_dir = "dist"
 [[d1_databases]]
 binding = "DB"
 database_name = "longxiaji_inventory"
-database_id = "your-database-id-here" # Replace with actual D1 database ID after running `npx wrangler d1 create longxiaji_inventory`
+database_id = "6487f628-44f2-44e6-a978-065d7e1582d3"
