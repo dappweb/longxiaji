@@ -34,13 +34,16 @@ export default function App() {
               <div className="w-10 h-10 rounded-lg overflow-hidden flex items-center justify-center">
                 <img src="/logo.png" alt="Logo" className="w-full h-full object-contain" />
               </div>
-              <span className="font-bold text-xl tracking-tight text-slate-900">龙虾机 <span className="text-red-600">LongXiaJi</span></span>
+              <span className="font-bold text-xl tracking-tight text-slate-900">龙虾机</span>
             </div>
             <div className="hidden md:flex items-center gap-8 text-sm font-medium text-slate-600">
               <a href="#features" className="hover:text-red-600 transition-colors">首页</a>
               <a href="#how-it-works" className="hover:text-red-600 transition-colors">产品介绍</a>
               <a href="#skills" className="hover:text-red-600 transition-colors">售后支持</a>
               <a href="#specs" className="hover:text-red-600 transition-colors">技能市场</a>
+              <a href="#cases" className="hover:text-red-600 transition-colors">用户案例</a>
+              <a href="#news" className="hover:text-red-600 transition-colors">新闻资讯</a>
+              <a href="#contact" className="hover:text-red-600 transition-colors">联系我们</a>
             </div>
             <div className="flex items-center gap-4">
               <button className="hidden sm:block text-sm font-medium text-slate-600 hover:text-slate-900 transition-colors">
@@ -66,7 +69,7 @@ export default function App() {
               className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-red-100 text-red-700 text-sm font-medium mb-8"
             >
               <Globe className="w-4 h-4" />
-              <span>迪拜首发，全球火爆 —— 中国智造 AI 硬件</span>
+              <span>全球首款开机即用的 AI 安全工作站</span>
             </motion.div>
             <motion.h1 
               initial={{ opacity: 0, y: 20 }}
@@ -74,8 +77,8 @@ export default function App() {
               transition={{ duration: 0.5, delay: 0.1 }}
               className="text-5xl md:text-7xl font-extrabold tracking-tight text-slate-900 mb-6 leading-tight"
             >
-              把 AI 助理 <br className="hidden sm:block" />
-              <span className="text-transparent bg-clip-text bg-gradient-to-r from-red-600 to-orange-500">请回你的桌面</span>
+              把 AI 助理请回你的桌面 <br className="hidden sm:block" />
+              <span className="text-red-600">别让它住在你的电脑里</span>
             </motion.h1>
             <motion.p 
               initial={{ opacity: 0, y: 20 }}
@@ -406,56 +409,49 @@ export default function App() {
       {/* Footer */}
       <footer className="bg-slate-950 text-slate-400 py-12 border-t border-slate-900">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-8 mb-12">
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mb-12">
             <div>
-              <div className="flex items-center gap-2 mb-6">
-                <div className="w-6 h-6 bg-red-600 rounded flex items-center justify-center text-white text-xs">
-                  🦞
+              <div className="flex items-center gap-2 mb-4">
+                <div className="w-8 h-8 rounded-lg overflow-hidden flex items-center justify-center">
+                  <img src="/logo.png" alt="Logo" className="w-full h-full object-contain" />
                 </div>
-                <span className="font-bold text-white">龙虾机</span>
+                <span className="font-bold text-white text-lg">龙虾机 longxiaji.com</span>
               </div>
-              <p className="text-sm">预装 OpenClaw 系统的消费级 AI 硬件平台。</p>
+              <p className="text-sm border-l-2 border-red-600 pl-3">全球首款开机即用的 AI 安全工作站</p>
             </div>
             <div>
-              <h4 className="text-white font-semibold mb-4">产品</h4>
-              <ul className="space-y-2 text-sm">
-                <li><a href="#" className="hover:text-white transition-colors">首页</a></li>
-                <li><a href="#" className="hover:text-white transition-colors">技能市场</a></li>
-                <li><a href="#" className="hover:text-white transition-colors">Skills 市场</a></li>
-                <li><a href="#" className="hover:text-white transition-colors">企业定制</a></li>
+              <h4 className="text-white font-semibold mb-4">快速链接</h4>
+              <ul className="grid grid-cols-2 gap-2 text-sm">
+                <li><a href="#how-it-works" className="hover:text-white transition-colors">产品介绍</a></li>
+                <li><a href="#skills" className="hover:text-white transition-colors">售后支持</a></li>
+                <li><a href="#specs" className="hover:text-white transition-colors">技能市场</a></li>
+                <li><a href="#cases" className="hover:text-white transition-colors">用户案例</a></li>
+                <li><a href="#news" className="hover:text-white transition-colors">新闻资讯</a></li>
+                <li><a href="#contact" className="hover:text-white transition-colors">联系我们</a></li>
               </ul>
             </div>
             <div>
-              <h4 className="text-white font-semibold mb-4">联系我们</h4>
+              <h4 className="text-white font-semibold mb-4">联系方式</h4>
               <ul className="space-y-3 text-sm">
                 <li className="flex items-center gap-2">
                   <MessageCircle className="w-4 h-4 text-slate-400" />
-                  <span className="text-slate-300">微信: 552961</span>
+                  <span className="text-slate-300">客服微信: w17702521191</span>
                 </li>
                 <li className="flex items-center gap-2">
                   <MessageCircle className="w-4 h-4 text-slate-400" />
-                  <span className="text-slate-300">QQ: 552961</span>
+                  <span className="text-slate-300">龙虾族交流群</span>
                 </li>
                 <li className="flex items-center gap-2">
                   <Mail className="w-4 h-4 text-slate-400" />
-                  <span className="text-slate-300">邮箱: 552961@qq.com</span>
+                  <span className="text-slate-300">商务合作: 552961@qq.com</span>
                 </li>
-              </ul>
-            </div>
-            <div>
-              <h4 className="text-white font-semibold mb-4">关于</h4>
-              <ul className="space-y-2 text-sm">
-                <li><a href="#" className="hover:text-white transition-colors">关于我们</a></li>
-                <li><a href="#" className="hover:text-white transition-colors">加入开发者</a></li>
-                <li><a href="#" className="hover:text-white transition-colors">隐私政策</a></li>
-                <li><a href="#" className="hover:text-white transition-colors">服务条款</a></li>
               </ul>
             </div>
           </div>
           <div className="pt-8 border-t border-slate-800 text-sm flex flex-col md:flex-row justify-between items-center gap-4">
             <p>© 2026 龙虾机 LongXiaJi. All rights reserved.</p>
             <div className="flex items-center gap-4">
-              <span className="flex items-center gap-1"><Globe className="w-4 h-4" /> 中国智造，全球首发</span>
+              <span className="flex items-center gap-1"><Globe className="w-4 h-4" /> 深圳智造 · 全球首发</span>
             </div>
           </div>
         </div>
