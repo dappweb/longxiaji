@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import { motion, useSpring, useTransform } from 'motion/react';
 import { useOutletContext } from 'react-router-dom';
 import { CheckCircle2, Shield, Truck, RotateCcw } from 'lucide-react';
@@ -6,15 +6,47 @@ import { CheckCircle2, Shield, Truck, RotateCcw } from 'lucide-react';
 export default function Preorder() {
   const { setShowQR } = useOutletContext<any>();
 
-  const targetSold = 8347;
+  const [targetSold, setTargetSold] = useState(8347);
   const soldSpring = useSpring(0, { stiffness: 50, damping: 20 });
   const soldCount = useTransform(soldSpring, Math.round);
   const remainingCount = useTransform(soldSpring, (val) => Math.round(10000 - val));
   const progressWidth = useTransform(soldSpring, (val) => `${(val / 10000) * 100}%`);
 
+  // Fetch initial stock from D1 backend
+  useEffect(() => {
+    fetch('/api/inventory')
+      .then(res => res.json())
+      .then(data => {
+        if (data && data.soldCount) {
+          setTargetSold(data.soldCount);
+        }
+      })
+      .catch(err => console.error("Failed to fetch initial inventory", err));
+  }, []);
+
   useEffect(() => {
     soldSpring.set(targetSold);
-  }, []);
+  }, [targetSold, soldSpring]);
+
+  const handlePreorder = async () => {
+    // Optimistic UI update
+    if (targetSold < 10000) {
+      setTargetSold(prev => prev + 1);
+    }
+    setShowQR(true);
+    
+    // Update remote D1 database
+    try {
+      const res = await fetch('/api/inventory', { method: 'POST' });
+      const data = await res.json();
+      if (data && data.soldCount) {
+        // Sync with actual source of truth in case it vastly differed
+        setTargetSold(data.soldCount);
+      }
+    } catch (error) {
+      console.error("Failed to update remote inventory", error);
+    }
+  };
 
   return (
     <div className="bg-[#0D0D1A] min-h-screen text-white pt-16 pb-24">
@@ -76,7 +108,7 @@ export default function Preorder() {
         {/* CTA */}
         <div className="sticky bottom-6 z-40 w-full mb-8">
           <button
-            onClick={() => setShowQR(true)}
+            onClick={handlePreorder}
             className="w-full bg-red-600 text-white py-5 rounded-2xl text-xl font-bold hover:bg-red-600/90 backdrop-blur-md transition-all shadow-[0_10px_40px_rgba(220,38,38,0.4)] border border-red-500/30"
           >
             立即预定 · ¥298

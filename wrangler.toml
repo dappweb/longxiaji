@@ -1,0 +1,8 @@
+name = "longxiaji-website"
+compatibility_date = "2024-03-01"
+pages_build_output_dir = "dist"
+
+[[d1_databases]]
+binding = "DB"
+database_name = "longxiaji_inventory"
+database_id = "your-database-id-here" # Replace with actual D1 database ID after running `npx wrangler d1 create longxiaji_inventory`
