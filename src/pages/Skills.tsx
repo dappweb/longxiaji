@@ -127,7 +127,7 @@ export default function Skills() {
               <h3 className="text-xl font-bold text-slate-900 mb-2">{t('skills.empty')}</h3>
               <p className="text-slate-500 mb-6">{t('skills.empty_sub')}</p>
               <button
-                onClick={() => navigate('/contact')}
+                onClick={() => navigate('/about')}
                 className="text-red-600 font-medium hover:text-red-700 inline-flex items-center gap-2"
               >
                 {t('skills.contact')} <ChevronRight className="w-4 h-4" />

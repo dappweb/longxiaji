@@ -1,21 +1,28 @@
-import { useEffect } from 'react';
+import { useEffect, useRef } from 'react';
 import { motion } from 'motion/react';
 import { useNavigate } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
 import {
   Shield, Zap, MessageSquare, Lock, Clock, Gift,
-  ChevronRight, Briefcase,
-  UserCheck, Globe, CheckCircle2,
-  Cpu, HardDrive, Fan, Puzzle
+  ChevronRight, Briefcase, Play,
+  UserCheck, Globe, CheckCircle2, ArrowDown,
+  HardDrive, Fan, Puzzle,
+  Image as ImageIcon, Video, Mic, PenTool, ShoppingBag, Bot
 } from 'lucide-react';
 import { FeatureCard } from '../components/FeatureCard';
-import { StepCard } from '../components/StepCard';
-import { SkillCard } from '../components/SkillCard';
+
+const CAN_ICONS = [ImageIcon, Video, Bot, Mic, PenTool, ShoppingBag];
 
 export default function Home() {
   const navigate = useNavigate();
   const { t } = useTranslation();
+  const productRef = useRef<HTMLDivElement>(null);
   useEffect(() => { document.title = t('nav.logo') + ' · ' + t('hero.badge'); }, [t]);
+
+  const scrollToProduct = () => {
+    productRef.current?.scrollIntoView({ behavior: 'smooth', block: 'center' });
+  };
+
   return (
     <>
       {/* Hero Section */}
@@ -58,8 +65,8 @@ export default function Home() {
               <button onClick={() => navigate('/preorder')} className="w-full sm:w-auto bg-red-600 text-white px-8 py-4 rounded-full text-lg font-medium hover:bg-red-700 transition-all shadow-lg shadow-red-600/30 flex items-center justify-center gap-2 group">
                 {t('hero.preorder', '抢先预定')} <ChevronRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
               </button>
-              <button className="w-full sm:w-auto bg-white text-slate-700 border border-slate-200 px-8 py-4 rounded-full text-lg font-medium hover:bg-slate-50 hover:border-slate-300 transition-all flex items-center justify-center gap-2">
-                {t('hero.video', '观看演示视频')}
+              <button onClick={scrollToProduct} className="w-full sm:w-auto bg-white text-slate-700 border border-slate-200 px-8 py-4 rounded-full text-lg font-medium hover:bg-slate-50 hover:border-slate-300 transition-all flex items-center justify-center gap-2">
+                <Play className="w-5 h-5" /> {t('hero.video', '观看演示视频')}
               </button>
             </motion.div>
             <motion.p 
@@ -73,8 +80,9 @@ export default function Home() {
             </motion.p>
           </div>
 
-          {/* Product Image section */}
+          {/* Product Image */}
           <motion.div 
+            ref={productRef}
             initial={{ opacity: 0, y: 40 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.7, delay: 0.4 }}
@@ -87,12 +95,37 @@ export default function Home() {
         </div>
       </section>
 
+      {/* Stats Row */}
+      <section className="py-10 bg-white border-b border-slate-100">
+        <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="grid grid-cols-2 md:grid-cols-4 gap-8 text-center">
+            <div>
+              <p className="text-3xl md:text-4xl font-extrabold text-red-600">{t('home.stats.skills', '12+')}</p>
+              <p className="text-sm text-slate-500 mt-1">{t('home.stats.skills_label', '预装 AI 技能')}</p>
+            </div>
+            <div>
+              <p className="text-3xl md:text-4xl font-extrabold text-red-600">{t('home.stats.setup', '3 min')}</p>
+              <p className="text-sm text-slate-500 mt-1">{t('home.stats.setup_label', '开机到上手')}</p>
+            </div>
+            <div>
+              <p className="text-3xl md:text-4xl font-extrabold text-red-600">{t('home.stats.offices', '8')}</p>
+              <p className="text-sm text-slate-500 mt-1">{t('home.stats.offices_label', '全球办事处')}</p>
+            </div>
+            <div>
+              <p className="text-3xl md:text-4xl font-extrabold text-red-600">{t('home.stats.uptime', '24/7')}</p>
+              <p className="text-sm text-slate-500 mt-1">{t('home.stats.uptime_label', '全天候运行')}</p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Features */}
       <section id="features" className="py-16 md:py-24 bg-white">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center max-w-3xl mx-auto mb-16">
             <h2 className="text-3xl md:text-4xl font-bold text-slate-900 mb-4">{t("home.sec1.title", "不需要你懂电脑，它懂你")}</h2>
             <p className="text-lg text-slate-600">
-              {t("home.sec1.sub", "解决“用不用得上 AI”的问题。把配置、支付、注册等门槛全部消除。")}
+              {t('home.sec1.sub', '解决\u201c用不用得上 AI\u201d的问题。把配置、支付、注册等门槛全部消除。')}
             </p>
           </div>
 
@@ -131,14 +164,14 @@ export default function Home() {
         </div>
       </section>
       
-      {/* Story: Intro */}
+      {/* Story: Intro + Ready (merged) */}
       <section className="py-20 md:py-28 bg-slate-900 text-white">
         <div className="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8 text-center space-y-6">
           <h2 className="text-3xl md:text-5xl font-extrabold mb-4">{t('home.story.title')}</h2>
           <p className="text-2xl text-slate-200 font-medium">{t('home.story.intro1')}</p>
           <p className="text-lg text-slate-400">{t('home.story.intro2')}</p>
           <p className="text-base text-slate-500 font-mono">{t('home.story.intro3')}</p>
-          <p className="text-xl text-red-400 font-bold">{t('home.story.intro4')}</p>
+          <p className="text-xl font-bold text-slate-400">{t('home.story.intro4')}</p>
           <div className="pt-6 space-y-2">
             <p className="text-lg text-slate-300">{t('home.story.intro5')}</p>
             <p className="text-2xl md:text-3xl font-bold text-white">{t('home.story.intro6')}</p>
@@ -147,37 +180,31 @@ export default function Home() {
             <p className="text-xl text-red-400 font-semibold">{t('home.story.intro7')}</p>
             <p className="text-lg text-slate-400">{t('home.story.intro8')}</p>
           </div>
+          <div className="pt-10 space-y-4">
+            <h3 className="text-2xl md:text-3xl font-bold">{t('home.story.ready_title')}</h3>
+            <p className="text-lg text-slate-400">{t('home.story.ready1')}</p>
+            <p className="text-lg text-slate-400">{t('home.story.ready2')}</p>
+            <p className="text-2xl md:text-3xl font-extrabold text-red-400 mt-4">{t('home.story.ready_steps')}</p>
+          </div>
         </div>
       </section>
 
-      {/* Story: Ready to Use */}
+      {/* Story: Your Own Device + Privacy */}
       <section className="py-16 md:py-24 bg-white">
-        <div className="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8 text-center space-y-6">
-          <h3 className="text-3xl md:text-4xl font-bold text-slate-900">{t('home.story.ready_title')}</h3>
-          <p className="text-lg text-slate-600">{t('home.story.ready1')}</p>
-          <p className="text-lg text-slate-600">{t('home.story.ready2')}</p>
-          <p className="text-lg text-slate-500">{t('home.story.ready3')}</p>
-          <p className="text-2xl md:text-3xl font-extrabold text-red-600 mt-4">{t('home.story.ready_steps')}</p>
-        </div>
-      </section>
-
-      {/* Story: Your Own Device */}
-      <section className="py-16 md:py-24 bg-slate-50">
         <div className="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8 text-center space-y-6">
           <h3 className="text-3xl md:text-4xl font-bold text-slate-900">{t('home.story.own_title')}</h3>
           <p className="text-lg text-slate-600">{t('home.story.own1')}</p>
           <p className="text-lg text-slate-600">{t('home.story.own2')}</p>
-          <p className="text-base text-slate-500">{t('home.story.own3')}</p>
           <div className="flex flex-col sm:flex-row justify-center gap-4 pt-4">
-            <div className="flex items-center gap-2 bg-white px-5 py-3 rounded-xl border border-slate-200 shadow-sm">
+            <div className="flex items-center gap-2 bg-slate-50 px-5 py-3 rounded-xl border border-slate-200 shadow-sm">
               <Shield className="w-5 h-5 text-emerald-500" />
               <span className="text-slate-700 font-medium">{t('home.story.own_f1')}</span>
             </div>
-            <div className="flex items-center gap-2 bg-white px-5 py-3 rounded-xl border border-slate-200 shadow-sm">
+            <div className="flex items-center gap-2 bg-slate-50 px-5 py-3 rounded-xl border border-slate-200 shadow-sm">
               <Lock className="w-5 h-5 text-emerald-500" />
               <span className="text-slate-700 font-medium">{t('home.story.own_f2')}</span>
             </div>
-            <div className="flex items-center gap-2 bg-white px-5 py-3 rounded-xl border border-slate-200 shadow-sm">
+            <div className="flex items-center gap-2 bg-slate-50 px-5 py-3 rounded-xl border border-slate-200 shadow-sm">
               <Zap className="w-5 h-5 text-emerald-500" />
               <span className="text-slate-700 font-medium">{t('home.story.own_f3')}</span>
             </div>
@@ -186,74 +213,44 @@ export default function Home() {
         </div>
       </section>
 
-      {/* Story: What Can You Do */}
-      <section className="py-16 md:py-24 bg-white">
+      {/* Capabilities Grid (with icons) */}
+      <section className="py-16 md:py-24 bg-slate-50">
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-12">
             <h3 className="text-3xl md:text-4xl font-bold text-slate-900 mb-4">{t('home.story.can_title')}</h3>
             <p className="text-lg text-slate-600">{t('home.story.can1')}</p>
           </div>
           <div className="grid grid-cols-2 md:grid-cols-3 gap-4">
-            {(['can_f1', 'can_f2', 'can_f3', 'can_f4', 'can_f5', 'can_f6'] as const).map(key => (
-              <div key={key} className="bg-slate-50 rounded-2xl p-6 text-center border border-slate-100 hover:shadow-md transition-shadow">
-                <p className="font-semibold text-slate-900">{t(`home.story.${key}`)}</p>
-              </div>
-            ))}
+            {(['can_f1', 'can_f2', 'can_f3', 'can_f4', 'can_f5', 'can_f6'] as const).map((key, idx) => {
+              const Icon = CAN_ICONS[idx];
+              return (
+                <div key={key} className="bg-white rounded-2xl p-6 text-center border border-slate-200 hover:shadow-md hover:border-red-200 transition-all">
+                  <Icon className="w-8 h-8 text-red-500 mx-auto mb-3" />
+                  <p className="font-semibold text-slate-900">{t(`home.story.${key}`)}</p>
+                </div>
+              );
+            })}
           </div>
           <div className="text-center mt-12 space-y-2">
             <p className="text-lg text-slate-600">{t('home.story.can2')}</p>
-            <p className="text-lg text-slate-700 font-medium">{t('home.story.can3')}</p>
             <p className="text-2xl font-bold text-red-600">{t('home.story.can4')}</p>
           </div>
         </div>
       </section>
 
-      {/* Story: Who Needs + Era + Hardware */}
-      <section className="py-16 md:py-24 bg-slate-900 text-white">
-        <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 space-y-20">
-          {/* Who Needs */}
-          <div className="text-center space-y-6">
-            <h3 className="text-3xl md:text-4xl font-bold">{t('home.story.who_title')}</h3>
-            <p className="text-lg text-slate-400">{t('home.story.who1')}</p>
-            <div className="flex flex-wrap justify-center gap-3">
-              {(['who_f1', 'who_f2', 'who_f3', 'who_f4', 'who_f5'] as const).map(key => (
-                <span key={key} className="bg-slate-800 border border-slate-700 px-5 py-2 rounded-full text-sm font-medium text-slate-300">{t(`home.story.${key}`)}</span>
-              ))}
-            </div>
-            <p className="text-lg text-slate-400">{t('home.story.who2')}</p>
-          </div>
-
-          {/* Era */}
-          <div className="text-center space-y-4 border-t border-slate-800 pt-16">
-            <h3 className="text-3xl md:text-4xl font-bold">{t('home.story.era_title')}</h3>
-            <p className="text-lg text-slate-400">{t('home.story.era1')}</p>
-            <p className="text-lg text-slate-300">{t('home.story.era2')}</p>
-            <p className="text-2xl font-bold text-red-400 pt-2">{t('home.story.era3')}</p>
-          </div>
-
-          {/* Hardware */}
-          <div className="text-center space-y-6 border-t border-slate-800 pt-16">
-            <h3 className="text-3xl md:text-4xl font-bold">{t('home.story.hw_title')}</h3>
-            <p className="text-lg text-slate-400">{t('home.story.hw1')}</p>
-            <div className="flex flex-col sm:flex-row justify-center gap-6 pt-4">
-              <div className="flex items-center gap-3 bg-slate-800 px-6 py-4 rounded-2xl border border-slate-700">
-                <HardDrive className="w-6 h-6 text-red-400" />
-                <span className="text-slate-200 font-medium">{t('home.story.hw_f1')}</span>
-              </div>
-              <div className="flex items-center gap-3 bg-slate-800 px-6 py-4 rounded-2xl border border-slate-700">
-                <Fan className="w-6 h-6 text-red-400" />
-                <span className="text-slate-200 font-medium">{t('home.story.hw_f2')}</span>
-              </div>
-              <div className="flex items-center gap-3 bg-slate-800 px-6 py-4 rounded-2xl border border-slate-700">
-                <Puzzle className="w-6 h-6 text-red-400" />
-                <span className="text-slate-200 font-medium">{t('home.story.hw_f3')}</span>
-              </div>
-            </div>
-            <p className="text-lg text-slate-400">{t('home.story.hw2')}</p>
-          </div>
+      {/* Mid-page CTA */}
+      <section className="py-12 bg-white">
+        <div className="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+          <button
+            onClick={() => navigate('/preorder')}
+            className="bg-red-600 text-white px-10 py-4 rounded-full text-lg font-medium hover:bg-red-700 transition-all shadow-lg shadow-red-600/20 inline-flex items-center gap-2 group"
+          >
+            {t('hero.preorder', '抢先预定')} <ArrowDown className="w-5 h-5 group-hover:translate-y-0.5 transition-transform" />
+          </button>
         </div>
       </section>
 
+      {/* Who Uses + Era + Hardware (merged, replaces old story.who + sec2) */}
       <section className="py-16 md:py-24 bg-slate-900 text-white">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center max-w-3xl mx-auto mb-16">
@@ -263,12 +260,12 @@ export default function Home() {
             </p>
           </div>
 
-          <div className="grid md:grid-cols-3 gap-6">
+          <div className="grid md:grid-cols-3 gap-6 mb-16">
             <div className="bg-slate-800 rounded-2xl p-8 border border-slate-700">
               <UserCheck className="w-8 h-8 text-red-500 mb-6" />
               <h3 className="text-xl font-bold mb-3">{t("home.sec2.c1.title", "个人用户 / 职场新人")}</h3>
               <p className="text-slate-400 mb-6">
-                {t("home.sec2.c1.q", "“拥有一个 24 小时在线的私人 AI 助理。微信里直接问，效率翻倍。”")}
+                {t('home.sec2.c1.q', '\u201c拥有一个 24 小时在线的私人 AI 助理。微信里直接问，效率翻倍。\u201d')}
               </p>
               <div className="text-sm font-medium text-slate-300 bg-slate-700/50 inline-block px-3 py-1 rounded-full">
                 {t("home.sec2.c1.scene", "典型场景：日常问答、邮件起草")}
@@ -279,7 +276,7 @@ export default function Home() {
               <Briefcase className="w-8 h-8 text-red-500 mb-6" />
               <h3 className="text-xl font-bold mb-3">{t("home.sec2.c2.title", "中小企业 / 工作室")}</h3>
               <p className="text-slate-400 mb-6">
-                {t("home.sec2.c2.q", "“一台龙虾机的月费，还不到一个实习生的交通补贴。但它不会请假、不会离职、不会累，数据还绝对安全。”")}
+                {t('home.sec2.c2.q', '\u201c一台龙虾机的月费，还不到一个实习生的交通补贴。但它不会请假、不会离职、不会累，数据还绝对安全。\u201d')}
               </p>
               <div className="text-sm font-medium text-slate-300 bg-slate-700/50 inline-block px-3 py-1 rounded-full">
                 {t("home.sec2.c2.scene", "典型场景：客服自动回复、文案生成")}
@@ -290,18 +287,51 @@ export default function Home() {
               <Gift className="w-8 h-8 text-red-500 mb-6" />
               <h3 className="text-xl font-bold mb-3">{t("home.sec2.c3.title", "长辈 / 父母")}</h3>
               <p className="text-slate-400 mb-6">
-                {t("home.sec2.c3.q", "“它不仅仅是你的工具，也是给爸妈的一份 AI 礼物。父母用微信语音问天气、查菜谱，比智能音箱聪明多了。”")}
+                {t('home.sec2.c3.q', '\u201c它不仅仅是你的工具，也是给爸妈的一份 AI 礼物。父母用微信语音问天气、查菜谱，比智能音箱聪明多了。\u201d')}
               </p>
               <div className="text-sm font-medium text-slate-300 bg-slate-700/50 inline-block px-3 py-1 rounded-full">
                 {t("home.sec2.c3.scene", "典型场景：生活百科、健康食谱")}
               </div>
             </div>
           </div>
+
+          {/* Era + Hardware (inline) */}
+          <div className="max-w-4xl mx-auto space-y-16">
+            <div className="text-center space-y-4">
+              <h3 className="text-3xl md:text-4xl font-bold">{t('home.story.era_title')}</h3>
+              <p className="text-lg text-slate-400">{t('home.story.era1')}</p>
+              <p className="text-lg text-slate-300">{t('home.story.era2')}</p>
+              <p className="text-2xl font-bold text-red-400 pt-2">{t('home.story.era3')}</p>
+            </div>
+
+            <div className="text-center space-y-6 border-t border-slate-800 pt-12">
+              <h3 className="text-2xl md:text-3xl font-bold">{t('home.story.hw_title')}</h3>
+              <p className="text-lg text-slate-400">{t('home.story.hw1')}</p>
+              <div className="flex flex-col sm:flex-row justify-center gap-6 pt-4">
+                <div className="flex items-center gap-3 bg-slate-800 px-6 py-4 rounded-2xl border border-slate-700">
+                  <HardDrive className="w-6 h-6 text-red-400" />
+                  <span className="text-slate-200 font-medium">{t('home.story.hw_f1')}</span>
+                </div>
+                <div className="flex items-center gap-3 bg-slate-800 px-6 py-4 rounded-2xl border border-slate-700">
+                  <Fan className="w-6 h-6 text-red-400" />
+                  <span className="text-slate-200 font-medium">{t('home.story.hw_f2')}</span>
+                </div>
+                <div className="flex items-center gap-3 bg-slate-800 px-6 py-4 rounded-2xl border border-slate-700">
+                  <Puzzle className="w-6 h-6 text-red-400" />
+                  <span className="text-slate-200 font-medium">{t('home.story.hw_f3')}</span>
+                </div>
+              </div>
+              <p className="text-lg text-slate-400">{t('home.story.hw2')}</p>
+            </div>
+          </div>
         </div>
       </section>
 
+      {/* Final CTA — no external texture */}
       <section className="py-16 md:py-24 bg-red-600 relative overflow-hidden">
-        <div className="absolute inset-0 bg-[url('https://www.transparenttextures.com/patterns/cubes.png')] opacity-10 mix-blend-overlay" />
+        <div className="absolute inset-0 opacity-10">
+          <div className="absolute inset-0" style={{ backgroundImage: 'radial-gradient(circle, rgba(255,255,255,0.15) 1px, transparent 1px)', backgroundSize: '20px 20px' }} />
+        </div>
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10 text-center">
           <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold text-white mb-6">
             {t("home.sec3.t1", "别人还在学怎么用 AI")}<br/>{t("home.sec3.t2", "你的龙虾机已经在帮你干活了")}
@@ -317,7 +347,7 @@ export default function Home() {
               {t("home.sec3.btn1", "立即预定抢首发")}
             </button>
             <button 
-              onClick={() => navigate('/contact')}
+              onClick={() => navigate('/about')}
               className="w-full sm:w-auto bg-red-700 text-white border border-red-500 px-8 py-4 rounded-full text-lg font-medium hover:bg-red-800 transition-all"
             >
               {t("home.sec3.btn2", "联系企业采购")}

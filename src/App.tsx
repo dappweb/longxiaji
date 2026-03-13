@@ -10,7 +10,7 @@ const Product = lazy(() => import('./pages/Product'));
 const Skills = lazy(() => import('./pages/Skills'));
 const Cases = lazy(() => import('./pages/Cases'));
 const News = lazy(() => import('./pages/News'));
-const Contact = lazy(() => import('./pages/Contact'));
+const About = lazy(() => import('./pages/About'));
 const Preorder = lazy(() => import('./pages/Preorder'));
 const Support = lazy(() => import('./pages/Support'));
 const Privacy = lazy(() => import('./pages/Privacy'));
@@ -39,7 +39,8 @@ export default function App() {
             <Route path="skills" element={<Skills />} />
             <Route path="cases" element={<Cases />} />
             <Route path="news" element={<News />} />
-            <Route path="contact" element={<Contact />} />
+            <Route path="about" element={<About />} />
+            <Route path="contact" element={<About />} />
             <Route path="preorder" element={<Preorder />} />
             <Route path="support" element={<Support />} />
             <Route path="privacy" element={<Privacy />} />

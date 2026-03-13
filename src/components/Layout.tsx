@@ -50,7 +50,7 @@ export default function Layout() {
               <Link to="/skills" className="hover:text-red-600 transition-colors">{t('nav.skills', '技能市场')}</Link>
               <Link to="/cases" className="hover:text-red-600 transition-colors">{t('nav.cases', '用户案例')}</Link>
               <Link to="/news" className="hover:text-red-600 transition-colors">{t('nav.news', '新闻资讯')}</Link>
-              <Link to="/contact" className="hover:text-red-600 transition-colors">{t('nav.contact', '关于我们')}</Link>
+              <Link to="/about" className="hover:text-red-600 transition-colors">{t('nav.contact', '关于我们')}</Link>
             </div>
             <div className="flex items-center gap-4">
               <button 
@@ -101,7 +101,7 @@ export default function Layout() {
                 <Link to="/skills" className="hover:text-red-600 p-2 rounded-lg hover:bg-slate-50">{t('nav.skills', '技能市场')}</Link>
                 <Link to="/cases" className="hover:text-red-600 p-2 rounded-lg hover:bg-slate-50">{t('nav.cases', '用户案例')}</Link>
                 <Link to="/news" className="hover:text-red-600 p-2 rounded-lg hover:bg-slate-50">{t('nav.news', '新闻资讯')}</Link>
-                <Link to="/contact" className="hover:text-red-600 p-2 rounded-lg hover:bg-slate-50">{t('nav.contact', '关于我们')}</Link>
+                <Link to="/about" className="hover:text-red-600 p-2 rounded-lg hover:bg-slate-50">{t('nav.contact', '关于我们')}</Link>
                 <button
                   onClick={() => { navigate('/preorder'); setMobileMenuOpen(false); }}
                   className="w-full bg-red-600 text-white px-5 py-3 rounded-xl text-center text-sm font-bold shadow-sm mt-2"
@@ -154,7 +154,7 @@ export default function Layout() {
                 <li><Link to="/skills" className="hover:text-red-400 transition-colors">{t('nav.skills', '技能市场')}</Link></li>
                 <li><Link to="/cases" className="hover:text-red-400 transition-colors">{t('nav.cases', '用户案例')}</Link></li>
                 <li><Link to="/news" className="hover:text-red-400 transition-colors">{t('nav.news', '新闻资讯')}</Link></li>
-                <li><Link to="/contact" className="hover:text-red-400 transition-colors">{t('nav.contact', '关于我们')}</Link></li>
+                <li><Link to="/about" className="hover:text-red-400 transition-colors">{t('nav.contact', '关于我们')}</Link></li>
               </ul>
             </div>
 

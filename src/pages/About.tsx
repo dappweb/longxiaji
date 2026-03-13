@@ -1,47 +1,102 @@
 import { useEffect } from 'react';
 import { useTranslation } from 'react-i18next';
 import { useNavigate } from 'react-router-dom';
-import { MapPin } from 'lucide-react';
+import {
+  MapPin, Shield, Zap, Clock, MessageSquare
+} from 'lucide-react';
 
-export default function Contact() {
+export default function About() {
   const { t } = useTranslation();
   const navigate = useNavigate();
-  useEffect(() => { document.title = `${t('nav.contact', '关于我们')} · ${t('nav.logo', '龙虾机')}`; }, [t]);
+  useEffect(() => { document.title = `${t('nav.contact', '\u5173\u4e8e\u6211\u4eec')} \u00b7 ${t('nav.logo', '\u9f99\u867e\u673a')}`; }, [t]);
   return (
     <>
-      {/* About / Product Intro Section */}
-      <section className="py-24 bg-white border-t border-slate-200">
-        <div className="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8">
-          <h1 className="text-3xl md:text-4xl font-bold text-slate-900 mb-10 text-center">{t('about.title')}</h1>
-          <div className="prose prose-lg prose-slate max-w-none text-slate-700 leading-relaxed space-y-6">
-            <p>{t('about.p1')}</p>
-            <p>{t('about.p2')}</p>
-            <p>{t('about.p3')}</p>
-            <p className="text-xl font-bold text-slate-900 border-l-4 border-red-600 pl-4 my-8">{t('about.slogan1')}</p>
-            <p>{t('about.p4')}</p>
-            <p>{t('about.p5')}</p>
-            <p>{t('about.p6')}</p>
-            <p>{t('about.p7')}</p>
-            <p className="text-xl font-bold text-slate-900 border-l-4 border-red-600 pl-4 my-8">{t('about.slogan2')}</p>
-            <p>{t('about.p8')}</p>
-            <p>{t('about.p9')}</p>
+      {/* Hero Banner */}
+      <section className="bg-gradient-to-b from-slate-900 to-slate-800 text-white py-20 md:py-28">
+        <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+          <h1 className="text-3xl md:text-5xl font-extrabold mb-4">{t('about.title')}</h1>
+          <p className="text-lg text-slate-300 max-w-2xl mx-auto">{t('about.tagline')}</p>
+        </div>
+      </section>
+
+      {/* Company Stats */}
+      <section className="py-10 bg-white border-b border-slate-100">
+        <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="grid grid-cols-2 md:grid-cols-4 gap-8 text-center">
+            <div>
+              <p className="text-3xl md:text-4xl font-extrabold text-red-600">2024</p>
+              <p className="text-sm text-slate-500 mt-1">{t('about.stats.founded', '\u6210\u7acb\u5e74\u4efd')}</p>
+            </div>
+            <div>
+              <p className="text-3xl md:text-4xl font-extrabold text-red-600">6</p>
+              <p className="text-sm text-slate-500 mt-1">{t('about.stats.founders', '\u8054\u5408\u521b\u59cb\u4eba')}</p>
+            </div>
+            <div>
+              <p className="text-3xl md:text-4xl font-extrabold text-red-600">8</p>
+              <p className="text-sm text-slate-500 mt-1">{t('about.stats.offices', '\u5168\u7403\u529e\u4e8b\u5904')}</p>
+            </div>
+            <div>
+              <p className="text-3xl md:text-4xl font-extrabold text-red-600">12+</p>
+              <p className="text-sm text-slate-500 mt-1">{t('about.stats.skills', '\u9884\u88c5 AI \u6280\u80fd')}</p>
+            </div>
           </div>
-          <div className="mt-12 text-center">
-            <p className="text-2xl font-bold text-slate-900">{t('about.brand')}</p>
-            <p className="text-lg text-slate-600 mt-1">{t('about.tagline')}</p>
-            <p className="text-xl font-bold text-red-600 mt-4">{t('about.slogan3')}</p>
-            <p className="text-sm text-slate-500 mt-4">www.longxiaji.com</p>
+        </div>
+      </section>
+
+      {/* Product Intro — Card Layout */}
+      <section className="py-16 md:py-24 bg-white">
+        <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="text-center max-w-3xl mx-auto mb-14">
+            <h2 className="text-3xl md:text-4xl font-bold text-slate-900 mb-4">{t('about.slogan1')}</h2>
+            <p className="text-lg text-slate-600">{t('about.p1')}</p>
+          </div>
+
+          <div className="grid md:grid-cols-2 gap-8 mb-12">
+            <div className="bg-slate-50 rounded-2xl p-8 border border-slate-200">
+              <Zap className="w-8 h-8 text-amber-500 mb-4" />
+              <h3 className="text-xl font-bold text-slate-900 mb-3">{t('about.card1_title', '\u5f00\u673a\u5373\u7528\uff0c\u96f6\u95e8\u69db')}</h3>
+              <p className="text-slate-600 leading-relaxed">{t('about.p2')}</p>
+            </div>
+            <div className="bg-slate-50 rounded-2xl p-8 border border-slate-200">
+              <Shield className="w-8 h-8 text-emerald-500 mb-4" />
+              <h3 className="text-xl font-bold text-slate-900 mb-3">{t('about.card2_title', '\u6570\u636e\u5b89\u5168\uff0c\u7269\u7406\u9694\u79bb')}</h3>
+              <p className="text-slate-600 leading-relaxed">{t('about.p3')}</p>
+            </div>
+            <div className="bg-slate-50 rounded-2xl p-8 border border-slate-200">
+              <MessageSquare className="w-8 h-8 text-blue-500 mb-4" />
+              <h3 className="text-xl font-bold text-slate-900 mb-3">{t('about.card3_title', '\u5fae\u4fe1\u63a5\u5165\uff0c\u968f\u65f6\u8c03\u7528')}</h3>
+              <p className="text-slate-600 leading-relaxed">{t('about.p4')}</p>
+            </div>
+            <div className="bg-slate-50 rounded-2xl p-8 border border-slate-200">
+              <Clock className="w-8 h-8 text-red-500 mb-4" />
+              <h3 className="text-xl font-bold text-slate-900 mb-3">{t('about.card4_title', '24/7 \u4e0d\u95f4\u65ad\u8fd0\u884c')}</h3>
+              <p className="text-slate-600 leading-relaxed">{t('about.p5')}</p>
+            </div>
+          </div>
+
+          {/* Slogans */}
+          <div className="max-w-3xl mx-auto space-y-6 text-center">
+            <p className="text-xl font-bold text-slate-900 border-l-4 border-red-600 pl-4 text-left">{t('about.slogan2')}</p>
+            <p className="text-slate-600 leading-relaxed text-left">{t('about.p6')}</p>
+            <p className="text-slate-600 leading-relaxed text-left">{t('about.p7')}</p>
+            <p className="text-slate-600 leading-relaxed text-left">{t('about.p8')}</p>
+            <p className="text-slate-600 leading-relaxed text-left">{t('about.p9')}</p>
+            <div className="pt-6">
+              <p className="text-2xl font-bold text-slate-900">{t('about.brand')}</p>
+              <p className="text-xl font-bold text-red-600 mt-2">{t('about.slogan3')}</p>
+              <p className="text-sm text-slate-400 mt-2">www.longxiaji.com</p>
+            </div>
           </div>
         </div>
       </section>
 
       {/* Founders Section */}
-      <section id="founders" className="py-24 bg-slate-50 border-t border-slate-200">
+      <section id="founders" className="py-24 bg-slate-50">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center max-w-3xl mx-auto mb-16">
-            <h2 className="text-3xl md:text-4xl font-bold text-slate-900 mb-4">{t('contact.founders.title', '最接地气的跨界创始团队')}</h2>
+            <h2 className="text-3xl md:text-4xl font-bold text-slate-900 mb-4">{t('contact.founders.title', '\u6700\u63a5\u5730\u6c14\u7684\u8de8\u754c\u521b\u59cb\u56e2\u961f')}</h2>
             <p className="text-lg text-slate-600">
-              {t('contact.founders.sub', '六个从龙虾产业走出来的人，因为同一个目标走到了一起：让每个人都能零门槛用上 AI。')}
+              {t('contact.founders.sub', '\u516d\u4e2a\u4ece\u9f99\u867e\u4ea7\u4e1a\u8d70\u51fa\u6765\u7684\u4eba\uff0c\u56e0\u4e3a\u540c\u4e00\u4e2a\u76ee\u6807\u8d70\u5230\u4e86\u4e00\u8d77\uff1a\u8ba9\u6bcf\u4e2a\u4eba\u90fd\u80fd\u96f6\u95e8\u69db\u7528\u4e0a AI\u3002')}
             </p>
           </div>
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
@@ -100,11 +155,45 @@ export default function Contact() {
       {/* Global Offices Section */}
       <section className="py-24 bg-white border-t border-slate-200">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-center max-w-3xl mx-auto mb-16">
-            <h2 className="text-3xl md:text-4xl font-bold text-slate-900 mb-4">{t('contact.title', '联系我们 · 全球分布')}</h2>
+          <div className="text-center max-w-3xl mx-auto mb-12">
+            <h2 className="text-3xl md:text-4xl font-bold text-slate-900 mb-4">{t('contact.title', '\u8054\u7cfb\u6211\u4eec \u00b7 \u5168\u7403\u5206\u5e03')}</h2>
             <p className="text-lg text-slate-600">
-              {t('contact.sub', '业务覆盖全球，随时就近为您提供最专业的 AI 硬件支持与咨询服务')}
+              {t('contact.sub', '\u4e1a\u52a1\u8986\u76d6\u5168\u7403\uff0c\u968f\u65f6\u5c31\u8fd1\u4e3a\u60a8\u63d0\u4f9b\u6700\u4e13\u4e1a\u7684 AI \u786c\u4ef6\u652f\u6301\u4e0e\u54a8\u8be2\u670d\u52a1')}
             </p>
+          </div>
+
+          {/* World Map Dots */}
+          <div className="relative w-full max-w-4xl mx-auto mb-12 hidden md:block">
+            <svg viewBox="0 0 800 400" className="w-full h-auto" xmlns="http://www.w3.org/2000/svg">
+              <rect width="800" height="400" fill="transparent" />
+              {/* Grid dots for world silhouette */}
+              <g opacity="0.08">
+                {Array.from({ length: 40 }).map((_, r) =>
+                  Array.from({ length: 80 }).map((_, c) => (
+                    <circle key={`${r}-${c}`} cx={c * 10 + 5} cy={r * 10 + 5} r="1.2" fill="#64748b" />
+                  ))
+                )}
+              </g>
+              {/* Office location markers */}
+              {[
+                { cx: 588, cy: 195, label: '\u6df1\u5733' },
+                { cx: 575, cy: 175, label: '\u897f\u5b89' },
+                { cx: 495, cy: 185, label: '\u8fea\u62dc' },
+                { cx: 520, cy: 210, label: '\u5370\u5ea6' },
+                { cx: 560, cy: 225, label: '\u65b0\u52a0\u5761' },
+                { cx: 180, cy: 170, label: '\u6d1b\u6749\u77f6' },
+                { cx: 215, cy: 145, label: '\u591a\u4f26\u591a' },
+                { cx: 430, cy: 305, label: '\u7ea6\u7ff0\u5185\u65af\u5821' },
+              ].map((loc, i) => (
+                <g key={i}>
+                  <circle cx={loc.cx} cy={loc.cy} r="6" fill="#dc2626" opacity="0.2">
+                    <animate attributeName="r" values="6;10;6" dur="2s" repeatCount="indefinite" />
+                    <animate attributeName="opacity" values="0.2;0.05;0.2" dur="2s" repeatCount="indefinite" />
+                  </circle>
+                  <circle cx={loc.cx} cy={loc.cy} r="3" fill="#dc2626" />
+                </g>
+              ))}
+            </svg>
           </div>
           
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">

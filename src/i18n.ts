@@ -75,6 +75,12 @@ const resources = {
           f5: { title: '费用透明可控', desc: '一次买断硬件，API 费用透明可控。比请一个实习生还划算，且不会请假离职。' },
           f6: { title: '送长辈的科技礼', desc: '父母也能用的高科技。用微信问天气、查菜谱、读新闻摘要，复购率和口碑传播极强。' }
         },
+        stats: {
+          skills: '12+', skills_label: '预装 AI 技能',
+          setup: '3 min', setup_label: '开机到上手',
+          offices: '8', offices_label: '全球办事处',
+          uptime: '24/7', uptime_label: '全天候运行'
+        },
         sec2: {
           title: '谁在用龙虾机？',
           sub: '从个人助理到企业数字员工，满足不同场景的 AI 需求。',
@@ -221,6 +227,11 @@ const resources = {
       },
       about: {
         title: '龙虾机：让AI开机即用的智能工作站',
+        stats: { founded: '成立年份', founders: '联合创始人', offices: '全球办事处', skills: '预装 AI 技能' },
+        card1_title: '开机即用，零门槛',
+        card2_title: '数据安全，物理隔离',
+        card3_title: '微信接入，随时调用',
+        card4_title: '24/7 不间断运行',
         p1: '随着人工智能技术的快速发展，AI正在改变内容创作、设计生产、电商营销、数字媒体等多个行业。越来越多的人希望借助人工智能提升效率、创造价值。然而，在实际应用过程中，复杂的软件安装、繁琐的环境配置以及高门槛的技术要求，成为许多人进入AI世界的重要障碍。',
         p2: '在这样的背景下，一款全新的AI设备应运而生——龙虾机（LongXiaJi AI Station）。',
         p3: '龙虾机是一台专为人工智能应用打造的AI智能工作站。它通过"AI软件系统 + 高性能硬件 + 模型平台"的一体化设计，将复杂的人工智能技术封装在一台独立设备中，让用户无需复杂安装和配置，就可以快速使用AI工具进行创作与生产。',
@@ -448,6 +459,12 @@ const resources = {
           f5: { title: 'Transparent Fees', desc: 'One-time hardware fee. API costs are fully transparent. Cheaper than an intern, and never quits.' },
           f6: { title: 'Tech Gift for Elders', desc: 'High-tech that parents can use. Use WeChat to ask for weather or recipes. Huge word-of-mouth.' }
         },
+        stats: {
+          skills: '12+', skills_label: 'Pre-installed AI Skills',
+          setup: '3 min', setup_label: 'Setup to Ready',
+          offices: '8', offices_label: 'Global Offices',
+          uptime: '24/7', uptime_label: 'Always-on'
+        },
         sec2: {
           title: 'Who\'s Using Longxiaji?',
           sub: 'From personal assistants to digital employees, satisfying AI needs everywhere.',
@@ -601,6 +618,11 @@ const resources = {
       },
       about: {
         title: 'LongXiaJi: The AI Workstation That Just Works',
+        stats: { founded: 'Year Founded', founders: 'Co-founders', offices: 'Global Offices', skills: 'Pre-installed AI Skills' },
+        card1_title: 'Ready Out of the Box',
+        card2_title: 'Data Security, Physical Isolation',
+        card3_title: 'WeChat Integration, Always Available',
+        card4_title: '24/7 Non-stop Operation',
         p1: 'As artificial intelligence evolves rapidly, AI is transforming content creation, design production, e-commerce marketing, digital media, and many other industries. More and more people want to harness AI to boost efficiency and create value. Yet in practice, complex software installations, tedious environment configurations, and high technical barriers remain major obstacles for many.',
         p2: 'Against this backdrop, a brand-new AI device was born \u2014 LongXiaJi AI Station.',
         p3: 'LongXiaJi is an AI-powered smart workstation purpose-built for artificial intelligence applications. Through an integrated design of "AI software + high-performance hardware + model platform," it packages complex AI technologies into a single standalone device, letting users start creating and producing with AI tools immediately \u2014 no complicated installation or configuration required.',
