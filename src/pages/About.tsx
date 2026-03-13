@@ -161,35 +161,47 @@ export default function About() {
             </p>
           </div>
 
-          {/* World Map Dots */}
+          {/* World Map */}
           <div className="relative w-full max-w-4xl mx-auto mb-12 hidden md:block">
-            <svg viewBox="0 0 800 400" className="w-full h-auto" xmlns="http://www.w3.org/2000/svg">
-              <rect width="800" height="400" fill="transparent" />
-              {/* Grid dots for world silhouette */}
-              <g opacity="0.08">
-                {Array.from({ length: 40 }).map((_, r) =>
-                  Array.from({ length: 80 }).map((_, c) => (
-                    <circle key={`${r}-${c}`} cx={c * 10 + 5} cy={r * 10 + 5} r="1.2" fill="#64748b" />
-                  ))
-                )}
+            <svg viewBox="0 0 1000 500" className="w-full h-auto" xmlns="http://www.w3.org/2000/svg">
+              <rect width="1000" height="500" fill="transparent" />
+              {/* Simplified continent outlines */}
+              <g fill="#e2e8f0" stroke="#cbd5e1" strokeWidth="0.5">
+                {/* North America */}
+                <path d="M80,60 L120,55 L150,50 L180,55 L220,50 L260,65 L270,80 L265,100 L275,110 L280,130 L270,150 L255,160 L250,180 L240,195 L220,210 L200,220 L185,230 L175,245 L170,260 L190,260 L200,255 L210,260 L195,275 L180,270 L160,260 L155,240 L140,225 L130,210 L115,200 L100,195 L90,185 L80,170 L70,155 L65,140 L60,125 L55,110 L60,95 L65,80 Z" />
+                {/* South America */}
+                <path d="M200,275 L220,270 L240,275 L260,290 L270,310 L275,330 L280,350 L275,370 L265,385 L255,395 L240,405 L230,415 L225,430 L215,440 L210,435 L215,420 L220,405 L215,390 L205,375 L195,360 L190,340 L185,320 L190,300 L195,285 Z" />
+                {/* Europe */}
+                <path d="M430,55 L445,50 L465,55 L480,50 L500,55 L510,65 L520,75 L515,85 L505,95 L500,110 L510,115 L505,125 L495,130 L480,125 L470,130 L460,125 L450,115 L440,110 L435,100 L430,90 L425,75 Z" />
+                {/* Africa */}
+                <path d="M440,155 L460,150 L480,145 L500,150 L520,155 L535,165 L545,180 L555,200 L560,220 L558,240 L555,260 L548,280 L540,300 L530,315 L520,330 L510,345 L498,360 L485,370 L475,365 L465,355 L455,340 L445,320 L440,300 L438,280 L435,260 L430,240 L425,220 L420,200 L425,180 L430,165 Z" />
+                {/* Asia */}
+                <path d="M520,50 L560,45 L600,40 L640,45 L680,50 L720,55 L750,65 L770,75 L780,90 L785,105 L790,120 L785,135 L775,145 L760,150 L745,155 L730,165 L720,175 L710,170 L700,165 L690,170 L680,180 L670,190 L660,200 L645,205 L630,200 L620,195 L610,200 L600,210 L590,220 L575,225 L560,220 L550,210 L545,195 L540,180 L535,165 L530,150 L525,135 L520,120 L515,105 L520,90 L525,75 L520,60 Z" />
+                {/* Australia */}
+                <path d="M720,310 L740,305 L760,300 L780,305 L800,310 L810,320 L815,335 L810,350 L800,360 L785,365 L770,368 L755,365 L740,358 L730,350 L720,340 L715,325 Z" />
+                {/* Middle East connective */}
+                <path d="M520,155 L535,150 L545,155 L550,165 L555,175 L560,165 L570,160 L575,170 L570,180 L560,175 L550,180 L540,175 L530,165 Z" />
               </g>
               {/* Office location markers */}
               {[
-                { cx: 588, cy: 195, label: '\u6df1\u5733' },
-                { cx: 575, cy: 175, label: '\u897f\u5b89' },
-                { cx: 495, cy: 185, label: '\u8fea\u62dc' },
-                { cx: 520, cy: 210, label: '\u5370\u5ea6' },
-                { cx: 560, cy: 225, label: '\u65b0\u52a0\u5761' },
-                { cx: 180, cy: 170, label: '\u6d1b\u6749\u77f6' },
-                { cx: 215, cy: 145, label: '\u591a\u4f26\u591a' },
-                { cx: 430, cy: 305, label: '\u7ea6\u7ff0\u5185\u65af\u5821' },
+                { cx: 735, cy: 195, label: t('office.name.2523401526919458337', '\u6df1\u5733\u603b\u90e8') },
+                { cx: 718, cy: 168, label: t('office.name.7698154074469406943', '\u897f\u5b89') },
+                { cx: 555, cy: 175, label: t('office.name.2509749225518567691', '\u8fea\u62dc') },
+                { cx: 620, cy: 210, label: t('office.name.5140565462495736648', '\u5370\u5ea6') },
+                { cx: 695, cy: 245, label: t('office.name.557397973237979798', '\u65b0\u52a0\u5761') },
+                { cx: 175, cy: 185, label: t('office.name.7694836850338761832', '\u6d1b\u6749\u77f6') },
+                { cx: 230, cy: 135, label: t('office.name.8385568277984006709', '\u591a\u4f26\u591a') },
+                { cx: 490, cy: 355, label: t('office.name.2591317981907865232', '\u7ea6\u7ff0\u5185\u65af\u5821') },
               ].map((loc, i) => (
                 <g key={i}>
-                  <circle cx={loc.cx} cy={loc.cy} r="6" fill="#dc2626" opacity="0.2">
-                    <animate attributeName="r" values="6;10;6" dur="2s" repeatCount="indefinite" />
-                    <animate attributeName="opacity" values="0.2;0.05;0.2" dur="2s" repeatCount="indefinite" />
+                  <circle cx={loc.cx} cy={loc.cy} r="8" fill="#dc2626" opacity="0.15">
+                    <animate attributeName="r" values="8;14;8" dur="2.5s" begin={`${i * 0.3}s`} repeatCount="indefinite" />
+                    <animate attributeName="opacity" values="0.15;0.03;0.15" dur="2.5s" begin={`${i * 0.3}s`} repeatCount="indefinite" />
                   </circle>
-                  <circle cx={loc.cx} cy={loc.cy} r="3" fill="#dc2626" />
+                  <circle cx={loc.cx} cy={loc.cy} r="4" fill="#dc2626" />
+                  <text x={loc.cx} y={loc.cy - 12} textAnchor="middle" fill="#475569" fontSize="11" fontWeight="600">
+                    {loc.label}
+                  </text>
                 </g>
               ))}
             </svg>
