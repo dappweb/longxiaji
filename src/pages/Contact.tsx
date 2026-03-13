@@ -6,9 +6,36 @@ import { MapPin } from 'lucide-react';
 export default function Contact() {
   const { t } = useTranslation();
   const navigate = useNavigate();
-  useEffect(() => { document.title = `${t('nav.contact', '联系我们')} · ${t('nav.logo', '龙虾机')}`; }, [t]);
+  useEffect(() => { document.title = `${t('nav.contact', '关于我们')} · ${t('nav.logo', '龙虾机')}`; }, [t]);
   return (
     <>
+      {/* About / Product Intro Section */}
+      <section className="py-24 bg-white border-t border-slate-200">
+        <div className="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8">
+          <h1 className="text-3xl md:text-4xl font-bold text-slate-900 mb-10 text-center">{t('about.title')}</h1>
+          <div className="prose prose-lg prose-slate max-w-none text-slate-700 leading-relaxed space-y-6">
+            <p>{t('about.p1')}</p>
+            <p>{t('about.p2')}</p>
+            <p>{t('about.p3')}</p>
+            <p className="text-xl font-bold text-slate-900 border-l-4 border-red-600 pl-4 my-8">{t('about.slogan1')}</p>
+            <p>{t('about.p4')}</p>
+            <p>{t('about.p5')}</p>
+            <p>{t('about.p6')}</p>
+            <p>{t('about.p7')}</p>
+            <p className="text-xl font-bold text-slate-900 border-l-4 border-red-600 pl-4 my-8">{t('about.slogan2')}</p>
+            <p>{t('about.p8')}</p>
+            <p>{t('about.p9')}</p>
+          </div>
+          <div className="mt-12 text-center">
+            <p className="text-2xl font-bold text-slate-900">{t('about.brand')}</p>
+            <p className="text-lg text-slate-600 mt-1">{t('about.tagline')}</p>
+            <p className="text-xl font-bold text-red-600 mt-4">{t('about.slogan3')}</p>
+            <p className="text-sm text-slate-500 mt-4">www.longxiaji.com</p>
+          </div>
+        </div>
+      </section>
+
+      {/* Founders Section */}
       <section id="founders" className="py-24 bg-slate-50 border-t border-slate-200">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center max-w-3xl mx-auto mb-16">

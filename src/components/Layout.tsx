@@ -3,6 +3,7 @@ import { Link, Outlet, useNavigate, useLocation } from 'react-router-dom';
 import { MessageCircle, Mail, Globe, Menu, X } from 'lucide-react';
 import { motion, AnimatePresence, useReducedMotion } from 'motion/react';
 import { useTranslation } from 'react-i18next';
+import ScrollToTop from './ScrollToTop';
 
 export default function Layout() {
   const { t, i18n } = useTranslation();
@@ -28,6 +29,7 @@ export default function Layout() {
 
   return (
     <div className="min-h-screen bg-slate-50 font-sans text-slate-900 selection:bg-red-100 selection:text-red-900 flex flex-col">
+      <ScrollToTop />
       {/* Navbar */}
       <nav className="sticky top-0 z-50 bg-white/80 backdrop-blur-md border-b border-slate-200">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -48,7 +50,7 @@ export default function Layout() {
               <Link to="/skills" className="hover:text-red-600 transition-colors">{t('nav.skills', '技能市场')}</Link>
               <Link to="/cases" className="hover:text-red-600 transition-colors">{t('nav.cases', '用户案例')}</Link>
               <Link to="/news" className="hover:text-red-600 transition-colors">{t('nav.news', '新闻资讯')}</Link>
-              <Link to="/contact" className="hover:text-red-600 transition-colors">{t('nav.contact', '联系我们')}</Link>
+              <Link to="/contact" className="hover:text-red-600 transition-colors">{t('nav.contact', '关于我们')}</Link>
             </div>
             <div className="flex items-center gap-4">
               <button 
@@ -99,7 +101,7 @@ export default function Layout() {
                 <Link to="/skills" className="hover:text-red-600 p-2 rounded-lg hover:bg-slate-50">{t('nav.skills', '技能市场')}</Link>
                 <Link to="/cases" className="hover:text-red-600 p-2 rounded-lg hover:bg-slate-50">{t('nav.cases', '用户案例')}</Link>
                 <Link to="/news" className="hover:text-red-600 p-2 rounded-lg hover:bg-slate-50">{t('nav.news', '新闻资讯')}</Link>
-                <Link to="/contact" className="hover:text-red-600 p-2 rounded-lg hover:bg-slate-50">{t('nav.contact', '联系我们')}</Link>
+                <Link to="/contact" className="hover:text-red-600 p-2 rounded-lg hover:bg-slate-50">{t('nav.contact', '关于我们')}</Link>
                 <button
                   onClick={() => { navigate('/preorder'); setMobileMenuOpen(false); }}
                   className="w-full bg-red-600 text-white px-5 py-3 rounded-xl text-center text-sm font-bold shadow-sm mt-2"
@@ -152,7 +154,7 @@ export default function Layout() {
                 <li><Link to="/skills" className="hover:text-red-400 transition-colors">{t('nav.skills', '技能市场')}</Link></li>
                 <li><Link to="/cases" className="hover:text-red-400 transition-colors">{t('nav.cases', '用户案例')}</Link></li>
                 <li><Link to="/news" className="hover:text-red-400 transition-colors">{t('nav.news', '新闻资讯')}</Link></li>
-                <li><Link to="/contact" className="hover:text-red-400 transition-colors">{t('nav.contact', '团队与联系')}</Link></li>
+                <li><Link to="/contact" className="hover:text-red-400 transition-colors">{t('nav.contact', '关于我们')}</Link></li>
               </ul>
             </div>
 
@@ -177,8 +179,8 @@ export default function Layout() {
               <p>© {new Date().getFullYear()} {t("footer.rights_text", "龙虾机 LongXiaJi. 保留所有权利.")}</p>
               <div className="hidden md:block w-px h-4 bg-slate-700"></div>
               <div className="flex gap-4">
-                <a href="#" className="hover:text-slate-300 transition-colors">{t("footer.privacy", "隐私政策")}</a>
-                <a href="#" className="hover:text-slate-300 transition-colors">{t("footer.terms", "服务条款")}</a>
+                <Link to="/privacy" className="hover:text-slate-300 transition-colors">{t("footer.privacy", "隐私政策")}</Link>
+                <Link to="/terms" className="hover:text-slate-300 transition-colors">{t("footer.terms", "服务条款")}</Link>
 
               </div>
             </div>

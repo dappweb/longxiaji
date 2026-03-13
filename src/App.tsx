@@ -13,6 +13,8 @@ const News = lazy(() => import('./pages/News'));
 const Contact = lazy(() => import('./pages/Contact'));
 const Preorder = lazy(() => import('./pages/Preorder'));
 const Support = lazy(() => import('./pages/Support'));
+const Privacy = lazy(() => import('./pages/Privacy'));
+const Terms = lazy(() => import('./pages/Terms'));
 
 function PageLoading() {
   const { t } = useTranslation();
@@ -40,6 +42,8 @@ export default function App() {
             <Route path="contact" element={<Contact />} />
             <Route path="preorder" element={<Preorder />} />
             <Route path="support" element={<Support />} />
+            <Route path="privacy" element={<Privacy />} />
+            <Route path="terms" element={<Terms />} />
           </Route>
           <Route path="*" element={<NotFound />} />
         </Routes>

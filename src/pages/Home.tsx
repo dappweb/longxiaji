@@ -5,7 +5,8 @@ import { useTranslation } from 'react-i18next';
 import {
   Shield, Zap, MessageSquare, Lock, Clock, Gift,
   ChevronRight, Briefcase,
-  UserCheck, Globe, CheckCircle2
+  UserCheck, Globe, CheckCircle2,
+  Cpu, HardDrive, Fan, Puzzle
 } from 'lucide-react';
 import { FeatureCard } from '../components/FeatureCard';
 import { StepCard } from '../components/StepCard';
@@ -130,6 +131,129 @@ export default function Home() {
         </div>
       </section>
       
+      {/* Story: Intro */}
+      <section className="py-20 md:py-28 bg-slate-900 text-white">
+        <div className="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8 text-center space-y-6">
+          <h2 className="text-3xl md:text-5xl font-extrabold mb-4">{t('home.story.title')}</h2>
+          <p className="text-2xl text-slate-200 font-medium">{t('home.story.intro1')}</p>
+          <p className="text-lg text-slate-400">{t('home.story.intro2')}</p>
+          <p className="text-base text-slate-500 font-mono">{t('home.story.intro3')}</p>
+          <p className="text-xl text-red-400 font-bold">{t('home.story.intro4')}</p>
+          <div className="pt-6 space-y-2">
+            <p className="text-lg text-slate-300">{t('home.story.intro5')}</p>
+            <p className="text-2xl md:text-3xl font-bold text-white">{t('home.story.intro6')}</p>
+          </div>
+          <div className="pt-8 border-t border-slate-700 mt-8 space-y-2">
+            <p className="text-xl text-red-400 font-semibold">{t('home.story.intro7')}</p>
+            <p className="text-lg text-slate-400">{t('home.story.intro8')}</p>
+          </div>
+        </div>
+      </section>
+
+      {/* Story: Ready to Use */}
+      <section className="py-16 md:py-24 bg-white">
+        <div className="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8 text-center space-y-6">
+          <h3 className="text-3xl md:text-4xl font-bold text-slate-900">{t('home.story.ready_title')}</h3>
+          <p className="text-lg text-slate-600">{t('home.story.ready1')}</p>
+          <p className="text-lg text-slate-600">{t('home.story.ready2')}</p>
+          <p className="text-lg text-slate-500">{t('home.story.ready3')}</p>
+          <p className="text-2xl md:text-3xl font-extrabold text-red-600 mt-4">{t('home.story.ready_steps')}</p>
+        </div>
+      </section>
+
+      {/* Story: Your Own Device */}
+      <section className="py-16 md:py-24 bg-slate-50">
+        <div className="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8 text-center space-y-6">
+          <h3 className="text-3xl md:text-4xl font-bold text-slate-900">{t('home.story.own_title')}</h3>
+          <p className="text-lg text-slate-600">{t('home.story.own1')}</p>
+          <p className="text-lg text-slate-600">{t('home.story.own2')}</p>
+          <p className="text-base text-slate-500">{t('home.story.own3')}</p>
+          <div className="flex flex-col sm:flex-row justify-center gap-4 pt-4">
+            <div className="flex items-center gap-2 bg-white px-5 py-3 rounded-xl border border-slate-200 shadow-sm">
+              <Shield className="w-5 h-5 text-emerald-500" />
+              <span className="text-slate-700 font-medium">{t('home.story.own_f1')}</span>
+            </div>
+            <div className="flex items-center gap-2 bg-white px-5 py-3 rounded-xl border border-slate-200 shadow-sm">
+              <Lock className="w-5 h-5 text-emerald-500" />
+              <span className="text-slate-700 font-medium">{t('home.story.own_f2')}</span>
+            </div>
+            <div className="flex items-center gap-2 bg-white px-5 py-3 rounded-xl border border-slate-200 shadow-sm">
+              <Zap className="w-5 h-5 text-emerald-500" />
+              <span className="text-slate-700 font-medium">{t('home.story.own_f3')}</span>
+            </div>
+          </div>
+          <p className="text-xl font-bold text-slate-900 pt-4">{t('home.story.own4')}</p>
+        </div>
+      </section>
+
+      {/* Story: What Can You Do */}
+      <section className="py-16 md:py-24 bg-white">
+        <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="text-center mb-12">
+            <h3 className="text-3xl md:text-4xl font-bold text-slate-900 mb-4">{t('home.story.can_title')}</h3>
+            <p className="text-lg text-slate-600">{t('home.story.can1')}</p>
+          </div>
+          <div className="grid grid-cols-2 md:grid-cols-3 gap-4">
+            {(['can_f1', 'can_f2', 'can_f3', 'can_f4', 'can_f5', 'can_f6'] as const).map(key => (
+              <div key={key} className="bg-slate-50 rounded-2xl p-6 text-center border border-slate-100 hover:shadow-md transition-shadow">
+                <p className="font-semibold text-slate-900">{t(`home.story.${key}`)}</p>
+              </div>
+            ))}
+          </div>
+          <div className="text-center mt-12 space-y-2">
+            <p className="text-lg text-slate-600">{t('home.story.can2')}</p>
+            <p className="text-lg text-slate-700 font-medium">{t('home.story.can3')}</p>
+            <p className="text-2xl font-bold text-red-600">{t('home.story.can4')}</p>
+          </div>
+        </div>
+      </section>
+
+      {/* Story: Who Needs + Era + Hardware */}
+      <section className="py-16 md:py-24 bg-slate-900 text-white">
+        <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 space-y-20">
+          {/* Who Needs */}
+          <div className="text-center space-y-6">
+            <h3 className="text-3xl md:text-4xl font-bold">{t('home.story.who_title')}</h3>
+            <p className="text-lg text-slate-400">{t('home.story.who1')}</p>
+            <div className="flex flex-wrap justify-center gap-3">
+              {(['who_f1', 'who_f2', 'who_f3', 'who_f4', 'who_f5'] as const).map(key => (
+                <span key={key} className="bg-slate-800 border border-slate-700 px-5 py-2 rounded-full text-sm font-medium text-slate-300">{t(`home.story.${key}`)}</span>
+              ))}
+            </div>
+            <p className="text-lg text-slate-400">{t('home.story.who2')}</p>
+          </div>
+
+          {/* Era */}
+          <div className="text-center space-y-4 border-t border-slate-800 pt-16">
+            <h3 className="text-3xl md:text-4xl font-bold">{t('home.story.era_title')}</h3>
+            <p className="text-lg text-slate-400">{t('home.story.era1')}</p>
+            <p className="text-lg text-slate-300">{t('home.story.era2')}</p>
+            <p className="text-2xl font-bold text-red-400 pt-2">{t('home.story.era3')}</p>
+          </div>
+
+          {/* Hardware */}
+          <div className="text-center space-y-6 border-t border-slate-800 pt-16">
+            <h3 className="text-3xl md:text-4xl font-bold">{t('home.story.hw_title')}</h3>
+            <p className="text-lg text-slate-400">{t('home.story.hw1')}</p>
+            <div className="flex flex-col sm:flex-row justify-center gap-6 pt-4">
+              <div className="flex items-center gap-3 bg-slate-800 px-6 py-4 rounded-2xl border border-slate-700">
+                <HardDrive className="w-6 h-6 text-red-400" />
+                <span className="text-slate-200 font-medium">{t('home.story.hw_f1')}</span>
+              </div>
+              <div className="flex items-center gap-3 bg-slate-800 px-6 py-4 rounded-2xl border border-slate-700">
+                <Fan className="w-6 h-6 text-red-400" />
+                <span className="text-slate-200 font-medium">{t('home.story.hw_f2')}</span>
+              </div>
+              <div className="flex items-center gap-3 bg-slate-800 px-6 py-4 rounded-2xl border border-slate-700">
+                <Puzzle className="w-6 h-6 text-red-400" />
+                <span className="text-slate-200 font-medium">{t('home.story.hw_f3')}</span>
+              </div>
+            </div>
+            <p className="text-lg text-slate-400">{t('home.story.hw2')}</p>
+          </div>
+        </div>
+      </section>
+
       <section className="py-16 md:py-24 bg-slate-900 text-white">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center max-w-3xl mx-auto mb-16">
@@ -204,19 +328,3 @@ export default function Home() {
     </>
   );
 }
-
-
-
-function FounderCard({ role, desc, icon }: { role: string, desc: string, icon: string }) {
-  return (
-    <div className="bg-white rounded-2xl p-6 border border-slate-200 shadow-sm hover:shadow-md transition-all text-center flex flex-col items-center">
-      <div className="w-16 h-16 bg-slate-50 rounded-full flex items-center justify-center text-3xl mb-4 border border-slate-100 shadow-inner">
-        {icon}
-      </div>
-      <h3 className="text-lg font-bold text-slate-900 mb-2">{role}</h3>
-      <p className="text-sm text-slate-500 leading-relaxed">{desc}</p>
-    </div>
-  );
-}
-
-
