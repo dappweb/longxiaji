@@ -22,7 +22,7 @@ export default function Preorder() {
   // Fetch initial stock from D1 backend
   useEffect(() => {
     fetch('/api/inventory')
-      .then(res => res.json())
+      .then(res => res.json() as Promise<{ soldCount?: number }>)
       .then(data => {
         if (data && data.soldCount) {
           setTargetSold(data.soldCount);
@@ -45,7 +45,7 @@ export default function Preorder() {
     // Update remote D1 database
     try {
       const res = await fetch('/api/inventory', { method: 'POST' });
-      const data = await res.json();
+      const data = await res.json() as { soldCount?: number };
       if (data && data.soldCount) {
         // Sync with actual source of truth in case it vastly differed
         setTargetSold(data.soldCount);
