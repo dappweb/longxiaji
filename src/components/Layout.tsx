@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { Link, Outlet, useNavigate, useLocation } from 'react-router-dom';
 import { MessageCircle, Mail, Globe, Menu, X } from 'lucide-react';
-import { motion, AnimatePresence } from 'motion/react';
+import { motion, AnimatePresence, useReducedMotion } from 'motion/react';
 import { useTranslation } from 'react-i18next';
 
 export default function Layout() {
@@ -9,6 +9,7 @@ export default function Layout() {
   const [showQR, setShowQR] = useState(false);
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const navigate = useNavigate();
+  const prefersReducedMotion = useReducedMotion();
 
   const toggleLanguage = () => {
     i18n.changeLanguage(i18n.language === 'en' ? 'zh' : 'en');
@@ -116,10 +117,10 @@ export default function Layout() {
           <AnimatePresence mode="wait">
             <motion.div
               key={location.pathname}
-              initial={{ opacity: 0, y: 10 }}
-              animate={{ opacity: 1, y: 0 }}
-              exit={{ opacity: 0, y: -10 }}
-              transition={{ duration: 0.2 }}
+              initial={prefersReducedMotion ? {} : { opacity: 0, y: 10 }}
+              animate={prefersReducedMotion ? {} : { opacity: 1, y: 0 }}
+              exit={prefersReducedMotion ? {} : { opacity: 0, y: -10 }}
+              transition={{ duration: prefersReducedMotion ? 0 : 0.2 }}
             >
               <Outlet context={{ setShowQR: handleQR }} />
             </motion.div>
@@ -127,7 +128,7 @@ export default function Layout() {
       {/* Footer */}
       <footer className="bg-slate-950 text-slate-400 py-16 border-t border-slate-900 mt-auto">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="grid grid-cols-1 md:grid-cols-4 gap-12 mb-12">
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12 mb-12">
             <div className="md:col-span-2">
               <div className="flex items-center gap-3 mb-6">
                 <div className="w-10 h-10 rounded-lg overflow-hidden flex items-center justify-center bg-white/10 p-1">

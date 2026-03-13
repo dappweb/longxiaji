@@ -1,12 +1,17 @@
-import React, { useEffect, useState } from 'react';
+import { useEffect, useState } from 'react';
 import { motion, useSpring, useTransform } from 'motion/react';
 import { useOutletContext } from 'react-router-dom';
 import { CheckCircle2, Shield, Truck, RotateCcw } from 'lucide-react';
 import { useTranslation } from 'react-i18next';
 
+interface OutletContext {
+  setShowQR: (show: boolean) => void;
+}
+
 export default function Preorder() {
   const { t } = useTranslation();
-  const { setShowQR } = useOutletContext<any>();
+  const { setShowQR } = useOutletContext<OutletContext>();
+  useEffect(() => { document.title = `${t('preorder.title', '龙虾机 · 立即预定')}`; }, [t]);
 
   const [targetSold, setTargetSold] = useState(8347);
   const soldSpring = useSpring(0, { stiffness: 50, damping: 20 });
@@ -108,7 +113,7 @@ export default function Preorder() {
         </div>
 
         {/* CTA */}
-        <div className="sticky bottom-6 z-40 w-full mb-8">
+        <div className="sticky z-40 w-full mb-8" style={{ bottom: 'max(1.5rem, env(safe-area-inset-bottom))' }}>
           <button
             onClick={handlePreorder}
             className="w-full bg-red-600 text-white py-5 rounded-2xl text-xl font-bold hover:bg-red-600/90 backdrop-blur-md transition-all shadow-[0_10px_40px_rgba(220,38,38,0.4)] border border-red-500/30"

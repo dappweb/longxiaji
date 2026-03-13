@@ -1,19 +1,28 @@
+import { useEffect } from 'react';
 import { useTranslation } from 'react-i18next';
-import React from 'react';
 import { useNavigate } from 'react-router-dom';
-import { ExternalLink, CalendarDays, ArrowRight } from 'lucide-react';
+import { CalendarDays, ArrowRight } from 'lucide-react';
+
+interface NewsItem {
+  id: number;
+  date: string;
+  type: string;
+  title: string;
+  summary: string;
+}
 
 export default function News() {
   const { t } = useTranslation();
   const navigate = useNavigate();
-  
-  const newsItems = [
+  useEffect(() => { document.title = `${t('nav.news', '新闻资讯')} · 龙虾机`; }, [t]);
+
+  const newsItems: NewsItem[] = [
     {
       id: 1,
       date: '2025-05-18',
       type: '产品公告',
       title: '龙虾机惊艳亮相迪拜AI科技展：全私有化部署成为全场焦点',
-      summary: '在今日开幕的迪拜国际AI科技创新大展上，龙虾机凭借主打的“开箱即用、完全私有部署、数据不离本地”理念，成为展会最受瞩目的新品之一。多家国际企业现场签下意向订单。'
+      summary: '在今日开幕的迪拜国际AI科技创新大展上，龙虾机凭借主打的"开箱即用、完全私有部署、数据不离本地"理念，成为展会最受瞩目的新品之一。多家国际企业现场签下意向订单。'
     },
     {
       id: 2,
@@ -48,9 +57,7 @@ export default function News() {
 
   return (
     <div className="min-h-screen bg-slate-50 py-24">
-      <script type="application/ld+json">
-        {JSON.stringify(jsonLd)}
-      </script>
+      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }} />
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="text-center max-w-3xl mx-auto mb-16">
           <h1 className="text-4xl md:text-5xl font-bold text-slate-900 mb-6">{t('news.title')}</h1>
@@ -63,7 +70,7 @@ export default function News() {
               <div className="flex-1">
                 <div className="flex items-center gap-3 mb-4">
                   <span className="bg-blue-100 text-blue-700 px-3 py-1 rounded-full text-sm font-medium">
-                    {t(`news.items.${news.id}.type` as any, news.type)}
+                    {t(`news.items.${news.id}.type`, news.type)}
                   </span>
                   <div className="flex items-center text-slate-400 text-sm">
                     <CalendarDays className="w-4 h-4 mr-1" />
@@ -71,12 +78,12 @@ export default function News() {
                   </div>
                 </div>
                 <h2 className="text-2xl font-bold text-slate-900 mb-4 hover:text-blue-600 cursor-pointer transition-colors">
-                  {t(`news.items.${news.id}.title` as any, news.title)}
+                  {t(`news.items.${news.id}.title`, news.title)}
                 </h2>
                 <p className="text-slate-600 leading-relaxed mb-6">
-                  {t(`news.items.${news.id}.summary` as any, news.summary)}
+                  {t(`news.items.${news.id}.summary`, news.summary)}
                 </p>
-                <button 
+                <button
                   onClick={() => alert(t('news.coming_soon', '详情内容正在建设中，敬请期待！'))}
                   className="text-blue-600 font-medium inline-flex items-center group cursor-pointer"
                 >

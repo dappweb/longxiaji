@@ -1,13 +1,32 @@
 import { useTranslation } from 'react-i18next';
-import React from 'react';
+import { useState, Fragment, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { Star } from 'lucide-react';
+
+interface CaseItem {
+  id: number;
+  tag: string;
+  tagColor: string;
+  title: string;
+  rating: number;
+  description: string;
+}
+
+const tagColorMap: Record<string, { bg: string; text: string; border: string }> = {
+  blue: { bg: 'bg-blue-500/20', text: 'text-blue-400', border: 'border-blue-500/30' },
+  orange: { bg: 'bg-orange-500/20', text: 'text-orange-400', border: 'border-orange-500/30' },
+  purple: { bg: 'bg-purple-500/20', text: 'text-purple-400', border: 'border-purple-500/30' },
+  emerald: { bg: 'bg-emerald-500/20', text: 'text-emerald-400', border: 'border-emerald-500/30' },
+  rose: { bg: 'bg-rose-500/20', text: 'text-rose-400', border: 'border-rose-500/30' },
+  cyan: { bg: 'bg-cyan-500/20', text: 'text-cyan-400', border: 'border-cyan-500/30' },
+};
 
 export default function Cases() {
   const { t } = useTranslation();
   const navigate = useNavigate();
+  useEffect(() => { document.title = `${t('nav.cases', '用户案例')} · 龙虾机`; }, [t]);
 
-  const scenarios = [
+  const scenarios: CaseItem[] = [
     {
       id: 1,
       tag: '跨境电商',
@@ -30,7 +49,7 @@ export default function Cases() {
       tagColor: 'purple',
       title: '缺少特定接口，扩展性有待提高',
       rating: 1,
-      description: '这玩意儿虽然宣称“插电即用”，但我用的是很老式的显示器，还需要自己买个转接头。虽然它本身作为独立服务器运行没问题，但开箱体验不够好。而且有时候网络波动会导致回复有些慢。客服态度虽然可以，但这硬件配置我得给一星。'
+      description: '这玩意儿虽然宣称"插电即用"，但我用的是很老式的显示器，还需要自己买个转接头。虽然它本身作为独立服务器运行没问题，但开箱体验不够好。而且有时候网络波动会导致回复有些慢。客服态度虽然可以，但这硬件配置我得给一星。'
     },
     {
       id: 4,
@@ -64,16 +83,18 @@ export default function Cases() {
         <div className="absolute inset-0 bg-gradient-to-br from-blue-900/40 via-slate-900 to-slate-900" />
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
           <div className="text-center max-w-3xl mx-auto mb-16">
-            <h2 className="text-3xl md:text-4xl font-bold mb-4">{t("cases.title1", "他们和你一样，也是从“不懂”开始的")}</h2>
+            <h2 className="text-3xl md:text-4xl font-bold mb-4">{t("cases.title1", "他们和你一样，也是从\"不懂\"开始的")}</h2>
             <p className="text-lg text-slate-400">{t("cases.sub1", "各行各业的普通人，正在使用龙虾机改变工作与生活。四个典型应用场景真实反馈。")}</p>
           </div>
 
-          <div className="flex overflow-x-auto snap-x snap-mandatory md:grid md:grid-cols-2 gap-6 md:gap-8 pb-8 md:pb-12 -mx-4 px-4 md:mx-0 md:px-0" style={{ scrollbarWidth: 'none' }}>
+          <div className="flex overflow-x-auto snap-x snap-mandatory md:grid md:grid-cols-2 gap-6 md:gap-8 pb-8 md:pb-12 -mx-4 px-4 md:mx-0 md:px-0 hide-scrollbar">
             {scenarios.map((item) => (
-              <CaseCard key={item.id} item={item} />
+              <Fragment key={item.id}>
+                <CaseCard item={item} />
+              </Fragment>
             ))}
           </div>
-          
+
           <div className="text-center pb-12 mt-4 md:mt-0">
             <button onClick={() => navigate('/preorder')} className="bg-red-600 text-white px-10 py-5 rounded-full text-xl font-bold hover:bg-red-700 transition-all shadow-[0_0_30px_rgba(220,38,38,0.3)]">
               {t('cases.start', '开启你的AI专属助手')}
@@ -85,14 +106,16 @@ export default function Cases() {
   );
 }
 
-function CaseCard({ item }: { item: any }) {
+function CaseCard({ item }: { item: CaseItem }) {
   const { t } = useTranslation();
-  const [expanded, setExpanded] = React.useState(false);
-  
+  const [expanded, setExpanded] = useState(false);
+
+  const colorStyles = tagColorMap[item.tagColor] || tagColorMap.blue;
+
   return (
     <div className="min-w-[85vw] sm:min-w-[400px] md:min-w-0 snap-center bg-slate-800/80 backdrop-blur border border-slate-700/50 rounded-3xl p-8 hover:bg-slate-800 transition-colors shadow-2xl flex flex-col">
       <div className="flex justify-between items-center mb-6">
-        <span className={`px-4 py-1.5 rounded-full text-sm font-bold bg-${item.tagColor}-500/20 text-${item.tagColor}-400 border border-${item.tagColor}-500/30`}>
+        <span className={`px-4 py-1.5 rounded-full text-sm font-bold ${colorStyles.bg} ${colorStyles.text} ${colorStyles.border} border`}>
           {t(`cases.items.${item.id}.tag`, item.tag)}
         </span>
         <div className="flex gap-1 text-yellow-400">
@@ -105,8 +128,8 @@ function CaseCard({ item }: { item: any }) {
         <p className={`text-slate-400 leading-relaxed text-lg transition-all ${!expanded ? 'line-clamp-3' : ''}`}>
           {t(`cases.items.${item.id}.desc`, item.description)}
         </p>
-        <button 
-          onClick={() => setExpanded(!expanded)} 
+        <button
+          onClick={() => setExpanded(!expanded)}
           className="mt-2 text-slate-300 hover:text-white text-sm font-medium transition-colors md:hidden"
         >
           {expanded ? t("cases.collapse", "收起") : t("cases.readmore", "阅读全文")}

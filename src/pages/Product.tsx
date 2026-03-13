@@ -1,12 +1,13 @@
+import { useEffect } from 'react';
 import { useTranslation } from 'react-i18next';
-import React from 'react';
 import { useNavigate } from 'react-router-dom';
-import { motion } from 'motion/react';
-import { Smartphone, Server, Briefcase, Zap, Cpu, Wifi } from 'lucide-react';
+import { Smartphone, Zap, Cpu, Wifi, Server } from 'lucide-react';
+import { StepCard } from '../components/StepCard';
 
 export default function Product() {
   const { t } = useTranslation();
   const navigate = useNavigate();
+  useEffect(() => { document.title = `${t('nav.product', '产品介绍')} · 龙虾机`; }, [t]);
 
   const scrollTo = (id: string) => {
     const el = document.getElementById(id);
@@ -40,20 +41,20 @@ export default function Product() {
           <div className="grid md:grid-cols-3 gap-8 relative">
             {/* Connecting line for desktop */}
             <div className="hidden md:block absolute top-12 left-[16%] right-[16%] h-0.5 bg-slate-800 z-0" />
-            
-            <StepCard 
+
+            <StepCard
               number="1"
               title={t("product.step1.title", "连网 + 激活")}
               description={t("product.step1.desc", "插网线或连 WiFi，屏幕显示二维码，手机扫码自动激活。激活即送初始 API 额度，足够体验数天。")}
               icon={<Wifi className="w-8 h-8 text-red-500" />}
             />
-            <StepCard 
+            <StepCard
               number="2"
               title={t("product.step2.title", "绑定 IM 账号")}
               description={t("product.step2.desc", "支持微信、钉钉、飞书、QQ。点击图标扫码授权，龙虾助手自动出现在你的会话列表中。")}
               icon={<Smartphone className="w-8 h-8 text-red-500" />}
             />
-            <StepCard 
+            <StepCard
               number="3"
               title={t("product.step3.title", "体验引导")}
               description={t("product.step3.desc", "在微信中发送第一条消息给助手，自动推送 3 个开箱任务示例，点击即可执行，秒速上手。")}
@@ -70,7 +71,7 @@ export default function Product() {
               <p className="text-lg text-slate-600 mb-8">
                 {t('product.arch.desc')}
               </p>
-              
+
               <div className="space-y-6">
                 <div className="flex gap-4">
                   <div className="w-12 h-12 rounded-xl bg-slate-100 flex items-center justify-center shrink-0">
@@ -101,16 +102,16 @@ export default function Product() {
                 </div>
               </div>
             </div>
-            
+
             <div className="lg:w-1/2 w-full">
               <div className="aspect-square bg-slate-100 rounded-3xl border border-slate-200 p-8 relative flex items-center justify-center overflow-hidden">
                 <div className="absolute inset-0 bg-[linear-gradient(to_right,#80808012_1px,transparent_1px),linear-gradient(to_bottom,#80808012_1px,transparent_1px)] bg-[size:24px_24px]" />
-                
+
                 {/* Device Mockup Replacing abstract with real image */}
                 <div className="relative z-10 w-full h-full flex flex-col items-center justify-center transition-transform duration-500 hover:scale-105">
                   <img src="/box/5050e13500344491bce2018ece160efd.png" alt={t("product.img_alt", "龙虾机实拍")} className="w-full h-auto object-cover rounded-2xl shadow-2xl" />
                 </div>
-                
+
                 {/* Size reference */}
                 <div className="absolute bottom-8 left-8 right-8 flex justify-between items-end text-slate-400 text-sm font-medium z-20">
                   <span>{t("product.size", "≤ Mac mini 尺寸")}</span>
@@ -121,28 +122,13 @@ export default function Product() {
           </div>
         </div>
       </section>
-      
+
       <div className="text-center py-12 pb-24 bg-white">
         <button onClick={() => navigate('/preorder')} className="bg-red-600 text-white px-8 py-4 rounded-full text-lg font-medium hover:bg-red-700 transition-all shadow-lg">
           {t('product.preorder')}
         </button>
       </div>
     </>
-  );
-}
-
-function StepCard({ number, title, description, icon }: { number: string, title: string, description: string, icon: React.ReactNode }) {
-  return (
-    <div className="relative z-10 bg-slate-800/80 backdrop-blur-sm rounded-2xl p-8 border border-slate-700 flex flex-col items-center text-center">
-      <div className="w-16 h-16 bg-slate-900 rounded-full border-4 border-slate-800 flex items-center justify-center mb-6 relative shadow-xl">
-        {icon}
-        <div className="absolute -top-3 -right-3 w-8 h-8 bg-red-600 text-white rounded-full flex items-center justify-center font-bold border-4 border-slate-800">
-          {number}
-        </div>
-      </div>
-      <h3 className="text-xl font-bold text-white mb-4">{title}</h3>
-      <p className="text-slate-400">{description}</p>
-    </div>
   );
 }
 

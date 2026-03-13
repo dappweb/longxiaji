@@ -1,11 +1,12 @@
+import { useEffect } from 'react';
 import { useTranslation } from 'react-i18next';
-import React from 'react';
 import { useNavigate } from 'react-router-dom';
 import { MapPin } from 'lucide-react';
 
 export default function Contact() {
   const { t } = useTranslation();
   const navigate = useNavigate();
+  useEffect(() => { document.title = `${t('nav.contact', '联系我们')} · 龙虾机`; }, [t]);
   return (
     <>
       <section id="founders" className="py-24 bg-slate-50 border-t border-slate-200">

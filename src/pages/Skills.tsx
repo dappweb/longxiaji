@@ -1,13 +1,15 @@
 import { useTranslation } from 'react-i18next';
-import React, { useState } from 'react';
+import { useState, Fragment, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
-import { MessageSquare, Image as ImageIcon, Briefcase, Zap, CheckCircle2, ChevronRight, Clock, Search } from 'lucide-react';
+import { MessageSquare, Image as ImageIcon, Briefcase, Zap, ChevronRight, Clock } from 'lucide-react';
+import { SkillCard } from '../components/SkillCard';
 
 export default function Skills() {
   const { t } = useTranslation();
   const navigate = useNavigate();
+  useEffect(() => { document.title = `${t('nav.skills', '技能市场')} · 龙虾机`; }, [t]);
   const [activeTab, setActiveTab] = useState(t('skills.cat.all', '全部'));
-  
+
   const tabs = [t('skills.cat.all', '全部'), t('skills.cat.office', '效率办公'), t('skills.cat.life', '生活娱乐'), t('skills.cat.design', '创作设计')];
 
   const allSkills = [
@@ -16,33 +18,33 @@ export default function Skills() {
       icon: <MessageSquare className="w-6 h-6 text-blue-500" />,
       title: t('skills.items.1.title', '智能对话'),
       features: [t('skills.items.1.f1', '多模型一键切换 (GPT, Claude, 通义千问等)'), t('skills.items.1.f2', '精准翻译与长文摘要'), t('skills.items.1.f3', '高质量文案写作')],
-      value: t('skills.items.1.val', '“比 ChatGPT 还方便，反应更迅速”')
+      value: t('skills.items.1.val', '"比 ChatGPT 还方便，反应更迅速"')
     },
     {
       category: t('skills.cat.office', '效率办公'),
       icon: <Briefcase className="w-6 h-6 text-emerald-500" />,
       title: t('skills.items.2.title', '办公助手'),
       features: [t('skills.items.2.f1', 'Excel 复杂公式生成'), t('skills.items.2.f2', 'PPT 大纲一键生成'), t('skills.items.2.f3', '中英文邮件自动起草')],
-      value: t('skills.items.2.val', '“在微信里说一句就能用”')
+      value: t('skills.items.2.val', '"在微信里说一句就能用"')
     },
     {
       category: t('skills.cat.life', '生活娱乐'),
       icon: <Clock className="w-6 h-6 text-amber-500" />,
       title: t('skills.items.3.title', '生活工具'),
       features: [t('skills.items.3.f1', '智能日程管理与提醒'), t('skills.items.3.f2', '个性化天气预报'), t('skills.items.3.f3', '每日新闻摘要推送')],
-      value: t('skills.items.3.val', '“每天早上收到专属 AI 早报”')
+      value: t('skills.items.3.val', '"每天早上收到专属 AI 早报"')
     },
     {
       category: t('skills.cat.design', '创作设计'),
       icon: <ImageIcon className="w-6 h-6 text-purple-500" />,
       title: t('skills.items.4.title', '图片/视频处理'),
       features: [t('skills.items.4.f1', '精准图片识别与分析'), t('skills.items.4.f2', '一句话文字转图'), t('skills.items.4.f3', '基础视频脚本处理')],
-      value: t('skills.items.4.val', '“拍照片就能翻译，一句话出图”')
+      value: t('skills.items.4.val', '"拍照片就能翻译，一句话出图"')
     }
   ];
 
-  const filteredSkills = activeTab === t('skills.cat.all', '全部') 
-    ? allSkills 
+  const filteredSkills = activeTab === t('skills.cat.all', '全部')
+    ? allSkills
     : allSkills.filter(skill => skill.category === activeTab);
 
   return (
@@ -64,8 +66,8 @@ export default function Skills() {
                   key={tab}
                   onClick={() => setActiveTab(tab)}
                   className={`px-6 py-2 rounded-full text-sm font-medium whitespace-nowrap transition-all ${
-                    activeTab === tab 
-                      ? 'bg-white text-slate-900 shadow-sm' 
+                    activeTab === tab
+                      ? 'bg-white text-slate-900 shadow-sm'
                       : 'text-slate-500 hover:text-slate-900 hover:bg-white/50'
                   }`}
                 >
@@ -74,17 +76,18 @@ export default function Skills() {
               ))}
             </div>
           </div>
-            
+
           {filteredSkills.length > 0 ? (
               <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
                 {filteredSkills.map((skill, idx) => (
-                  <SkillCard
-                    key={idx}
-                    icon={skill.icon}
-                    title={skill.title}
-                    features={skill.features}
-                    value={skill.value}
-                  />
+                  <Fragment key={idx}>
+                    <SkillCard
+                      icon={skill.icon}
+                      title={skill.title}
+                      features={skill.features}
+                      value={skill.value}
+                    />
+                  </Fragment>
                 ))}
               </div>
             ) : (
@@ -92,7 +95,7 @@ export default function Skills() {
               <Zap className="w-12 h-12 text-slate-300 mx-auto mb-4" />
               <h3 className="text-xl font-bold text-slate-900 mb-2">{t("skills.empty", "暂无该分类技能")}</h3>
               <p className="text-slate-500 mb-6">{t("skills.empty_sub", "未能找到合适的技能？添加客服为您定制")}</p>
-              <button 
+              <button
                 onClick={() => navigate('/contact')}
                 className="text-red-600 font-medium hover:text-red-700 inline-flex items-center gap-2"
               >
@@ -109,37 +112,13 @@ export default function Skills() {
           </div>
         </div>
       </section>
-      
+
       <div className="text-center py-12 pb-24 bg-slate-50">
         <button onClick={() => navigate('/preorder')} className="bg-red-600 text-white px-8 py-4 rounded-full text-lg font-medium hover:bg-red-700 transition-all shadow-lg">
           {t('product.preorder')}
         </button>
       </div>
     </>
-  );
-}
-
-function SkillCard({ icon, title, features, value }: { icon: React.ReactNode, title: string, features: string[], value: string }) {
-  return (
-    <div className="bg-white rounded-2xl p-8 border border-slate-200 shadow-sm hover:shadow-md transition-shadow">
-      <div className="flex items-center gap-4 mb-6">
-        <div className="w-12 h-12 bg-slate-50 rounded-xl flex items-center justify-center border border-slate-100">
-          {icon}
-        </div>
-        <h3 className="text-xl font-bold text-slate-900">{title}</h3>
-      </div>
-      <ul className="space-y-3 mb-6">
-        {features.map((feature, idx) => (
-          <li key={idx} className="flex items-start gap-2 text-slate-600">
-            <CheckCircle2 className="w-5 h-5 text-green-500 shrink-0 mt-0.5" />
-            <span>{feature}</span>
-          </li>
-        ))}
-      </ul>
-      <div className="bg-slate-50 rounded-lg p-4 border border-slate-100">
-        <p className="text-sm font-medium text-slate-700 italic">{value}</p>
-      </div>
-    </div>
   );
 }
 

@@ -402,7 +402,6 @@ const pendingTranslations = {
   }
 };
 
-import { merge } from 'lodash'; 
 // A fast deep object assign alternative
 function deepMerge(target, source) {
   for (const key of Object.keys(source)) {

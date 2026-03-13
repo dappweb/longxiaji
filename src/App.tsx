@@ -1,27 +1,49 @@
+import { lazy, Suspense } from 'react';
 import { Routes, Route } from 'react-router-dom';
 import Layout from './components/Layout';
-import Home from './pages/Home';
-import Product from './pages/Product';
-import Skills from './pages/Skills';
-import Cases from './pages/Cases';
-import News from './pages/News';
-import Contact from './pages/Contact';
-import Preorder from './pages/Preorder';
-import Support from './pages/Support';
+import { ErrorBoundary } from './components/ErrorBoundary';
+const NotFound = lazy(() => import('./pages/NotFound'));
+
+// 懒加载页面组件以优化性能
+const Home = lazy(() => import('./pages/Home'));
+const Product = lazy(() => import('./pages/Product'));
+const Skills = lazy(() => import('./pages/Skills'));
+const Cases = lazy(() => import('./pages/Cases'));
+const News = lazy(() => import('./pages/News'));
+const Contact = lazy(() => import('./pages/Contact'));
+const Preorder = lazy(() => import('./pages/Preorder'));
+const Support = lazy(() => import('./pages/Support'));
+
+// 加载占位组件
+function PageLoading() {
+  return (
+    <div className="min-h-screen flex items-center justify-center bg-slate-50">
+      <div className="text-center">
+        <div className="w-12 h-12 border-4 border-red-600 border-t-transparent rounded-full animate-spin mx-auto mb-4"></div>
+        <p className="text-slate-600">加载中...</p>
+      </div>
+    </div>
+  );
+}
 
 export default function App() {
   return (
-    <Routes>
-      <Route path="/" element={<Layout />}>
-        <Route index element={<Home />} />
-        <Route path="product" element={<Product />} />
-        <Route path="skills" element={<Skills />} />
-        <Route path="cases" element={<Cases />} />
-        <Route path="news" element={<News />} />
-        <Route path="contact" element={<Contact />} />
-        <Route path="preorder" element={<Preorder />} />
-        <Route path="support" element={<Support />} />
-      </Route>
-    </Routes>
+    <ErrorBoundary>
+      <Suspense fallback={<PageLoading />}>
+        <Routes>
+          <Route path="/" element={<Layout />}>
+            <Route index element={<Home />} />
+            <Route path="product" element={<Product />} />
+            <Route path="skills" element={<Skills />} />
+            <Route path="cases" element={<Cases />} />
+            <Route path="news" element={<News />} />
+            <Route path="contact" element={<Contact />} />
+            <Route path="preorder" element={<Preorder />} />
+            <Route path="support" element={<Support />} />
+          </Route>
+          <Route path="*" element={<NotFound />} />
+        </Routes>
+      </Suspense>
+    </ErrorBoundary>
   );
 }

@@ -1,10 +1,11 @@
 import { useTranslation } from 'react-i18next';
-import React, { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 
 export default function Support() {
   const { t } = useTranslation();
   const navigate = useNavigate();
+  useEffect(() => { document.title = `${t('support.title', '帮助与售后支持')} · 龙虾机`; }, [t]);
   return (
     <div className="bg-slate-50 min-h-screen pb-24">
       {/* 头部区 */}
@@ -19,20 +20,20 @@ export default function Support() {
       {/* 核心保障区 */}
       <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 -mt-10">
         <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-          <GuaranteeCard 
-            icon="🚚" 
-            title="{t('support.feat1.title', '包邮送达')}" 
-            desc="{t('support.feat1.desc', 'COO亲盯物流，顺丰/京东包邮，确保机器完好无损地送到您手上。')}"
+          <GuaranteeCard
+            icon="🚚"
+            title={t('support.feat1.title', '包邮送达')}
+            desc={t('support.feat1.desc', 'COO亲盯物流，顺丰/京东包邮，确保机器完好无损地送到您手上。')}
           />
-          <GuaranteeCard 
-            icon="🔄" 
-            title="{t('support.feat2.title', '7天无理由退货')}" 
-            desc="{t('support.feat2.desc', '无理由退货描述')}"
+          <GuaranteeCard
+            icon="🔄"
+            title={t('support.feat2.title', '7天无理由退货')}
+            desc={t('support.feat2.desc', '无理由退货描述')}
           />
-          <GuaranteeCard 
-            icon="🛠️" 
-            title="{t('support.feat3.title', '一年内只换不修')}" 
-            desc="{t('support.feat3.desc', '只换不修描述')}"
+          <GuaranteeCard
+            icon="🛠️"
+            title={t('support.feat3.title', '一年内只换不修')}
+            desc={t('support.feat3.desc', '只换不修描述')}
           />
         </div>
       </section>
@@ -108,7 +109,7 @@ function FaqItem({ question, answer }: { question: string, answer: string }) {
         onClick={() => setIsOpen(!isOpen)}
       >
         <span className="font-bold text-lg text-slate-800">{question}</span>
-        <span className="text-2xl text-slate-400 font-light">{isOpen ? '−' : '+'}</span>
+        <span className="text-2xl text-slate-400 font-light shrink-0">{isOpen ? '−' : '+'}</span>
       </button>
       {isOpen && (
         <div className="px-6 pb-5 pt-1 text-slate-600 leading-relaxed border-t border-slate-100 bg-slate-50">

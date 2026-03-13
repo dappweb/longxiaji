@@ -1,19 +1,22 @@
-import React from 'react';
+import { useEffect } from 'react';
 import { motion } from 'motion/react';
 import { useNavigate } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
 import {
-  Shield, Zap, MessageSquare, Cpu, Wifi, Lock, Clock, Gift,
-  ChevronRight, CheckCircle2, Smartphone, Server, Briefcase,
-  Image as ImageIcon, UserCheck, Globe, Mail, MessageCircle
+  Shield, Zap, MessageSquare, Lock, Clock, Gift,
+  ChevronRight, Briefcase,
+  UserCheck, Globe, CheckCircle2
 } from 'lucide-react';
+import { FeatureCard } from '../components/FeatureCard';
+import { StepCard } from '../components/StepCard';
+import { SkillCard } from '../components/SkillCard';
 
 export default function Home() {
   const navigate = useNavigate();
   const { t } = useTranslation();
+  useEffect(() => { document.title = '龙虾机 LongXiaJi · 消费级 AI 硬件平台'; }, []);
   return (
     <>
-      {/* Hero Section */}
       {/* Hero Section */}
       <section className="relative pt-12 md:pt-20 pb-20 md:pb-32 overflow-hidden">
         <div className="absolute inset-0 bg-[radial-gradient(circle_at_top_right,_var(--tw-gradient-stops))] from-red-50 via-slate-50 to-slate-50 -z-10" />
@@ -32,7 +35,7 @@ export default function Home() {
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.5, delay: 0.1 }}
-              className="text-4xl md:text-5xl lg:text-7xl font-extrabold tracking-tight text-slate-900 mb-6 leading-tight"
+              className="text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-extrabold tracking-tight text-slate-900 mb-6 leading-tight"
             >
               {t('hero.title1', '把 AI 助理请回你的桌面')} <br className="hidden sm:block" />
               <span className="text-red-600">{t('hero.title2', '别让它住在你的电脑里')}</span>
@@ -202,56 +205,7 @@ export default function Home() {
   );
 }
 
-function FeatureCard({ icon, title, description }: { icon: React.ReactNode, title: string, description: string }) {
-  return (
-    <div className="bg-slate-50 rounded-2xl p-6 border border-slate-100 hover:shadow-lg hover:border-slate-200 transition-all group">
-      <div className="w-12 h-12 bg-white rounded-xl shadow-sm border border-slate-100 flex items-center justify-center mb-6 group-hover:scale-110 transition-transform">
-        {icon}
-      </div>
-      <h3 className="text-xl font-bold text-slate-900 mb-3">{title}</h3>
-      <p className="text-slate-600 leading-relaxed">{description}</p>
-    </div>
-  );
-}
 
-function StepCard({ number, title, description, icon }: { number: string, title: string, description: string, icon: React.ReactNode }) {
-  return (
-    <div className="relative z-10 bg-slate-800/80 backdrop-blur-sm rounded-2xl p-8 border border-slate-700 flex flex-col items-center text-center">
-      <div className="w-16 h-16 bg-slate-900 rounded-full border-4 border-slate-800 flex items-center justify-center mb-6 relative shadow-xl">
-        {icon}
-        <div className="absolute -top-3 -right-3 w-8 h-8 bg-red-600 text-white rounded-full flex items-center justify-center font-bold border-4 border-slate-800">
-          {number}
-        </div>
-      </div>
-      <h3 className="text-xl font-bold text-white mb-4">{title}</h3>
-      <p className="text-slate-400">{description}</p>
-    </div>
-  );
-}
-
-function SkillCard({ icon, title, features, value }: { icon: React.ReactNode, title: string, features: string[], value: string }) {
-  return (
-    <div className="bg-white rounded-2xl p-8 border border-slate-200 shadow-sm hover:shadow-md transition-shadow">
-      <div className="flex items-center gap-4 mb-6">
-        <div className="w-12 h-12 bg-slate-50 rounded-xl flex items-center justify-center border border-slate-100">
-          {icon}
-        </div>
-        <h3 className="text-xl font-bold text-slate-900">{title}</h3>
-      </div>
-      <ul className="space-y-3 mb-6">
-        {features.map((feature, idx) => (
-          <li key={idx} className="flex items-start gap-2 text-slate-600">
-            <CheckCircle2 className="w-5 h-5 text-green-500 shrink-0 mt-0.5" />
-            <span>{feature}</span>
-          </li>
-        ))}
-      </ul>
-      <div className="bg-slate-50 rounded-lg p-4 border border-slate-100">
-        <p className="text-sm font-medium text-slate-700 italic">{value}</p>
-      </div>
-    </div>
-  );
-}
 
 function FounderCard({ role, desc, icon }: { role: string, desc: string, icon: string }) {
   return (
