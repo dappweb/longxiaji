@@ -24,7 +24,7 @@ const tagColorMap: Record<string, { bg: string; text: string; border: string }> 
 export default function Cases() {
   const { t } = useTranslation();
   const navigate = useNavigate();
-  useEffect(() => { document.title = `${t('nav.cases', '用户案例')} · 龙虾机`; }, [t]);
+  useEffect(() => { document.title = `${t('nav.cases', '用户案例')} · ${t('nav.logo', '龙虾机')}`; }, [t]);
 
   const scenarios: CaseItem[] = [
     {

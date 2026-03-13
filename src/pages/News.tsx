@@ -14,7 +14,7 @@ interface NewsItem {
 export default function News() {
   const { t } = useTranslation();
   const navigate = useNavigate();
-  useEffect(() => { document.title = `${t('nav.news', '新闻资讯')} · 龙虾机`; }, [t]);
+  useEffect(() => { document.title = `${t('nav.news', '新闻资讯')} · ${t('nav.logo', '龙虾机')}`; }, [t]);
 
   const newsItems: NewsItem[] = [
     {
@@ -48,9 +48,9 @@ export default function News() {
       "position": index + 1,
       "item": {
         "@type": "Article",
-        "headline": news.title,
+        "headline": t(`news.items.${news.id}.title`, news.title),
         "datePublished": news.date,
-        "description": news.summary
+        "description": t(`news.items.${news.id}.summary`, news.summary)
       }
     }))
   };
@@ -60,8 +60,8 @@ export default function News() {
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }} />
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="text-center max-w-3xl mx-auto mb-16">
-          <h1 className="text-4xl md:text-5xl font-bold text-slate-900 mb-6">{t('news.title')}</h1>
-          <p className="text-lg text-slate-600">{t('news.sub')}</p>
+          <h1 className="text-4xl md:text-5xl font-bold text-slate-900 mb-6">{t('news.title', '最新资讯')}</h1>
+          <p className="text-lg text-slate-600">{t('news.sub', '了解龙虾机的最新动态、产品更新与行业资讯')}</p>
         </div>
 
         <div className="grid gap-8 max-w-4xl mx-auto">
@@ -87,7 +87,7 @@ export default function News() {
                   onClick={() => alert(t('news.coming_soon', '详情内容正在建设中，敬请期待！'))}
                   className="text-blue-600 font-medium inline-flex items-center group cursor-pointer"
                 >
-                  {t('news.read')} <ArrowRight className="w-4 h-4 ml-1 group-hover:translate-x-1 transition-transform" />
+                  {t('news.read', '阅读全文')} <ArrowRight className="w-4 h-4 ml-1 group-hover:translate-x-1 transition-transform" />
                 </button>
               </div>
             </article>
@@ -96,7 +96,7 @@ export default function News() {
 
         <div className="mt-20 text-center">
             <button onClick={() => navigate('/preorder')} className="bg-red-600 text-white px-10 py-5 rounded-full text-xl font-bold hover:bg-red-700 transition-all shadow-[0_0_30px_rgba(220,38,38,0.3)]">
-              {t('product.preorder')}
+              {t('product.preorder', '立即预定')}
             </button>
         </div>
       </div>

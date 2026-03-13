@@ -7,7 +7,7 @@ import { StepCard } from '../components/StepCard';
 export default function Product() {
   const { t } = useTranslation();
   const navigate = useNavigate();
-  useEffect(() => { document.title = `${t('nav.product', '产品介绍')} · 龙虾机`; }, [t]);
+  useEffect(() => { document.title = `${t('nav.product', '产品介绍')} · ${t('nav.logo', '龙虾机')}`; }, [t]);
 
   const scrollTo = (id: string) => {
     const el = document.getElementById(id);
@@ -34,7 +34,7 @@ export default function Product() {
           <div className="text-center max-w-3xl mx-auto mb-12 md:mb-16">
             <h2 className="text-3xl md:text-4xl font-bold mb-4">{t("product.title1", "产品介绍，全程不超过 3 分钟")}</h2>
             <p className="text-lg text-slate-400">
-              {t('product.sub1')}
+              {t('product.sub1', '无需任何技术背景，三步体验 AI 的强大。')}
             </p>
           </div>
 
@@ -69,7 +69,7 @@ export default function Product() {
             <div className="lg:w-1/2">
               <h2 className="text-3xl md:text-4xl font-bold text-slate-900 mb-6">{t("product.arch.title", "纯云端代理架构")}<br/>{t("product.arch.subtitle", "本地零推理")}</h2>
               <p className="text-lg text-slate-600 mb-8">
-                {t('product.arch.desc')}
+                {t('product.arch.desc', '不在本地运行大模型推理。所有 LLM 调用均通过云端 API 代理完成。本地硬件仅负责运行 OpenClaw 操作系统、任务调度和保护私有数据。')}
               </p>
 
               <div className="space-y-6">
@@ -125,7 +125,7 @@ export default function Product() {
 
       <div className="text-center py-12 pb-24 bg-white">
         <button onClick={() => navigate('/preorder')} className="bg-red-600 text-white px-8 py-4 rounded-full text-lg font-medium hover:bg-red-700 transition-all shadow-lg">
-          {t('product.preorder')}
+          {t('product.preorder', '立即预定')}
         </button>
       </div>
     </>

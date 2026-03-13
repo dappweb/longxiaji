@@ -7,7 +7,7 @@ import { SkillCard } from '../components/SkillCard';
 export default function Skills() {
   const { t } = useTranslation();
   const navigate = useNavigate();
-  useEffect(() => { document.title = `${t('nav.skills', '技能市场')} · 龙虾机`; }, [t]);
+  useEffect(() => { document.title = `${t('nav.skills', '技能市场')} · ${t('nav.logo', '龙虾机')}`; }, [t]);
   const [activeTab, setActiveTab] = useState(t('skills.cat.all', '全部'));
 
   const tabs = [t('skills.cat.all', '全部'), t('skills.cat.office', '效率办公'), t('skills.cat.life', '生活娱乐'), t('skills.cat.design', '创作设计')];
@@ -54,7 +54,7 @@ export default function Skills() {
           <div className="text-center max-w-3xl mx-auto mb-12">
             <h2 className="text-3xl md:text-4xl font-bold text-slate-900 mb-4">{t("skills.title", "预装 Skills，开箱即用")}</h2>
             <p className="text-lg text-slate-600">
-              {t('skills.subtitle')}
+              {t('skills.subtitle', '硬件是载体，Skills 是灵魂。从闲聊到深度办公，一站式满足。')}
             </p>
           </div>
 
@@ -99,7 +99,7 @@ export default function Skills() {
                 onClick={() => navigate('/contact')}
                 className="text-red-600 font-medium hover:text-red-700 inline-flex items-center gap-2"
               >
-                {t('skills.contact')} <ChevronRight className="w-4 h-4" />
+                {t('skills.contact', '联系客服')} <ChevronRight className="w-4 h-4" />
               </button>
             </div>
           )}
@@ -107,7 +107,7 @@ export default function Skills() {
           <div className="mt-12 text-center">
             <p className="text-slate-600 mb-4">{t("skills.future", "未来更将开放 Skills 市场，支持量化交易、电商运营等高级技能服务，免费解锁，持续升级。")}</p>
             <button disabled className="text-slate-400 font-medium flex items-center justify-center gap-1 mx-auto cursor-not-allowed">
-              {t('skills.explore')} <ChevronRight className="w-4 h-4" />
+              {t('skills.explore', '探索更多技能')} <ChevronRight className="w-4 h-4" />
             </button>
           </div>
         </div>
@@ -115,7 +115,7 @@ export default function Skills() {
 
       <div className="text-center py-12 pb-24 bg-slate-50">
         <button onClick={() => navigate('/preorder')} className="bg-red-600 text-white px-8 py-4 rounded-full text-lg font-medium hover:bg-red-700 transition-all shadow-lg">
-          {t('product.preorder')}
+          {t('product.preorder', '立即预定')}
         </button>
       </div>
     </>

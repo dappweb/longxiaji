@@ -6,15 +6,15 @@ import { MapPin } from 'lucide-react';
 export default function Contact() {
   const { t } = useTranslation();
   const navigate = useNavigate();
-  useEffect(() => { document.title = `${t('nav.contact', '联系我们')} · 龙虾机`; }, [t]);
+  useEffect(() => { document.title = `${t('nav.contact', '联系我们')} · ${t('nav.logo', '龙虾机')}`; }, [t]);
   return (
     <>
       <section id="founders" className="py-24 bg-slate-50 border-t border-slate-200">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center max-w-3xl mx-auto mb-16">
-            <h2 className="text-3xl md:text-4xl font-bold text-slate-900 mb-4">{t('contact.founders.title')}</h2>
+            <h2 className="text-3xl md:text-4xl font-bold text-slate-900 mb-4">{t('contact.founders.title', '最接地气的跨界创始团队')}</h2>
             <p className="text-lg text-slate-600">
-              {t('contact.founders.sub')}
+              {t('contact.founders.sub', '六个从龙虾产业走出来的人，因为同一个目标走到了一起：让每个人都能零门槛用上 AI。')}
             </p>
           </div>
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">

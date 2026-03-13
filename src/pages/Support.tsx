@@ -5,7 +5,7 @@ import { useNavigate } from 'react-router-dom';
 export default function Support() {
   const { t } = useTranslation();
   const navigate = useNavigate();
-  useEffect(() => { document.title = `${t('support.title', '帮助与售后支持')} · 龙虾机`; }, [t]);
+  useEffect(() => { document.title = `${t('support.title', '帮助与售后支持')} · ${t('nav.logo', '龙虾机')}`; }, [t]);
   return (
     <div className="bg-slate-50 min-h-screen pb-24">
       {/* 头部区 */}
@@ -28,12 +28,12 @@ export default function Support() {
           <GuaranteeCard
             icon="🔄"
             title={t('support.feat2.title', '7天无理由退货')}
-            desc={t('support.feat2.desc', '无理由退货描述')}
+            desc={t('support.feat2.desc', '收货7天内，只要包装完好、不影响二次销售，我们承担运费，全额退款。')}
           />
           <GuaranteeCard
             icon="🛠️"
             title={t('support.feat3.title', '一年内只换不修')}
-            desc={t('support.feat3.desc', '只换不修描述')}
+            desc={t('support.feat3.desc', '保修期内非人为损坏？不折腾维修，直接寄新机。')}
           />
         </div>
       </section>
@@ -66,7 +66,7 @@ export default function Support() {
         <div className="bg-white rounded-2xl p-10 shadow-sm border border-slate-200">
           <h2 className="text-2xl font-bold text-slate-900 mb-6">{t('support.help.title', '没找到答案？直接找人工')}</h2>
           <p className="text-slate-600 mb-8">
-            {t('support.help.desc', '客服描述')}
+            {t('support.help.desc', '我们的客服团队全部由真人组成，不是机器人。任何问题，随时联系我们。')}
           </p>
           <div className="flex flex-col md:flex-row justify-center items-center gap-12">
             <div className="flex flex-col items-center">

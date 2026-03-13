@@ -14,7 +14,7 @@ import { SkillCard } from '../components/SkillCard';
 export default function Home() {
   const navigate = useNavigate();
   const { t } = useTranslation();
-  useEffect(() => { document.title = '龙虾机 LongXiaJi · 消费级 AI 硬件平台'; }, []);
+  useEffect(() => { document.title = t('nav.logo') + ' · ' + t('hero.badge'); }, [t]);
   return (
     <>
       {/* Hero Section */}
@@ -80,7 +80,7 @@ export default function Home() {
             className="mt-20 relative max-w-4xl mx-auto"
           >
             <div className="rounded-2xl shadow-2xl overflow-hidden border border-zinc-200 relative flex items-center justify-center bg-white">
-                <img src="/box/5050e13500344491bce2018ece160efd.png" alt="产品实拍图" className="w-full h-auto object-cover" loading="lazy" />
+                <img src="/box/5050e13500344491bce2018ece160efd.png" alt={t('product.img_alt')} className="w-full h-auto object-cover" loading="lazy" />
             </div>
           </motion.div>
         </div>

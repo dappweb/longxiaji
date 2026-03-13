@@ -157,7 +157,7 @@ export default function Layout() {
             </div>
 
             <div>
-              <h4 className="text-white font-semibold mb-6">{t('footer.contact', '联系我们')}</h4>
+              <h4 className="text-white font-semibold mb-6">{t('footer.contact', '商务合作')}</h4>
               <ul className="space-y-4 text-sm">
                 <li className="flex items-center gap-3 group">
                   <div className="w-8 h-8 rounded-full bg-slate-800 flex items-center justify-center group-hover:bg-blue-900 group-hover:text-blue-400 transition-colors">

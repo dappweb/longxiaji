@@ -1,10 +1,10 @@
 import { lazy, Suspense } from 'react';
 import { Routes, Route } from 'react-router-dom';
+import { useTranslation } from 'react-i18next';
 import Layout from './components/Layout';
 import { ErrorBoundary } from './components/ErrorBoundary';
 const NotFound = lazy(() => import('./pages/NotFound'));
 
-// 懒加载页面组件以优化性能
 const Home = lazy(() => import('./pages/Home'));
 const Product = lazy(() => import('./pages/Product'));
 const Skills = lazy(() => import('./pages/Skills'));
@@ -14,13 +14,13 @@ const Contact = lazy(() => import('./pages/Contact'));
 const Preorder = lazy(() => import('./pages/Preorder'));
 const Support = lazy(() => import('./pages/Support'));
 
-// 加载占位组件
 function PageLoading() {
+  const { t } = useTranslation();
   return (
     <div className="min-h-screen flex items-center justify-center bg-slate-50">
       <div className="text-center">
         <div className="w-12 h-12 border-4 border-red-600 border-t-transparent rounded-full animate-spin mx-auto mb-4"></div>
-        <p className="text-slate-600">加载中...</p>
+        <p className="text-slate-600">{t('loading')}</p>
       </div>
     </div>
   );
