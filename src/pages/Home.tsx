@@ -15,7 +15,7 @@ export default function Home() {
     <>
       {/* Hero Section */}
       {/* Hero Section */}
-      <section className="relative pt-20 pb-32 overflow-hidden">
+      <section className="relative pt-12 md:pt-20 pb-20 md:pb-32 overflow-hidden">
         <div className="absolute inset-0 bg-[radial-gradient(circle_at_top_right,_var(--tw-gradient-stops))] from-red-50 via-slate-50 to-slate-50 -z-10" />
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative">
           <div className="text-center max-w-3xl mx-auto">
@@ -32,7 +32,7 @@ export default function Home() {
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.5, delay: 0.1 }}
-              className="text-5xl md:text-7xl font-extrabold tracking-tight text-slate-900 mb-6 leading-tight"
+              className="text-4xl md:text-5xl lg:text-7xl font-extrabold tracking-tight text-slate-900 mb-6 leading-tight"
             >
               {t('hero.title1', '把 AI 助理请回你的桌面')} <br className="hidden sm:block" />
               <span className="text-red-600">{t('hero.title2', '别让它住在你的电脑里')}</span>
@@ -83,7 +83,7 @@ export default function Home() {
         </div>
       </section>
 
-      <section id="features" className="py-24 bg-white">
+      <section id="features" className="py-16 md:py-24 bg-white">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center max-w-3xl mx-auto mb-16">
             <h2 className="text-3xl md:text-4xl font-bold text-slate-900 mb-4">{t("home.sec1.title", "不需要你懂电脑，它懂你")}</h2>
@@ -127,7 +127,7 @@ export default function Home() {
         </div>
       </section>
       
-      <section className="py-24 bg-slate-900 text-white">
+      <section className="py-16 md:py-24 bg-slate-900 text-white">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center max-w-3xl mx-auto mb-16">
             <h2 className="text-3xl md:text-4xl font-bold mb-4">{t("home.sec2.title", "谁在用龙虾机？")}</h2>
@@ -173,10 +173,10 @@ export default function Home() {
         </div>
       </section>
 
-      <section className="py-24 bg-red-600 relative overflow-hidden">
+      <section className="py-16 md:py-24 bg-red-600 relative overflow-hidden">
         <div className="absolute inset-0 bg-[url('https://www.transparenttextures.com/patterns/cubes.png')] opacity-10 mix-blend-overlay" />
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10 text-center">
-          <h2 className="text-3xl md:text-5xl font-bold text-white mb-6">
+          <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold text-white mb-6">
             {t("home.sec3.t1", "别人还在学怎么用 AI")}<br/>{t("home.sec3.t2", "你的龙虾机已经在帮你干活了")}
           </h2>
           <p className="text-xl text-red-100 mb-10">

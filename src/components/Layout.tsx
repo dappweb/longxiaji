@@ -78,7 +78,7 @@ export default function Layout() {
               initial={{ height: 0, opacity: 0 }}
               animate={{ height: 'auto', opacity: 1 }}
               exit={{ height: 0, opacity: 0 }}
-              className="md:hidden overflow-hidden bg-white border-b border-slate-200"
+              className="md:hidden overflow-y-auto max-h-[calc(100vh-4rem)] bg-white border-b border-slate-200 shadow-xl"
             >
               <div className="px-4 py-4 flex flex-col gap-4 text-sm font-medium text-slate-600">
                 <div className="flex justify-between items-center mb-2 px-2">
