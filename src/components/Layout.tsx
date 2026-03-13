@@ -36,7 +36,7 @@ export default function Layout() {
           <div className="flex justify-between items-center h-16">
             <Link to="/" className="flex items-center gap-3">
               <div className="w-10 h-10 rounded-lg overflow-hidden flex items-center justify-center">
-                <img src="/logo.png" alt="Logo" className="w-full h-full object-contain" />
+                <img src="/logo.png" alt={t('nav.logo', '龙虾机')} className="w-full h-full object-contain" />
               </div>
               <div className="flex flex-col">
                 <span className="font-bold text-xl tracking-tight text-slate-900 leading-none">{t('nav.logo', '龙虾机')}</span>
@@ -56,7 +56,7 @@ export default function Layout() {
               <button 
                 onClick={toggleLanguage}
                 className="hidden sm:flex items-center justify-center p-2 text-slate-500 hover:text-slate-900 bg-slate-100 hover:bg-slate-200 rounded-full transition-colors"
-                title={i18n.language === 'en' ? 'Switch to Chinese' : 'Switch to English'}
+                title={t('nav.lang', '切换语言')}
               >
                 <Globe className="w-4 h-4" />
                 <span className="text-xs font-semibold ml-1">{i18n.language === 'en' ? 'EN' : '中'}</span>
@@ -134,7 +134,7 @@ export default function Layout() {
             <div className="md:col-span-2">
               <div className="flex items-center gap-3 mb-6">
                 <div className="w-10 h-10 rounded-lg overflow-hidden flex items-center justify-center bg-white/10 p-1">
-                  <img src="/logo.png" alt="Logo" className="w-full h-full object-contain" />
+                  <img src="/logo.png" alt={t('nav.logo', '龙虾机')} className="w-full h-full object-contain" />
                 </div>
                 <div>
                   <span className="font-bold text-white text-xl block">{t('nav.logo', '龙虾机')}</span>
@@ -214,13 +214,13 @@ export default function Layout() {
               </svg>
             </button>
             <div className="w-16 h-16 bg-red-100 text-red-600 rounded-full flex items-center justify-center mx-auto mb-4 overflow-hidden p-2">
-              <img src="/logo.png" className="w-full h-full object-contain" alt="Logo" />
+              <img src="/logo.png" className="w-full h-full object-contain" alt={t('nav.logo', '龙虾机')} />
             </div>
             <h3 className="text-2xl font-bold text-slate-900 mb-2">{t('modal.title', '接收预定通知')}</h3>
             <p className="text-slate-600 mb-6">{t('modal.subtitle', '获取首批预定资格与首发专属优惠')}</p>
             
             <div className="bg-slate-50 p-6 rounded-2xl border border-slate-100 mb-6 text-center">
-               <img src="/qrcode_wecom.png" alt="WeCom QR Code" className="w-48 h-48 mx-auto mix-blend-multiply" />
+               <img src="/qrcode_wecom.png" alt={t('modal.qr_alt', '企业微信二维码')} className="w-48 h-48 mx-auto mix-blend-multiply" />
                <p className="text-sm text-slate-500 mt-4">{t('modal.desc1', '获取专人顾问支持')}</p>
             </div>
             <p className="mt-4 text-xs text-slate-400">

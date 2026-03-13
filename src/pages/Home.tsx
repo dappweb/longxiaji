@@ -17,7 +17,7 @@ export default function Home() {
   const navigate = useNavigate();
   const { t } = useTranslation();
   const productRef = useRef<HTMLDivElement>(null);
-  useEffect(() => { document.title = t('nav.logo') + ' · ' + t('hero.badge'); }, [t]);
+  useEffect(() => { document.title = t('nav.logo', '龙虾机') + ' · ' + t('hero.badge', '全球首款开机即用的 AI 安全工作站'); }, [t]);
 
   const scrollToProduct = () => {
     productRef.current?.scrollIntoView({ behavior: 'smooth', block: 'center' });

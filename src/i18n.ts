@@ -6,6 +6,8 @@ const resources = {
   zh: {
     translation: {
       nav: {
+        logo: '龙虾机',
+        lang: '切换语言',
         home: '首页',
         product: '产品介绍',
         skills: '技能市场',
@@ -48,6 +50,9 @@ const resources = {
         tag2: '数据隔离',
         tag3: '7x24运行',
         tag4: '免费AI额度',
+        original_price: 'AED 2,980',
+        currency: '¥',
+        price: '298',
         unit: '/台',
         refund: '发货前可随时全额退款',
         limit: '限量 10,000 台 · 实时库存',
@@ -62,7 +67,8 @@ const resources = {
         title: '接收预定通知',
         subtitle: '获取首批预定资格与首发专属优惠',
         desc1: '获取专人顾问支持',
-        desc2: '长按或扫码添加企业微信，注明“龙虾机预定”'
+        desc2: '长按或扫码添加企业微信，注明“龙虾机预定”',
+        qr_alt: '企业微信二维码'
       },
       home: {
         sec1: { 
@@ -211,6 +217,7 @@ const resources = {
         sub: '了解龙虾机的最新动态、产品更新与行业资讯',
         read: '阅读全文',
         coming_soon: '详情内容正在建设中，敬请期待！',
+        cat: { prod: '产品发布', sys: '系统更新', ind: '行业动态' },
         items: {
           1: { type: '产品公告', title: '龙虾机惊艳亮相迪拜AI科技展：全私有化部署成为全场焦点', summary: '在今日开幕的迪拜国际AI科技创新大展上，龙虾机凭借主打的"开箱即用、完全私有部署、数据不离本地"理念，成为展会最受瞩目的新品之一。多家国际企业现场签下意向订单。' },
           2: { type: '行业快讯', title: '隐私安全成为中小企业采用AI的最大阻力，本地大模型势在必行', summary: '最新行业报告指出，超过70%的中小企业因担心核心数据如财务、客户名录泄露，不敢贸然接入公有云AI服务。像龙虾机这样自带算力和模型的私有化硬件设备需求正急速上升。' },
@@ -223,7 +230,13 @@ const resources = {
         founders: {
           title: '最接地气的跨界创始团队',
           sub: '六个从龙虾产业走出来的人，因为同一个目标走到了一起：让每个人都能零门槛用上 AI。'
-        }
+        },
+        sales: { title: '销售咨询', sub: '企业采购与 VIP 订单' },
+        support: { title: '技术支持', sub: '7x24 专业工程师支持' },
+        media: { title: '媒体与公关', sub: '采访、合作与品牌推广' },
+        global: '全球办事处',
+        btn: { email: '发送邮件' },
+        offices: { sz: '深圳（总部）', bj: '北京', sh: '上海', cd: '成都', hz: '杭州', wh: '武汉', xa: '西安', gz: '广州' }
       },
       about: {
         title: '龙虾机：让AI开机即用的智能工作站',
@@ -249,6 +262,7 @@ const resources = {
       },
       support: {
         title: '帮助与售后支持',
+        sub: '全方位技术支持与保障',
         sub1: '我们不仅做靠谱的机器，更做让您放心的售后。',
         sub2: '买得放心，用得舒心，有问题随时找我们。',
         mail_cs: '邮件客服',
@@ -256,10 +270,13 @@ const resources = {
         feat1: { title: '包邮送达', desc: 'COO亲盯物流，顺丰/京东包邮，确保机器完好无损地送到您手上。' },
         feat2: { title: '7天无理由退货', desc: '收货7天内，只要包装完好、不影响二次销售，我们承担运费，全额退款。' },
         feat3: { title: '一年内只换不修', desc: '保修期内非人为损坏？不折腾维修，直接寄新机。' },
+        warr: { title: '硬件保修', sub: '一年标准服务', '7day': '7 天', ref: '免费退换', life: '终身', tech: '在线技术支持' },
         faq: { title: '常见问题 (FAQ)' },
         help: {
           title: '没找到答案？直接找人工',
-          desc: '我们的客服团队全部由真人组成，不是机器人。任何问题，随时联系我们。'
+          desc: '我们的客服团队全部由真人组成，不是机器人。任何问题，随时联系我们。',
+          sub: '获取专人顾问支持',
+          time: '工作日 9:00 - 18:00'
         }
       },
       notfound: {
@@ -432,6 +449,9 @@ const resources = {
         tag2: 'Data Isolation',
         tag3: '7x24 Operation',
         tag4: 'Free AI Quota',
+        original_price: 'AED 2,980',
+        currency: '¥',
+        price: '298',
         unit: '/unit',
         refund: 'Full refund anytime before shipping',
         limit: 'Limited to 10,000 units · Real-time stock',
@@ -446,7 +466,8 @@ const resources = {
         title: 'Receive Preorder Notification',
         subtitle: 'Get first-batch preorder eligibility and exclusive launch offers',
         desc1: 'Get dedicated consultant support',
-        desc2: 'Scan QR code to add WeChat Enterprise, please reply "Longxiaji Preorder"'
+        desc2: 'Scan QR code to add WeChat Enterprise, please reply "Longxiaji Preorder"',
+        qr_alt: 'WeChat Enterprise QR Code'
       },
       home: {
         sec1: { 

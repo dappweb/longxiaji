@@ -79,8 +79,8 @@ export default function Preorder() {
               </div>
             </div>
             <div className="text-right">
-              <div className="text-slate-500 line-through text-lg mb-1">AED 2,980</div>
-              <div className="text-4xl font-extrabold text-red-500"><span className="text-2xl">¥</span>298<span className="text-xl text-slate-400">{t('preorder.unit', '/台')}</span></div>
+              <div className="text-slate-500 line-through text-lg mb-1">{t('preorder.original_price', 'AED 2,980')}</div>
+              <div className="text-4xl font-extrabold text-red-500"><span className="text-2xl">{t('preorder.currency', '¥')}</span>{t('preorder.price', '298')}<span className="text-xl text-slate-400">{t('preorder.unit', '/台')}</span></div>
               <div className="text-xs text-slate-500 mt-1">{t('preorder.refund', '发货前可随时全额退款')}</div>
             </div>
           </div>
