@@ -4,6 +4,7 @@ import { MessageCircle, Mail, Globe, Menu, X } from 'lucide-react';
 import { motion, AnimatePresence, useReducedMotion } from 'motion/react';
 import { useTranslation } from 'react-i18next';
 import ScrollToTop from './ScrollToTop';
+import AnnouncementBar from './AnnouncementBar';
 
 export default function Layout() {
   const { t, i18n } = useTranslation();
@@ -113,6 +114,7 @@ export default function Layout() {
           )}
         </AnimatePresence>
       </nav>
+      <AnnouncementBar />
 
       {/* Main Content */}
         <main className="flex-1 overflow-x-hidden">
