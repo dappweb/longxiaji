@@ -68,6 +68,9 @@ export default function Home() {
               <button onClick={scrollToProduct} className="w-full sm:w-auto bg-white text-slate-700 border border-slate-200 px-8 py-4 rounded-full text-lg font-medium hover:bg-slate-50 hover:border-slate-300 transition-all flex items-center justify-center gap-2">
                 <Play className="w-5 h-5" /> {t('hero.video', '观看演示视频')}
               </button>
+              <button onClick={() => navigate('/admin/announcements')} className="w-full sm:w-auto bg-slate-900 text-white px-8 py-4 rounded-full text-lg font-medium hover:bg-slate-800 transition-all flex items-center justify-center gap-2 group">
+                {t('hero.publish_announcement', '发布公告')} <ChevronRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
+              </button>
             </motion.div>
             <motion.p 
               initial={{ opacity: 0 }}
